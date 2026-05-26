@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Royyek Vault - Premium Cloud v6.0</title>
+    <title>Royyek Vault - Premium Cloud v6.3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -47,11 +47,9 @@
             --note-card-bg: #ffffff; --note-card-border: rgba(5, 150, 105, 0.2);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-user-select: none; user-select: none; }
-        
         .note-content, .note-title, #note-isi, .info-row, .pass-text.visible, .form-input, .search-box input {
             -webkit-user-select: text; user-select: text;
         }
-        
         body { 
             background-color: var(--body-bg); 
             font-family: 'Inter', sans-serif; 
@@ -64,9 +62,7 @@
             margin: 0;
             padding: 0;
         }
-        
         [data-theme="light"] body { background: var(--body-bg-gradient); }
-        
         .app-container { 
             max-width: 800px; 
             margin: 0 auto; 
@@ -79,78 +75,50 @@
             -webkit-overflow-scrolling: touch;
         }
         [data-theme="dark"] .app-container { background-color: var(--bg-dark); }
-        
         .sticky-top-section { 
-            position: sticky; 
-            top: 0; 
-            z-index: 998; 
-            padding: 16px; 
-            margin: -16px -16px 0 -16px; 
-            background-color: rgba(15, 23, 42, 0.35); 
-            backdrop-filter: blur(20px); 
-            -webkit-backdrop-filter: blur(20px); 
-            border-bottom-left-radius: 28px; 
-            border-bottom-right-radius: 28px; 
-            border-bottom: 1px solid var(--card-border-custom); 
-            border-top: none; 
+            position: sticky; top: 0; z-index: 998; padding: 16px; margin: -16px -16px 0 -16px; 
+            background-color: rgba(15, 23, 42, 0.35); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); 
+            border-bottom-left-radius: 28px; border-bottom-right-radius: 28px; border-bottom: 1px solid var(--card-border-custom); border-top: none; 
         }
         [data-theme="light"] .sticky-top-section { background-color: transparent; border: none; }
-        
         .sticky-header-wrapper { 
-            background-color: var(--header-bg); 
-            backdrop-filter: blur(25px); 
-            -webkit-backdrop-filter: blur(25px); 
-            padding: 16px 20px; 
-            border: 1px solid var(--card-border-custom); 
-            border-bottom: 3px solid var(--accent-color); 
-            margin-bottom: 12px; 
-            border-radius: 20px; 
-            transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s; 
+            background-color: var(--header-bg); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px); 
+            padding: 16px 20px; border: 1px solid var(--card-border-custom); border-bottom: 3px solid var(--accent-color); 
+            margin-bottom: 12px; border-radius: 20px; transition: background-color 0.3s, box-shadow 0.3s, border-color 0.3s; 
         }
         [data-theme="dark"] .sticky-header-wrapper { box-shadow: inset 0 1px 0px rgba(255, 255, 255, 0.05); }
         [data-theme="light"] .sticky-header-wrapper { box-shadow: 0 4px 12px rgba(141, 186, 175, 0.4); border: 1px solid var(--header-border); }
-        
         .header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
         .header-title-area { display: flex; align-items: center; gap: 14px; }
         .menu-toggle-btn { background: transparent; border: none; color: var(--text-main); font-size: 20px; cursor: pointer; padding: 6px; display: flex; align-items: center; justify-content: center; }
         [data-theme="light"] .menu-toggle-btn { color: #1e293b; }
-        
         h1 { font-size: 24px; font-weight: 700; color: var(--text-main); letter-spacing: -0.5px; line-height: 1.2; }
         [data-theme="light"] h1 { color: var(--header-text-main); }
-        
         .nama-menu-h2 { font-size: 16px; font-weight: 700; color: var(--accent-color); background: none; margin-top: 14px; margin-bottom: 0px; padding: 0px 4px; display: inline-block; border: none; text-transform: uppercase; letter-spacing: 0.5px; }
-        
         .subtitle { font-size: 11px; color: var(--accent-color); font-family: 'JetBrains Mono', monospace; margin-top: 2px; opacity: 0.9; transition: color 0.3s; }
         [data-theme="light"] .subtitle { color: var(--header-text-sub); opacity: 1; }
-        
         .theme-toggle-btn { background: transparent; border: none; color: var(--theme-toggle-color); font-size: 18px; cursor: pointer; padding: 8px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: color 0.3s, background 0.2s; }
         [data-theme="light"] .theme-toggle-btn { color: #1e293b; }
         .theme-toggle-btn:active { background: rgba(148, 163, 184, 0.15); }
-        
         .controls { display: flex; justify-content: center; width: 100%; position: relative; }
         .search-box { position: relative; width: 100%; }
         .search-box i.fa-search { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--slate-500); font-size: 14px; transition: color 0.2s; }
         [data-theme="light"] .search-box i.fa-search { color: #64748b; }
-        
         .search-box input { width: 100%; padding: 11px 40px 11px 44px; background: var(--input-bg); border: 1px solid var(--card-border-custom); border-radius: 50px; color: var(--text-main); font-size: 14px; transition: border-color 0.2s, background 0.3s, box-shadow 0.2s; }
         [data-theme="light"] .search-box input { background-color: var(--search-bg); color: #1e293b; border: 1px solid #a8d3ca; }
-        
         .search-box input:focus { border-color: var(--accent-color); outline: none; box-shadow: 0 0 0 3px var(--border-glow); }
         [data-theme="dark"] .search-box input:focus { background: rgba(0,0,0,0.5); color: #ffffff; }
         [data-theme="light"] .search-box input:focus { background: #ffffff; color: #0f172a; }
         .search-box input:focus + i { color: var(--accent-color); }
-        
         .clear-search-btn { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--slate-500); cursor: pointer; display: none; font-size: 14px; }
         [data-theme="light"] .clear-search-btn { color: #64748b; }
         .clear-search-btn:hover { color: #ef4444; }
-        
         .search-dropdown-results { position: absolute; top: calc(100% + 8px); left: 0; width: 100%; background: var(--popup-bg-premium); border: 1px solid var(--card-border-custom); border-radius: 16px; max-height: 250px; overflow-y: auto; z-index: 1000; display: none; padding: 6px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
         .search-drop-row { padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-radius: 10px; cursor: pointer; color: var(--text-main); font-size: 13px; transition: background 0.2s; }
         .search-drop-row:hover { background: rgba(16, 185, 129, 0.15); color: var(--accent-color); }
         .search-drop-info { display: flex; align-items: center; gap: 10px; }
         .search-drop-folder { font-size: 11px; background: var(--badge-bg); color: var(--badge-text); padding: 2px 6px; border-radius: 6px; font-weight: 600; }
         .search-drop-row.folder-type { background: rgba(16, 185, 129, 0.06); border: 1px dashed rgba(16, 185, 129, 0.3); margin-bottom: 4px; }
-        
         .kpi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 0px; }
         .kpi-card { background: var(--bg-surface); padding: 14px; border-radius: 16px; border: 1px solid var(--card-border-custom); transition: background 0.3s, border-color 0.3s, transform 0.2s, box-shadow 0.2s; }
         [data-theme="light"] .kpi-card { box-shadow: var(--card-shadow); border: 1px solid rgba(255,255,255,0.8); }
@@ -165,13 +133,8 @@
         .kpi-card:first-child .kpi-label { color: #065f46; }
         .kpi-card:last-child .kpi-label { color: #1e40af; }
         [data-theme="dark"] .kpi-card:first-child .kpi-label, [data-theme="dark"] .kpi-card:last-child .kpi-label { color: rgba(255,255,255,0.6); }
-        
         #account-list-container { padding-top: 24px; margin-top: 4px; }
-        
-        .app-item-row, .note-card, [id^="grup-"], [id^="head-grup-"], .app-detail-content {
-            scroll-margin-top: 270px;
-        }
-        
+        .app-item-row, .note-card, [id^="grup-"], [id^="head-grup-"], .app-detail-content, [id^="cat-"] { scroll-margin-top: 270px; }
         .sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
         .sidebar { position: fixed; top: 0; left: -280px; width: var(--sidebar-width); height: 100%; background: var(--bg-surface); z-index: 2001; transition: left 0.3s ease, background 0.3s; padding: 25px 20px; display: flex; flex-direction: column; border-right: 1px solid var(--card-border); }
@@ -191,37 +154,21 @@
         .btn-pro { background: var(--accent-color); color: #ffffff; padding: 12px 18px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 15px; transition: background 0.3s, transform 0.1s, color 0.3s; }
         .btn-pro:active { transform: scale(0.96); }
         [data-theme="dark"] .btn-pro { color: #0f172a; }
-        
         .account-list { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; margin-bottom: 24px; } 
         .folder-badge { font-size: 12px; background: var(--badge-bg); color: var(--badge-text); padding: 2px 8px; border-radius: 10px; font-weight: 700; }
-        .folder-title-text { font-weight: 700; font-size: 16px; color: var(--text-main); display: inline-flex; align-items: center; } 
-        .folder-title-text i { font-size: 18px; } 
+        .folder-title-text { font-weight: 700; font-size: 18px; color: var(--text-main); display: inline-flex; align-items: center; } 
+        .folder-title-text i { font-size: 20px; } 
         .subfolder-wrapper { margin-left: 14px; padding-left: 10px; border-left: 2px dashed var(--card-border-custom); margin-bottom: 4px; margin-top: 4px; }
-
         .app-item-row { 
             background: var(--app-row-bg); border-radius: 12px !important; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border: none; border-bottom: 1px solid var(--card-border-custom); margin-bottom: 3px; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); color: var(--app-row-text);
         }
         .app-item-row:hover { background: var(--app-row-hover); border-bottom-color: rgba(255,255,255,0.25); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transform: translateY(-1px); }
         .app-item-row .app-title { font-weight: 700; font-size: 17px; transition: color 0.2s; }
-        
-        .app-item-row:hover .app-title,
-        .app-item-row:hover div > span[style*="color:var(--slate-500)"] { 
-            color: #ffffff !important; 
-        }
-        .app-item-row:hover i:not(.fa-star) { 
-            color: #ffffff !important; 
-        }
-        .app-item-row:hover i.fa-star[style*="slate-500"] { 
-            color: var(--slate-500) !important; 
-        }
-        .app-item-row:hover i.fa-star[style*="#facc15"] { 
-            color: #facc15 !important; 
-        }
-        [data-theme="light"] .app-item-row:hover .app-title,
-        [data-theme="light"] .app-item-row:hover div > span[style*="color:var(--slate-500)"] { 
-            color: #ffffff !important; 
-        }
-        
+        .app-item-row:hover .app-title, .app-item-row:hover div > span[style*="color:var(--slate-500)"] { color: #ffffff !important; }
+        .app-item-row:hover i:not(.fa-star) { color: #ffffff !important; }
+        .app-item-row:hover i.fa-star[style*="slate-500"] { color: var(--slate-500) !important; }
+        .app-item-row:hover i.fa-star[style*="#facc15"] { color: #facc15 !important; }
+        [data-theme="light"] .app-item-row:hover .app-title, [data-theme="light"] .app-item-row:hover div > span[style*="color:var(--slate-500)"] { color: #ffffff !important; }
         .app-detail-content { display: none; background: var(--bg-dark); border-radius: 0 0 12px 12px !important; padding: 14px; border: 1px solid var(--card-border-custom); border-top: none; border-left: 3px solid var(--accent-color); flex-direction: column; gap: 8px; transition: background 0.3s; margin-bottom: 6px; }
         [data-theme="light"] .app-detail-content { background: #f8fafc; }
         .info-row { font-size: 14px; color: var(--slate-300); display: flex; align-items: center; justify-content: space-between; width: 100%; margin-bottom: 2px; }
@@ -236,70 +183,15 @@
         .pass-actions i:hover { color: var(--accent-color); }
         .card-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--card-border); }
         .action-btn { background: transparent; border: none; cursor: pointer; font-size: 14px; font-weight: 600; }
-        
-        .note-card {
-            background: var(--note-card-bg);
-            border: 1px solid var(--note-card-border);
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-left: 3px solid var(--accent-color);
-        }
-        .note-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            border-bottom-color: rgba(255,255,255,0.25);
-        }
-        .note-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-        .note-title {
-            font-weight: 700;
-            font-size: 16px;
-            color: var(--text-main);
-            flex-grow: 1;
-        }
-        .note-meta {
-            font-size: 11px;
-            color: var(--slate-500);
-            font-family: 'JetBrains Mono', monospace;
-            margin-top: 4px;
-        }
-        .note-content {
-            font-size: 14px;
-            color: var(--slate-300);
-            line-height: 1.4;
-            margin-bottom: 10px;
-            white-space: pre-wrap;
-            max-height: 80px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .note-content.expanded {
-            max-height: none;
-        }
-        .note-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            padding-top: 8px;
-            border-top: 1px dashed var(--card-border);
-        }
-        .note-badge {
-            font-size: 10px;
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            padding: 2px 6px;
-            border-radius: 6px;
-            font-weight: 600;
-            margin-left: 8px;
-        }
-        
+        .note-card { background: var(--note-card-bg); border: 1px solid var(--note-card-border); border-radius: 12px; padding: 14px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s ease; border-left: 3px solid var(--accent-color); }
+        .note-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-bottom-color: rgba(255,255,255,0.25); }
+        .note-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+        .note-title { font-weight: 700; font-size: 16px; color: var(--text-main); flex-grow: 1; }
+        .note-meta { font-size: 11px; color: var(--slate-500); font-family: 'JetBrains Mono', monospace; margin-top: 4px; }
+        .note-content { font-size: 14px; color: var(--slate-300); line-height: 1.4; margin-bottom: 10px; white-space: pre-wrap; max-height: 80px; overflow: hidden; text-overflow: ellipsis; }
+        .note-content.expanded { max-height: none; }
+        .note-actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 8px; border-top: 1px dashed var(--card-border); }
+        .note-badge { font-size: 10px; background: var(--badge-bg); color: var(--badge-text); padding: 2px 6px; border-radius: 6px; font-weight: 600; margin-left: 8px; }
         .premium-dock-bottom { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; background-color: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--card-border-custom); border-top-left-radius: 24px; border-top-right-radius: 24px; display: flex; flex-direction: column; padding-bottom: calc(env(safe-area-inset-bottom) / 2); transition: background-color 0.3s, border-color 0.3s; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
         .config-box { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--card-border-custom); border-radius: 16px; padding: 10px 14px; margin: 14px 16px 4px 16px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: background-color 0.3s, border-color 0.3s; }
         [data-theme="light"] .config-box { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: var(--card-shadow); }
@@ -340,7 +232,6 @@
         .toast-container { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); z-index: 10000; display: flex; flex-direction: column; gap: 10px; width: 90%; max-width: 320px; pointer-events: none; }
         .premium-toast { background: var(--bg-surface); border: 1px solid var(--card-border-custom); border-bottom: 3px solid var(--accent-color); padding: 14px 18px; border-radius: 14px; color: var(--text-main); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; animation: slideDownIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; transition: border-color 0.3s, background-color 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         @keyframes slideDownIn { 0% { transform: translateY(-20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-
         .lock-screen-modern { position: fixed; inset: 0; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
         .lock-bg-gradient { position: absolute; inset: -50%; background: radial-gradient(ellipse at 30% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 70%); animation: gradientPulse 8s ease-in-out infinite; pointer-events: none; }
         @keyframes gradientPulse { 0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; } 50% { transform: scale(1.1) rotate(2deg); opacity: 1; } }
@@ -399,7 +290,6 @@
         [data-theme="light"] .lock-feedback { background: rgba(255, 255, 255, 0.95); }
         [data-theme="light"] .feedback-text { color: #334155; }
         [data-theme="light"] .logo-icon { background: linear-gradient(135deg, #34d399, #10b981); box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3); }
-
         .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--card-border); margin-bottom: 15px; }
         .toggle-label { font-size: 14px; color: var(--text-main); font-weight: 500; display: flex; align-items: center; gap: 8px; }
         .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
@@ -408,6 +298,16 @@
         .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--accent-color); }
         input:checked + .slider:before { transform: translateX(20px); }
+
+        /* 📁 Compact Notes Folder Spacing */
+        [id^="cat-"] { margin-bottom: 6px !important; }
+        [id^="cat-"] > div:first-child { margin-bottom: 1px !important; }
+        .subfolder-wrapper { margin-left: 12px !important; padding-left: 8px !important; margin: 2px 0 !important; }
+        .app-item-row { margin-bottom: 2px !important; padding: 8px 12px !important; }
+        .app-detail-content { margin-bottom: 4px !important; padding: 10px !important; }
+        .folder-title-text { font-size: 18px !important; }
+        .folder-title-text i { font-size: 20px !important; margin-right: 6px !important; }
+        .folder-badge { font-size: 12px !important; padding: 2px 8px !important; }
     </style>
 </head>
 <body>
@@ -439,7 +339,7 @@
     </div>
     <div class="lock-footer">
         <p><i class="fa-solid fa-lock"></i> Dilindungi dengan enkripsi end-to-end</p>
-        <p class="lock-version">v6.0 • Cloud Sync Enabled</p>
+        <p class="lock-version">v6.3 • Cloud Sync Enabled</p>
     </div>
 </div>
 
@@ -473,7 +373,7 @@
                     <button class="menu-toggle-btn" onclick="toggleSidebar(true)"><i class="fa-solid fa-bars"></i></button>
                     <div>
                         <h1>Royyek Vault</h1>
-                        <div class="subtitle"><i class="fa-solid fa-cloud"></i> Cloud Star Synced v6.0</div>
+                        <div class="subtitle"><i class="fa-solid fa-cloud"></i> Cloud Star Synced v6.3</div>
                     </div>
                 </div>
                 <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleThemeMode()" title="Ganti Mode"><i class="fa-solid fa-moon"></i></button>
@@ -549,7 +449,7 @@
             <input type="hidden" id="note-id">
             <input type="hidden" id="note-type" value="notes">
             <div class="custom-select-box" onclick="bukaCustomDropdownLayer('notes')"><span id="selected-note-kategori">-- Pilih Kategori --</span><i class="fa-solid fa-caret-down"></i></div>
-            <input type="text" id="note-kategori-baru" class="form-input" placeholder="Kategori Baru..." style="display:none;">
+            <input type="text" id="note-kategori-baru" class="form-input" placeholder="Kategori Baru... (Gunakan / untuk sub-folder)" style="display:none;">
             <input type="text" id="note-judul" class="form-input" placeholder="Judul Catatan *" required>
             <textarea id="note-isi" class="form-input" placeholder="Isi catatan..."></textarea>
             <div style="display:flex; gap:12px; margin-top:15px;">
@@ -564,7 +464,6 @@
 <div class="modal-overlay" id="pinSettingsModal">
     <div class="modal">
         <h3 style="margin-bottom:15px; color:var(--accent-color);"><i class="fa-solid fa-key"></i> Pengaturan PIN</h3>
-        
         <div class="toggle-row">
             <span class="toggle-label"><i class="fa-solid fa-lock-open" style="color:var(--slate-500);"></i> Aktifkan PIN Login</span>
             <label class="switch">
@@ -572,7 +471,6 @@
                 <span class="slider"></span>
             </label>
         </div>
-
         <form id="pin-form">
             <input type="tel" id="pin-current" class="form-input" placeholder="PIN Saat Ini *" maxlength="4" inputmode="numeric" style="text-align:center; letter-spacing:8px; font-size:18px;">
             <input type="tel" id="pin-new" class="form-input" placeholder="PIN Baru (4 digit) *" maxlength="4" inputmode="numeric" style="text-align:center; letter-spacing:8px; font-size:18px;">
@@ -599,16 +497,14 @@
 <script>
 (function() {
     'use strict';
-    
     let apiUrl = localStorage.getItem('vault_api_url') || "";
     let accounts = [];
     let notes = [];
-    let currentTab = 'beranda'; 
+    let currentTab = 'beranda';
     let currentDataType = 'vault';
     let nilaiKategoriTerpilled = "";
-    let filterKategoriAktif = null; 
+    let filterKategoriAktif = null;
     let lastViewContext = null;
-    
     const DEFAULT_PIN_HASH = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
     
     function getPinHash() { return localStorage.getItem('vault_pin_hash') || DEFAULT_PIN_HASH; }
@@ -623,25 +519,20 @@
         const savedTheme = localStorage.getItem('vault_theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
         updateThemeToggleIcon(savedTheme);
-        
         const pinEnabled = localStorage.getItem('vault_pin_enabled') !== 'false';
         const pinToggle = document.getElementById('pin-toggle');
         if (pinToggle) pinToggle.checked = pinEnabled;
-
         if (!pinEnabled) {
             document.getElementById('lockScreen').style.display = 'none';
             sessionStorage.setItem('vault_unlocked', 'true');
         } else if (sessionStorage.getItem('vault_unlocked') === 'true') {
             document.getElementById('lockScreen').style.display = 'none';
         }
-        
         if(apiUrl) fetchData();
     };
 
     document.addEventListener('click', function(e) {
-        if (!e.target.closest('.search-box')) {
-            document.getElementById('searchDropdownContainer').style.display = 'none';
-        }
+        if (!e.target.closest('.search-box')) { document.getElementById('searchDropdownContainer').style.display = 'none'; }
         document.getElementById('floating-menu').style.display = 'none';
     });
 
@@ -653,12 +544,10 @@
         updateThemeToggleIcon(target);
         showToast('Mode ' + (target === 'dark' ? 'Gelap' : 'Terang') + ' diterapkan', "fa-circle-half-stroke");
     }
-    
     function updateThemeToggleIcon(theme) {
         const btn = document.getElementById('themeToggleBtn').querySelector('i');
         btn.className = theme === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
     }
-    
     function showToast(msg, icon) {
         icon = icon || 'fa-circle-check';
         const c = document.getElementById('toast-container');
@@ -668,56 +557,32 @@
         c.appendChild(t);
         setTimeout(function() { t.remove(); }, 2000);
     }
-
     function handlePinInput(input) {
         const val = input.value;
         const dots = document.querySelectorAll('#pinDots .dot');
-        dots.forEach(function(d, i) {
-            d.classList.toggle('filled', i < val.length);
-            d.classList.remove('error');
-        });
+        dots.forEach(function(d, i) { d.classList.toggle('filled', i < val.length); d.classList.remove('error'); });
         if (val.length === 4) cekPinModern(val);
     }
-    
     function handlePinKeydown(e) {
-        if (e.key === 'Backspace' && e.target.value === '') {
-            document.querySelectorAll('#pinDots .dot').forEach(function(d) { d.classList.remove('filled'); });
-        }
+        if (e.key === 'Backspace' && e.target.value === '') { document.querySelectorAll('#pinDots .dot').forEach(function(d) { d.classList.remove('filled'); }); }
     }
-    
     async function cekPinModern(pin) {
-        const fb = document.getElementById('lockFeedback');
-        const err = document.getElementById('pin-error');
-        fb.classList.add('show');
-        err.classList.remove('show');
+        const fb = document.getElementById('lockFeedback'); const err = document.getElementById('pin-error');
+        fb.classList.add('show'); err.classList.remove('show');
         try {
             await new Promise(function(r) { setTimeout(r, 400); });
             const hash = await hashPin(pin);
             if (hash === getPinHash()) {
                 document.getElementById('lockCard').classList.add('success');
-                setTimeout(function() { 
-                    sessionStorage.setItem('vault_unlocked', 'true'); 
-                    document.getElementById('lockScreen').style.display = 'none'; 
-                    restoreViewAfterLogin(); 
-                }, 400);
+                setTimeout(function() { sessionStorage.setItem('vault_unlocked', 'true'); document.getElementById('lockScreen').style.display = 'none'; restoreViewAfterLogin(); }, 400);
             } else {
-                fb.classList.remove('show');
-                err.classList.add('show');
+                fb.classList.remove('show'); err.classList.add('show');
                 document.querySelectorAll('#pinDots .dot').forEach(function(d) { d.classList.add('error'); });
-                const inp = document.getElementById('master-pin');
-                inp.value = '';
-                inp.focus();
-                setTimeout(function() {
-                    document.querySelectorAll('#pinDots .dot').forEach(function(d) { d.classList.remove('error','filled'); });
-                }, 500);
+                const inp = document.getElementById('master-pin'); inp.value = ''; inp.focus();
+                setTimeout(function() { document.querySelectorAll('#pinDots .dot').forEach(function(d) { d.classList.remove('error','filled'); }); }, 500);
             }
-        } catch(e) {
-            fb.classList.remove('show');
-            err.textContent = 'Terjadi kesalahan';
-            err.classList.add('show');
-        }
+        } catch(e) { fb.classList.remove('show'); err.textContent = 'Terjadi kesalahan'; err.classList.add('show'); }
     }
-
     function restoreViewAfterLogin() {
         if (lastViewContext && lastViewContext.tab) {
             const el = document.getElementById('tab-' + lastViewContext.tab);
@@ -726,818 +591,321 @@
                 if (lastViewContext.filter) filterKategoriAktif = lastViewContext.filter;
                 if (lastViewContext.itemId) {
                     setTimeout(function() {
-                        const row = document.getElementById('row-app-' + lastViewContext.itemId) || document.getElementById('note-' + lastViewContext.itemId);
-                        if (row) {
-                            row.scrollIntoView({behavior: 'smooth', block: 'center'});
-                            row.style.outline = "2px solid var(--accent-color)";
-                            setTimeout(function() { row.style.outline = 'none'; }, 1500);
-                        }
+                        const row = document.getElementById('row-app-' + lastViewContext.itemId) || document.getElementById('row-note-' + lastViewContext.itemId);
+                        if (row) { row.scrollIntoView({behavior: 'smooth', block: 'center'}); row.style.outline = "2px solid var(--accent-color)"; setTimeout(function() { row.style.outline = 'none'; }, 1500); }
                     }, 300);
                 }
             }
         } else {
             const activeTab = document.querySelector('.nav-item.active');
-            if (activeTab && activeTab.id) {
-                const tabName = activeTab.id.replace('tab-', '');
-                gantiTabMenu(tabName, activeTab);
-            }
+            if (activeTab && activeTab.id) { const tabName = activeTab.id.replace('tab-', ''); gantiTabMenu(tabName, activeTab); }
         }
     }
-
     function simulateBiometric() { showToast('Fitur biometrik memerlukan backend', 'fa-fingerprint'); }
     function showRecoveryHint() { showToast('PIN default: 1234. Hubungi admin jika lupa PIN custom.', 'fa-key'); }
-    
-    function toggleSidebar(open) { 
-        document.getElementById('sidebarMenu').classList.toggle('active', open); 
-        document.getElementById('sidebarOverlay').classList.toggle('active', open); 
+    function toggleSidebar(open) { document.getElementById('sidebarMenu').classList.toggle('active', open); document.getElementById('sidebarOverlay').classList.toggle('active', open); }
+    function kunciBrankasMendadak() { sessionStorage.removeItem('vault_unlocked'); location.reload(); }
+    function saveAPI() {
+        const inputUrl = document.getElementById('api-url-input').value.trim();
+        if (!inputUrl) { showToast("URL Database kosong! Masukkan link Apps Script.", "fa-circle-exclamation"); return; }
+        if (!inputUrl.startsWith("https://script.google.com/")) { showToast("URL tidak valid! Gunakan link Web App Google Script.", "fa-triangle-exclamation"); return; }
+        apiUrl = inputUrl; localStorage.setItem('vault_api_url', apiUrl); showToast("✅ Berhasil terhubung! Mengambil data...", "fa-check-circle"); fetchData();
     }
-    
-    function kunciBrankasMendadak() { 
-        sessionStorage.removeItem('vault_unlocked'); 
-        location.reload(); 
-    }
-    
-    function saveAPI() { 
-        const inputUrl = document.getElementById('api-url-input').value.trim(); 
-        
-        if (!inputUrl) {
-            showToast("URL Database kosong! Masukkan link Apps Script.", "fa-circle-exclamation");
-            return;
-        }
-        
-        if (!inputUrl.startsWith("https://script.google.com/")) {
-            showToast("URL tidak valid! Gunakan link Web App Google Script.", "fa-triangle-exclamation");
-            return;
-        }
-
-        apiUrl = inputUrl; 
-        localStorage.setItem('vault_api_url', apiUrl); 
-        showToast("✅ Berhasil terhubung! Mengambil data...", "fa-check-circle");
-        fetchData(); 
-    }
-
     async function fetchData(dataType, skipTabChange) {
-        if (!apiUrl) {
-            showToast("⚠️ URL Database belum diatur!", "fa-database");
-            return;
-        }
-        
+        if (!apiUrl) { showToast("⚠️ URL Database belum diatur!", "fa-database"); return; }
         showToast("🔄 Sinkronisasi...", "fa-sync");
-        
         const tp = dataType || (currentTab === 'catatan' ? 'notes' : null);
         const url = tp ? (apiUrl + '?type=' + tp) : apiUrl;
-        
         try {
-            const res = await fetch(url);
-            const data = await res.json();
-            
-            if (dataType === 'notes' || tp === 'notes') { 
-                notes = data; 
-                console.log('✅ Notes loaded:', notes.length, 'items');
-                if(currentTab === 'catatan') renderNotes(notes); 
-            } else { 
-                accounts = data.map(function(a) {
-                    const kat = a.kategori || '';
-                    const formattedKat = kat.split('/').map(function(p) {
-                        return p.trim().charAt(0).toUpperCase() + p.trim().slice(1).toLowerCase();
-                    }).join('/');
-                    return Object.assign({}, a, {kategori: formattedKat});
-                });
-                console.log('✅ Accounts loaded:', accounts.length, 'items');
-                renderStats(); 
-                if (!skipTabChange && currentTab !== 'catatan') {
-                    gantiTabMenu(currentTab, document.getElementById('tab-' + currentTab)); 
-                } else if (!skipTabChange) {
-                    renderNotes(notes);
-                }
-            }
-            
+            const res = await fetch(url); const data = await res.json();
+            if (dataType === 'notes' || tp === 'notes') { notes = data; if(currentTab === 'catatan') renderNotes(notes); }
+            else { accounts = data.map(function(a) { const kat = a.kategori || ''; const formattedKat = kat.split('/').map(function(p) { return p.trim().charAt(0).toUpperCase() + p.trim().slice(1).toLowerCase(); }).join('/'); return Object.assign({}, a, {kategori: formattedKat}); }); renderStats(); if (!skipTabChange && currentTab !== 'catatan') { gantiTabMenu(currentTab, document.getElementById('tab-' + currentTab)); } else if (!skipTabChange) { renderNotes(notes); } }
             showToast("✅ Sinkronisasi berhasil!", "fa-check-circle");
-        } catch(e) { 
-            console.error('❌ Fetch error:', e);
-            document.getElementById('account-list-container').innerHTML = '<p style="text-align:center; color:#ef4444;">Gagal sinkronisasi data cloud.<br><small>' + e.message + '</small></p>'; 
-            showToast("❌ Gagal sinkronisasi!", "fa-circle-xmark");
-        }
+        } catch(e) { console.error('❌ Fetch error:', e); document.getElementById('account-list-container').innerHTML = '<p style="text-align:center; color:#ef4444;">Gagal sinkronisasi data cloud.<br><small>' + e.message + '</small></p>'; showToast("❌ Gagal sinkronisasi!", "fa-circle-xmark"); }
     }
-    
-    function renderStats() { 
-        document.getElementById('dash-total').innerText = accounts.length; 
-        document.getElementById('dash-cats').innerText = [...new Set(accounts.map(function(a) { return a.kategori; }))].length; 
-        document.getElementById('kpi-label-1').innerText = 'Total Akun'; 
-        document.getElementById('kpi-label-2').innerText = 'Total Kategori'; 
-    }
-    
-    function renderNotesStats() { 
-        document.getElementById('dash-total').innerText = notes.length; 
-        document.getElementById('dash-cats').innerText = [...new Set(notes.map(function(n) { return n.kategori; }))].length; 
-        document.getElementById('kpi-label-1').innerText = 'Total Catatan'; 
-        document.getElementById('kpi-label-2').innerText = 'Kategori'; 
-    }
-
+    function renderStats() { document.getElementById('dash-total').innerText = accounts.length; document.getElementById('dash-cats').innerText = [...new Set(accounts.map(function(a) { return a.kategori; }))].length; document.getElementById('kpi-label-1').innerText = 'Total Akun'; document.getElementById('kpi-label-2').innerText = 'Total Kategori'; }
+    function renderNotesStats() { document.getElementById('dash-total').innerText = notes.length; document.getElementById('dash-cats').innerText = [...new Set(notes.map(function(n) { return n.kategori; }))].length; document.getElementById('kpi-label-1').innerText = 'Total Catatan'; document.getElementById('kpi-label-2').innerText = 'Kategori'; }
     async function toggleFavoriteCloud(id, event, dataType) {
-        dataType = dataType || 'vault';
-        event.stopPropagation(); 
-        const ic = event.currentTarget;
-        const isFav = ic.style.color === 'rgb(250, 204, 21)';
-        ic.style.color = isFav ? 'var(--slate-500)' : '#facc15';
-        const targetArray = dataType === 'notes' ? notes : accounts;
-        const idx = targetArray.findIndex(function(a) { return String(a.id) === String(id); });
+        dataType = dataType || 'vault'; event.stopPropagation(); const ic = event.currentTarget;
+        const isFav = ic.style.color === 'rgb(250, 204, 21)'; ic.style.color = isFav ? 'var(--slate-500)' : '#facc15';
+        const targetArray = dataType === 'notes' ? notes : accounts; const idx = targetArray.findIndex(function(a) { return String(a.id) === String(id); });
         if (idx !== -1) targetArray[idx].favorit = !isFav;
-        try {
-            const p = new URLSearchParams(); 
-            p.append("action", "toggle_favorite"); 
-            p.append("id", id); 
-            p.append("data_type", dataType);
-            const r = await fetch(apiUrl, {
-                method: 'POST', 
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
-                body: p
-            });
-            const txt = await r.text();
-            showToast(txt === "true" ? "Ditambahkan ke favorit" : "Dihapus dari favorit", "fa-star");
-            if(currentTab === 'favorit') renderFavoritView();
-            else if(currentTab === 'catatan' && dataType === 'notes') renderNotes(notes);
-        } catch(e) { 
-            showToast("Gagal sync status bintang", "fa-circle-xmark"); 
-            fetchData(dataType, true);
-        }
+        try { const p = new URLSearchParams(); p.append("action", "toggle_favorite"); p.append("id", id); p.append("data_type", dataType);
+            const r = await fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: p });
+            const txt = await r.text(); showToast(txt === "true" ? "Ditambahkan ke favorit" : "Dihapus dari favorit", "fa-star");
+            if(currentTab === 'favorit') renderFavoritView(); else if(currentTab === 'catatan' && dataType === 'notes') renderNotes(notes);
+        } catch(e) { showToast("Gagal sync status bintang", "fa-circle-xmark"); fetchData(dataType, true); }
     }
-
-    function togglePasswordEye(id, e) { 
-        e.stopPropagation(); 
-        const p = document.getElementById('pass-text-' + id);
-        const ic = e.currentTarget; 
-        if(p.classList.contains('visible')) { 
-            p.classList.remove('visible'); 
-            ic.className = 'fa-solid fa-eye'; 
-        } else { 
-            p.classList.add('visible'); 
-            ic.className = 'fa-solid fa-eye-slash'; 
-        } 
-    }
-    
+    function togglePasswordEye(id, e) { e.stopPropagation(); const p = document.getElementById('pass-text-' + id); const ic = e.currentTarget; if(p.classList.contains('visible')) { p.classList.remove('visible'); ic.className = 'fa-solid fa-eye'; } else { p.classList.add('visible'); ic.className = 'fa-solid fa-eye-slash'; } }
     function dapatkanIkonAplikasi(kat, app) {
-        const a = (app || '').toLowerCase();
-        const k = (kat || '').toLowerCase();
-        if(a.includes('royyek')) return 'fa-solid fa-shield-halved';
-        if(a.includes('google') || a.includes('gmail')) return 'fa-brands fa-google';
-        if(a.includes('facebook')) return 'fa-brands fa-facebook';
-        if(a.includes('instagram')) return 'fa-brands fa-instagram';
-        if(a.includes('whatsapp')) return 'fa-brands fa-whatsapp';
-        if(a.includes('twitter') || a.includes('x')) return 'fa-brands fa-x-twitter';
-        if(a.includes('github')) return 'fa-brands fa-github';
-        if(a.includes('bank') || a.includes('bca') || a.includes('mandiri')) return 'fa-solid fa-building-columns';
-        if(a.includes('dana') || a.includes('gopay') || a.includes('ovo')) return 'fa-solid fa-wallet';
-        if(k.includes('medsos')) return 'fa-solid fa-users';
-        if(k.includes('keuangan')) return 'fa-solid fa-money-bill-wave';
-        return 'fa-solid fa-key';
+        const a = (app || '').toLowerCase(); const k = (kat || '').toLowerCase();
+        if(a.includes('royyek')) return 'fa-solid fa-shield-halved'; if(a.includes('google') || a.includes('gmail')) return 'fa-brands fa-google';
+        if(a.includes('facebook')) return 'fa-brands fa-facebook'; if(a.includes('instagram')) return 'fa-brands fa-instagram';
+        if(a.includes('whatsapp')) return 'fa-brands fa-whatsapp'; if(a.includes('twitter') || a.includes('x')) return 'fa-brands fa-x-twitter';
+        if(a.includes('github')) return 'fa-brands fa-github'; if(a.includes('bank') || a.includes('bca') || a.includes('mandiri')) return 'fa-solid fa-building-columns';
+        if(a.includes('dana') || a.includes('gopay') || a.includes('ovo')) return 'fa-solid fa-wallet'; if(k.includes('medsos')) return 'fa-solid fa-users';
+        if(k.includes('keuangan')) return 'fa-solid fa-money-bill-wave'; return 'fa-solid fa-key';
     }
-
     function renderCards(data) {
         const c = document.getElementById('account-list-container');
-        if(data.length === 0) { 
-            c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Tidak menemukan data.</p>'; 
-            return; 
-        }
-        const ft = {}; 
-        data.forEach(function(i) {
-            const ps = (i.kategori || 'Umum').split('/'); 
-            let cl = ft; 
-            ps.forEach(function(p, idx) {
-                if(!cl[p]) cl[p] = {_items:[], _subfolders:{}}; 
-                if(idx === ps.length - 1) cl[p]._items.push(i); 
-                else cl = cl[p]._subfolders;
-            });
-        });
-        
-        function genT(t, pp) {
-            pp = pp || "";
-            let h = "";
-            Object.keys(t).forEach(function(fn) {
-                const cf = t[fn];
-                const fp = pp ? (pp + '/' + fn) : fn;
-                const fid = 'grup-' + fp.replace(/\s+/g, '-').replace(/\//g, '_');
-                
-                function count(f) {
-                    let s = f._items.length;
-                    Object.keys(f._subfolders).forEach(function(k) { s += count(f._subfolders[k]); });
-                    return s;
-                }
-                
-                const tot = count(cf);
-                const fo = (filterKategoriAktif && filterKategoriAktif.toLowerCase() === fp.toLowerCase()) ? 'flex' : 'none';
-                
-                h += '<div style="margin-bottom:6px;background:var(--bg-surface);border-radius:16px;border:1px solid var(--card-border-custom);border-bottom:3px solid var(--folder-border-bottom);width:100%;overflow:visible;">';
-                h += '<div id="head-' + fid + '" onclick="toggleGrupFolder(\'' + fid + '\')" style="padding:12px 14px;display:flex;justify-content:space-between;cursor:pointer;background:var(--folder-bg-accent);border-radius:14px 14px 0 0;border-left:4px solid var(--accent-color);align-items:center;margin-bottom:4px;">';
-                h += '<div><span class="folder-title-text"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:8px;"></i>' + fn + '</span><span class="folder-badge">' + tot + '</span></div></div>';
-                h += '<div id="' + fid + '" style="display:' + fo + ';padding:4px;flex-direction:column;gap:3px;width:100%;">';
-                
-                if(Object.keys(cf._subfolders).length > 0) {
-                    h += '<div class="subfolder-wrapper">' + genT(cf._subfolders, fp) + '</div>';
-                }
-                
-                cf._items.forEach(function(a) {
-                    const st = a.favorit === true || String(a.favorit).toLowerCase() === 'true';
-                    h += '<div class="app-item-row" id="row-app-' + a.id + '" onclick="toggleDetailKonten(\'' + a.id + '\')">';
-                    h += '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">';
-                    h += '<div style="display:flex;align-items:center;gap:12px;">';
-                    h += '<i class="' + dapatkanIkonAplikasi(fp, a.nama_aplikasi) + '" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i>';
-                    h += '<div style="display:flex;flex-direction:column;gap:1px;"><span class="app-title">' + a.nama_aplikasi + '</span><span style="font-size:13px;color:var(--slate-500);font-family:\'JetBrains Mono\',monospace;">@' + (a.username || '-') + '</span></div>';
-                    h += '</div>';
-                    h += '<i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + a.id + '\',event,\'vault\')" style="color:' + (st ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:14px;padding:4px;"></i>';
-                    h += '</div></div>';
-                    h += '<div id="det-' + a.id + '" class="app-detail-content">';
-                    h += '<div class="info-row"><span>User: ' + (a.username || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.username||'') + '\');showToast(\'Username disalin\')"></i></div>';
-                    h += '<div class="info-row"><span>Email: ' + (a.email || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.email||'') + '\');showToast(\'Email disalin\')"></i></div>';
-                    h += '<div class="pass-container"><div class="pass-text" id="pass-text-' + a.id + '">' + (a.password||'') + '</div><div class="pass-actions"><i class="fa-solid fa-eye" onclick="togglePasswordEye(\'' + a.id + '\',event)"></i><i class="fa-solid fa-copy" onclick="navigator.clipboard.writeText(\'' + (a.password||'') + '\');showToast(\'Password disalin\')"></i></div></div>';
-                    if(a.ket && a.ket.trim() !== "") {
-                        h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:6px;"><span>Ket 1: ' + a.ket + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket + '\');showToast(\'Keterangan 1 disalin\')"></i></div>';
-                    }
-                    if(a.ket_dua && a.ket_dua.trim() !== "") {
-                        h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:2px;"><span>Ket 2: ' + a.ket_dua + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket_dua + '\');showToast(\'Keterangan 2 disalin\')"></i></div>';
-                    }
-                    h += '<div class="card-actions"><button class="action-btn" style="color:var(--slate-500);" onclick="editEntry(\'' + a.id + '\', \'vault\')">Edit</button><button class="action-btn" style="color:#ef4444;" onclick="deleteEntry(\'' + a.id + '\',\'vault\')">Hapus</button></div>';
-                    h += '</div>';
-                });
-                
+        if(data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Tidak menemukan data.</p>'; return; }
+        const ft = {}; data.forEach(function(i) { const ps = (i.kategori || 'Umum').split('/'); let cl = ft; ps.forEach(function(p, idx) { if(!cl[p]) cl[p] = {_items:[], _subfolders:{}}; if(idx === ps.length - 1) cl[p]._items.push(i); else cl = cl[p]._subfolders; }); });
+        function genT(t, pp) { pp = pp || ""; let h = ""; Object.keys(t).forEach(function(fn) { const cf = t[fn]; const fp = pp ? (pp + '/' + fn) : fn; const fid = 'grup-' + fp.replace(/\s+/g, '-').replace(/\//g, '_'); function count(f) { let s = f._items.length; Object.keys(f._subfolders).forEach(function(k) { s += count(f._subfolders[k]); }); return s; } const tot = count(cf); const fo = (filterKategoriAktif && filterKategoriAktif.toLowerCase() === fp.toLowerCase()) ? 'flex' : 'none';
+            h += '<div style="margin-bottom:6px;background:var(--bg-surface);border-radius:16px;border:1px solid var(--card-border-custom);border-bottom:3px solid var(--folder-border-bottom);width:100%;overflow:visible;">';
+            h += '<div id="head-' + fid + '" onclick="toggleGrupFolder(\'' + fid + '\')" style="padding:12px 14px;display:flex;justify-content:space-between;cursor:pointer;background:var(--folder-bg-accent);border-radius:14px 14px 0 0;border-left:4px solid var(--accent-color);align-items:center;margin-bottom:4px;">';
+            h += '<div><span class="folder-title-text"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:8px;"></i>' + fn + '</span><span class="folder-badge">' + tot + '</span></div>';
+            h += '<i class="fa-solid fa-chevron-down" style="color:var(--slate-500);font-size:12px;transition:transform 0.2s;" id="icon-' + fid + '"></i></div>';
+            h += '<div id="' + fid + '" style="display:' + fo + ';padding:4px;flex-direction:column;gap:3px;width:100%;">';
+            if(Object.keys(cf._subfolders).length > 0) { h += '<div class="subfolder-wrapper">' + genT(cf._subfolders, fp) + '</div>'; }
+            cf._items.forEach(function(a) { const st = a.favorit === true || String(a.favorit).toLowerCase() === 'true';
+                h += '<div class="app-item-row" id="row-app-' + a.id + '" onclick="toggleDetailKonten(\'' + a.id + '\')">';
+                h += '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">';
+                h += '<div style="display:flex;align-items:center;gap:12px;">';
+                h += '<i class="' + dapatkanIkonAplikasi(fp, a.nama_aplikasi) + '" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i>';
+                // ✅ USERNAME DI ATAS (LEBIH BESAR), APP NAME DI BAWAH
+                h += '<div style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:16px;font-weight:600;">@' + (a.username || '-') + '</span><span class="app-title" style="font-size:13px;color:var(--slate-500);">' + a.nama_aplikasi + '</span></div>';
+                h += '</div>';
+                h += '<i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + a.id + '\',event,\'vault\')" style="color:' + (st ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:14px;padding:4px;"></i>';
                 h += '</div></div>';
-            });
-            return h;
-        }
-        c.innerHTML = genT(ft);
+                h += '<div id="det-' + a.id + '" class="app-detail-content">';
+                h += '<div class="info-row"><span>User: ' + (a.username || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.username||'') + '\');showToast(\'Username disalin\')"></i></div>';
+                h += '<div class="info-row"><span>Email: ' + (a.email || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.email||'') + '\');showToast(\'Email disalin\')"></i></div>';
+                h += '<div class="pass-container"><div class="pass-text" id="pass-text-' + a.id + '">' + (a.password||'') + '</div><div class="pass-actions"><i class="fa-solid fa-eye" onclick="togglePasswordEye(\'' + a.id + '\',event)"></i><i class="fa-solid fa-copy" onclick="navigator.clipboard.writeText(\'' + (a.password||'') + '\');showToast(\'Password disalin\')"></i></div></div>';
+                if(a.ket && a.ket.trim() !== "") { h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:6px;"><span>Ket 1: ' + a.ket + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket + '\');showToast(\'Keterangan 1 disalin\')"></i></div>'; }
+                if(a.ket_dua && a.ket_dua.trim() !== "") { h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:2px;"><span>Ket 2: ' + a.ket_dua + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket_dua + '\');showToast(\'Keterangan 2 disalin\')"></i></div>'; }
+                h += '<div class="card-actions"><button class="action-btn" style="color:var(--slate-500);" onclick="editEntry(\'' + a.id + '\', \'vault\')">Edit</button><button class="action-btn" style="color:#ef4444;" onclick="deleteEntry(\'' + a.id + '\',\'vault\')">Hapus</button></div>';
+                h += '</div>'; }); h += '</div></div>'; }); return h; } c.innerHTML = genT(ft);
     }
 
+    // 📝 FUNGSI renderNotes() DENGAN SUB-FOLDER + COMPACT UI
     function renderNotes(data) {
         const c = document.getElementById('account-list-container');
-        
-        if(!data || data.length === 0) {
-            c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada catatan. Tap + untuk menambah.</p>';
-            renderNotesStats();
-            return;
-        }
-        
-        const nc = {};
-        data.forEach(function(n) {
-            const k = n.kategori || 'Umum';
-            if(!nc[k]) nc[k] = [];
-            nc[k].push(n);
-        });
-        
-        let h = '';
-        const sortedKeys = Object.keys(nc).sort();
-        
-        sortedKeys.forEach(function(kat) {
-            const notesList = nc[kat];
-            h += '<div style="margin:16px 0 8px 0;"><div style="display:flex;align-items:center;gap:8px;padding:8px 4px;"><i class="fa-regular fa-folder" style="color:var(--accent-color);"></i><span style="font-weight:600;color:var(--text-main);">' + kat + '</span><span class="folder-badge">' + notesList.length + '</span></div></div>';
-            
-            notesList.forEach(function(n) {
-                const st = n.favorit === true || String(n.favorit).toLowerCase() === 'true';
-                const t = n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short', year:'numeric'}) : '';
-                const isi = (n.isi || '').substring(0, 120) + ((n.isi || '').length > 120 ? '...' : '');
-                
-                h += '<div class="note-card" id="note-' + n.id + '" onclick="toggleNoteDetail(\'' + n.id + '\')">';
-                h += '<div class="note-header"><div><span class="note-title">' + n.judul + '</span>' + (st ? '<i class="fa-solid fa-star" style="color:#facc15;font-size:12px;margin-left:6px;"></i>' : '') + '</div>';
-                h += '<div style="display:flex;align-items:center;gap:8px;">';
-                h += '<i class="fa-regular fa-copy" onclick="event.stopPropagation(); navigator.clipboard.writeText(\'' + (n.judul + '\n\n' + (n.isi||'').replace(/'/g, "\\'").replace(/\n/g, "\\n")) + '\');showToast(\'Catatan disalin!\')" style="color:var(--slate-300);cursor:pointer;font-size:14px;"></i>';
-                h += '<i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + n.id + '\',event,\'notes\')" style="color:' + (st ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:14px;"></i>';
-                h += '</div></div>';
-                h += '<div class="note-meta">' + kat + ' • ' + t + '</div><div class="note-content" id="note-content-' + n.id + '">' + isi + '</div>';
-                h += '<div class="note-actions"><button class="action-btn" style="color:var(--accent-color);" onclick="editNote(\'' + n.id + '\')"><i class="fa-solid fa-pen"></i> Edit</button><button class="action-btn" style="color:#ef4444;" onclick="deleteEntry(\'' + n.id + '\',\'notes\')"><i class="fa-solid fa-trash"></i> Hapus</button></div>';
-                h += '</div>';
-            });
-        });
-        
-        c.innerHTML = h;
-        renderNotesStats();
-    }
-    
-    function toggleNoteDetail(id) {
-        const c = document.getElementById('note-content-' + id);
-        if(c) c.classList.toggle('expanded');
-    }
-    
-    function toggleGrupFolder(id, f) {
-        const el = document.getElementById(id);
-        if(!el) return;
-        let t = el.style.display === 'none' ? 'flex' : 'none';
-        if(f !== null && f !== undefined) t = f;
-        el.style.display = t;
-    }
-    
-    function toggleDetailKonten(id, f) {
-        const el = document.getElementById('det-' + id);
-        if(!el) return;
-        let t = el.style.display === 'none' ? 'flex' : 'none';
-        if(f !== null && f !== undefined) t = f;
-        el.style.display = t;
+        if (!data || data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada catatan. Tap + untuk menambah.</p>'; renderNotesStats(); return; }
+        const nc = {}; data.forEach(function(n) { const kat = n.kategori || 'Umum'; const parts = kat.split('/').map(p => p.trim()); let current = nc; parts.forEach(function(part, idx) { if (!current[part]) current[part] = {_items: [], _subfolders: {}}; if (idx === parts.length - 1) { current[part]._items.push(n); } else { current = current[part]._subfolders; } }); });
+        function genNoteTree(t, parentPath) {
+            parentPath = parentPath || ""; let html = "";
+            Object.keys(t).forEach(function(folderName) {
+                const folderData = t[folderName]; const fullPath = parentPath ? (parentPath + '/' + folderName) : folderName;
+                const folderId = 'cat-' + fullPath.replace(/\s+/g, '-').replace(/\//g, '_');
+                function countItems(f) { let total = f._items.length; Object.keys(f._subfolders).forEach(function(k) { total += countItems(f._subfolders[k]); }); return total; }
+                const totalItems = countItems(folderData); const isExpanded = (filterKategoriAktif && filterKategoriAktif.toLowerCase() === fullPath.toLowerCase()) ? 'flex' : 'none';
+                // 📂 Header Folder (compact)
+                html += '<div style="margin-bottom:4px;">';
+                html += '<div onclick="toggleGrupFolder(\'' + folderId + '\')" style="padding:8px 12px;display:flex;justify-content:space-between;cursor:pointer;background:var(--bg-surface);border-radius:12px 12px 0 0;border-left:3px solid var(--accent-color);align-items:center;margin-bottom:1px;">';
+                html += '<div><span class="folder-title-text" style="font-size:16px;"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:6px;font-size:16px;"></i>' + folderName + '</span><span class="folder-badge" style="font-size:11px;padding:2px 7px;">' + totalItems + '</span></div>';
+                html += '<i class="fa-solid fa-chevron-down" style="color:var(--slate-500);font-size:11px;transition:transform 0.2s;" id="icon-' + folderId + '"></i></div>';
+                // 📦 Container Isi Folder
+                html += '<div id="' + folderId + '" style="display:' + isExpanded + ';padding:2px;flex-direction:column;gap:2px;background:var(--bg-surface);border-radius:0 0 12px 12px;margin-bottom:4px;">';
+                // 🔽 Render sub-folder (rekursif)
+                if (Object.keys(folderData._subfolders).length > 0) { html += '<div class="subfolder-wrapper">' + genNoteTree(folderData._subfolders, fullPath) + '</div>'; }
+                // 📝 Render item catatan
+                folderData._items.forEach(function(n) {
+                    const isFav = n.favorit === true || String(n.favorit).toLowerCase() === 'true'; const noteId = n.id;
+                    const dateStr = n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short'}) : '';
+                    // Row Catatan (compact)
+                    html += '<div class="app-item-row" id="row-note-' + noteId + '" onclick="toggleDetailKonten(\'' + noteId + '\')" style="padding:8px 12px;margin-bottom:1px;border-radius:8px !important;">';
+                    html += '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">';
+                    html += '<div style="display:flex;align-items:center;gap:8px;">';
+                    html += '<i class="fa-regular fa-note-sticky" style="color:var(--accent-color);font-size:14px;width:20px;text-align:center;"></i>';
+                    // ✅ JUDUL CATATAN DI ATAS (LEBIH BESAR), FOLDER DI BAWAH
+                    html += '<div style="display:flex;flex-direction:column;gap:0px;"><span style="font-size:16px;font-weight:600;">' + n.judul + '</span><span style="font-size:11px;color:var(--slate-500);">' + fullPath + ' • ' + dateStr + '</span></div>';
+                    html += '</div>';
+                    html += '<div style="display:flex;align-items:center;gap:6px;">';
+                    html += '<i class="fa-regular fa-copy" onclick="event.stopPropagation();navigator.clipboard.writeText(\'' + (n.judul + '\\n\\n' + (n.isi||'').replace(/'/g,"\\'").replace(/\n/g,"\\n")) + '\');showToast(\'Catatan disalin!\')" style="color:var(--slate-300);cursor:pointer;font-size:12px;"></i>';
+                    html += '<i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + noteId + '\',event,\'notes\')" style="color:' + (isFav ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:12px;"></i>';
+                    html += '</div></div></div>';
+                    // Detail Catatan
+                    html += '<div id="det-' + noteId + '" class="app-detail-content" style="padding:10px;margin-bottom:2px;">';
+                    html += '<div style="padding:4px 0 8px 0;font-size:13px;color:var(--slate-300);line-height:1.4;white-space:pre-wrap;">' + (n.isi || '') + '</div>';
+                    html += '<div class="card-actions" style="margin-top:6px;padding-top:6px;">';
+                    html += '<button class="action-btn" style="color:var(--accent-color);font-size:12px;" onclick="editNote(\'' + noteId + '\')"><i class="fa-solid fa-pen"></i> Edit</button>';
+                    html += '<button class="action-btn" style="color:#ef4444;font-size:12px;" onclick="deleteEntry(\'' + noteId + '\',\'notes\')"><i class="fa-solid fa-trash"></i> Hapus</button>';
+                    html += '</div></div>';
+                }); html += '</div></div>'; }); return html; }
+        c.innerHTML = genNoteTree(nc); renderNotesStats();
     }
 
+    // 🔧 Update toggleGrupFolder dengan animasi icon
+    function toggleGrupFolder(id, f) {
+        const el = document.getElementById(id); const icon = document.getElementById('icon-' + id);
+        if(!el) return; let t = el.style.display === 'none' ? 'flex' : 'none';
+        if(f !== null && f !== undefined) t = f; el.style.display = t;
+        if(icon) { icon.style.transform = t === 'flex' ? 'rotate(180deg)' : 'rotate(0deg)'; icon.style.transition = 'transform 0.15s ease'; }
+    }
+    function toggleDetailKonten(id, f) { const el = document.getElementById('det-' + id); if(!el) return; let t = el.style.display === 'none' ? 'flex' : 'none'; if(f !== null && f !== undefined) t = f; el.style.display = t; }
+
+    // 🔍 Update liveSearchDropdown untuk notes dengan sub-folder
     function liveSearchDropdown() {
         const q = document.getElementById('vault-search').value.toLowerCase().trim();
-        const dc = document.getElementById('searchDropdownContainer');
-        const cb = document.getElementById('clearSearchBtn');
-        if(!q) { dc.style.display = 'none'; cb.style.display = 'none'; return; }
-        cb.style.display = 'block';
-        let hr = "";
-        
+        const dc = document.getElementById('searchDropdownContainer'); const cb = document.getElementById('clearSearchBtn');
+        if(!q) { dc.style.display = 'none'; cb.style.display = 'none'; return; } cb.style.display = 'block'; let hr = "";
         if(currentTab !== 'catatan') {
-            const uc = [...new Set(accounts.map(function(a) { return a.kategori; }))];
-            const mc = uc.filter(function(c) { return (c || '').toLowerCase().includes(q); });
-            const fa = accounts.filter(function(a) { 
-                return (a.nama_aplikasi || '').toLowerCase().includes(q) || 
-                       (a.kategori || '').toLowerCase().includes(q) || 
-                       (a.username || '').toLowerCase().includes(q); 
-            });
-            mc.forEach(function(c) {
-                hr += '<div class="search-drop-row folder-type" onclick="pilihFolderSearch(\'' + c + '\')"><div class="search-drop-info"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);font-size:16px;"></i><div style="display:flex;flex-direction:column;"><strong>[Folder] ' + c + '</strong><span style="font-size:10px;color:var(--slate-500);">Buka isi folder ini</span></div></div><span class="search-drop-folder" style="background:rgba(16,185,129,0.25);">FOLDER</span></div>';
-            });
-            fa.forEach(function(a) {
-                hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\'' + a.id + '\',\'' + a.kategori + '\',\'vault\')"><div class="search-drop-info"><i class="' + dapatkanIkonAplikasi(a.kategori, a.nama_aplikasi) + '" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>' + a.nama_aplikasi + '</strong><span style="font-size:10px;color:var(--slate-500);">@' + (a.username || '-') + '</span></div></div><span class="search-drop-folder">' + a.kategori + '</span></div>';
-            });
+            const uc = [...new Set(accounts.map(function(a) { return a.kategori; }))]; const mc = uc.filter(function(c) { return (c || '').toLowerCase().includes(q); });
+            const fa = accounts.filter(function(a) { return (a.nama_aplikasi || '').toLowerCase().includes(q) || (a.kategori || '').toLowerCase().includes(q) || (a.username || '').toLowerCase().includes(q); });
+            mc.forEach(function(c) { hr += '<div class="search-drop-row folder-type" onclick="pilihFolderSearch(\'' + c + '\')"><div class="search-drop-info"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);font-size:16px;"></i><div style="display:flex;flex-direction:column;"><strong>[Folder] ' + c + '</strong><span style="font-size:10px;color:var(--slate-500);">Buka isi folder ini</span></div></div><span class="search-drop-folder" style="background:rgba(16,185,129,0.25);">FOLDER</span></div>'; });
+            fa.forEach(function(a) { hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\'' + a.id + '\',\'' + a.kategori + '\',\'vault\')"><div class="search-drop-info"><i class="' + dapatkanIkonAplikasi(a.kategori, a.nama_aplikasi) + '" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>' + a.nama_aplikasi + '</strong><span style="font-size:10px;color:var(--slate-500);">@' + (a.username || '-') + '</span></div></div><span class="search-drop-folder">' + a.kategori + '</span></div>'; });
         }
-        
-        const fn = notes.filter(function(n) { 
-            return (n.judul || '').toLowerCase().includes(q) || 
-                   (n.isi || '').toLowerCase().includes(q) || 
-                   (n.kategori || '').toLowerCase().includes(q); 
-        });
-        fn.forEach(function(n) {
-            hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\'' + n.id + '\',\'' + n.kategori + '\',\'notes\')"><div class="search-drop-info"><i class="fa-solid fa-note-sticky" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>' + n.judul + '</strong><span style="font-size:10px;color:var(--slate-500);">Catatan</span></div></div><span class="search-drop-folder">' + n.kategori + '</span></div>';
-        });
-        
-        dc.innerHTML = hr || '<div style="padding:12px;text-align:center;color:var(--slate-500);font-size:13px;">Tidak ditemukan...</div>';
-        dc.style.display = 'block';
+        const fn = notes.filter(function(n) { return (n.judul || '').toLowerCase().includes(q) || (n.isi || '').toLowerCase().includes(q) || (n.kategori || '').toLowerCase().includes(q); });
+        fn.forEach(function(n) { const folderPath = n.kategori ? '<span class="search-drop-folder">' + n.kategori + '</span>' : '';
+            hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\'' + n.id + '\',\'' + (n.kategori||'Umum') + '\',\'notes\')"><div class="search-drop-info"><i class="fa-solid fa-note-sticky" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>' + n.judul + '</strong><span style="font-size:10px;color:var(--slate-500);">Catatan</span></div></div>' + folderPath + '</div>'; });
+        dc.innerHTML = hr || '<div style="padding:12px;text-align:center;color:var(--slate-500);font-size:13px;">Tidak ditemukan...</div>'; dc.style.display = 'block';
     }
-    
     function pilihFolderSearch(k) {
-        document.getElementById('searchDropdownContainer').style.display = 'none';
-        filterKategoriAktif = k;
-        if(k.toLowerCase().startsWith("medsos")) {
-            currentTab = 'medsos';
-            updateActiveTabUI(document.getElementById('tab-medsos'), "Media Sosial");
-        } else if(k.toLowerCase().startsWith("keuangan")) {
-            currentTab = 'keuangan';
-            updateActiveTabUI(document.getElementById('tab-keuangan'), "Finansial");
-        } else {
-            currentTab = 'beranda';
-            updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda");
-        }
+        document.getElementById('searchDropdownContainer').style.display = 'none'; filterKategoriAktif = k;
+        if(k.toLowerCase().startsWith("medsos")) { currentTab = 'medsos'; updateActiveTabUI(document.getElementById('tab-medsos'), "Media Sosial"); }
+        else if(k.toLowerCase().startsWith("keuangan")) { currentTab = 'keuangan'; updateActiveTabUI(document.getElementById('tab-keuangan'), "Finansial"); }
+        else { currentTab = 'beranda'; updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda"); }
         renderCards(accounts.filter(function(a) { return (a.kategori || '').toLowerCase().startsWith(k.toLowerCase()); }));
         document.getElementById('vault-search').value = 'Folder: ' + k;
     }
-    
+
+    // 🎯 FIX: pilihHasilSearch - auto expand folder + detail content
     function pilihHasilSearch(id, kat, type) {
-        document.getElementById('searchDropdownContainer').style.display = 'none';
-        filterKategoriAktif = null;
+        document.getElementById('searchDropdownContainer').style.display = 'none'; filterKategoriAktif = null;
         lastViewContext = {tab: currentTab, filter: kat, itemId: id};
-        
         if(type === 'notes') {
-            currentTab = 'catatan';
-            updateActiveTabUI(document.getElementById('tab-catatan'), "Catatan");
+            currentTab = 'catatan'; updateActiveTabUI(document.getElementById('tab-catatan'), "Catatan");
             renderNotes(notes);
-            const el = document.getElementById('note-' + id);
-            if(el) {
-                el.scrollIntoView({behavior:'smooth', block:'center'});
-                el.style.outline = "2px solid var(--accent-color)";
-                setTimeout(function() { el.style.outline = 'none'; }, 1500);
-                toggleNoteDetail(id);
-            }
+            requestAnimationFrame(function() { setTimeout(function() {
+                // Expand path sub-folder
+                if(kat && kat.includes('/')) {
+                    const parts = kat.split('/'); let pathAcc = "";
+                    parts.forEach(function(p) { pathAcc = pathAcc ? (pathAcc + '/' + p) : p;
+                        const folderId = 'cat-' + pathAcc.replace(/\s+/g, '-').replace(/\//g, '_');
+                        const folderEl = document.getElementById(folderId); const iconEl = document.getElementById('icon-' + folderId);
+                        if(folderEl) { folderEl.style.display = 'flex'; if(iconEl) iconEl.style.transform = 'rotate(180deg)'; } });
+                } else if(kat) {
+                    const folderId = 'cat-' + kat.replace(/\s+/g, '-').replace(/\//g, '_');
+                    const folderEl = document.getElementById(folderId); const iconEl = document.getElementById('icon-' + folderId);
+                    if(folderEl) { folderEl.style.display = 'flex'; if(iconEl) iconEl.style.transform = 'rotate(180deg)'; } }
+                // ✅ Scroll + highlight + auto expand detail
+                const rowEl = document.getElementById('row-note-' + id); const detailEl = document.getElementById('det-' + id);
+                if(rowEl) { rowEl.scrollIntoView({behavior: 'smooth', block: 'center'}); rowEl.style.outline = "2px solid var(--accent-color)"; rowEl.style.borderRadius = "8px";
+                    if(detailEl) { detailEl.style.display = 'flex'; } setTimeout(function() { rowEl.style.outline = 'none'; }, 2000); }
+            }, 150); });
         } else {
-            if((kat || '').toLowerCase().startsWith("medsos") && currentTab !== 'beranda') {
-                currentTab = 'medsos';
-                updateActiveTabUI(document.getElementById('tab-medsos'), "Media Sosial");
-            } else if((kat || '').toLowerCase().startsWith("keuangan") && currentTab !== 'beranda') {
-                currentTab = 'keuangan';
-                updateActiveTabUI(document.getElementById('tab-keuangan'), "Finansial");
-            } else {
-                const ta = accounts.find(function(a) { return String(a.id) === String(id); });
-                if(currentTab === 'favorit' && !(ta && ta.favorit)) {
-                    currentTab = 'beranda';
-                    updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda");
-                }
-            }
-            let bd = accounts;
-            if(currentTab === 'medsos') bd = accounts.filter(function(a) { return (a.kategori || '').toLowerCase().startsWith("medsos"); });
+            // Vault entries handling
+            if((kat || '').toLowerCase().startsWith("medsos") && currentTab !== 'beranda') { currentTab = 'medsos'; updateActiveTabUI(document.getElementById('tab-medsos'), "Media Sosial"); }
+            else if((kat || '').toLowerCase().startsWith("keuangan") && currentTab !== 'beranda') { currentTab = 'keuangan'; updateActiveTabUI(document.getElementById('tab-keuangan'), "Finansial"); }
+            else { const ta = accounts.find(function(a) { return String(a.id) === String(id); }); if(currentTab === 'favorit' && !(ta && ta.favorit)) { currentTab = 'beranda'; updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda"); } }
+            let bd = accounts; if(currentTab === 'medsos') bd = accounts.filter(function(a) { return (a.kategori || '').toLowerCase().startsWith("medsos"); });
             else if(currentTab === 'keuangan') bd = accounts.filter(function(a) { return (a.kategori || '').toLowerCase().startsWith("keuangan"); });
             else if(currentTab === 'favorit') bd = accounts.filter(function(a) { return a.favorit; });
             renderCards(bd);
-            const pp = (kat || '').split('/');
-            let cb = "";
-            pp.forEach(function(p) {
-                cb = cb ? (cb + '/' + p) : p;
-                toggleGrupFolder('grup-' + cb.replace(/\s+/g, '-').replace(/\//g, '_'), 'flex');
-            });
-            toggleDetailKonten(id, 'flex');
-            setTimeout(function() {
-                const r = document.getElementById('row-app-' + id);
-                if(r) {
-                    r.scrollIntoView({behavior:'smooth', block:'center'});
-                    r.style.outline = "2px solid var(--accent-color)";
-                    r.style.borderRadius = "8px";
-                    setTimeout(function() { r.style.outline = 'none'; }, 1500);
-                }
-            }, 200);
+            requestAnimationFrame(function() { setTimeout(function() {
+                const pp = (kat || '').split('/'); let cb = ""; pp.forEach(function(p) { cb = cb ? (cb + '/' + p) : p;
+                    const fid = 'grup-' + cb.replace(/\s+/g, '-').replace(/\//g, '_'); const fel = document.getElementById(fid); const icon = document.getElementById('icon-' + fid);
+                    if(fel) { fel.style.display = 'flex'; if(icon) icon.style.transform = 'rotate(180deg)'; } });
+                toggleDetailKonten(id, 'flex'); setTimeout(function() { const r = document.getElementById('row-app-' + id); if(r) { r.scrollIntoView({behavior:'smooth', block:'center'}); r.style.outline = "2px solid var(--accent-color)"; r.style.borderRadius = "8px"; setTimeout(function() { r.style.outline = 'none'; }, 2000); } }, 100);
+            }, 100); });
         }
     }
-    
-    function resetPencarian() {
-        document.getElementById('vault-search').value = "";
-        document.getElementById('searchDropdownContainer').style.display = 'none';
-        document.getElementById('clearSearchBtn').style.display = 'none';
-        filterKategoriAktif = null;
-        filterVault();
-    }
-    
-    function filterVault() {
-        if(currentTab === 'catatan') { renderNotes(notes); return; }
-        let bd = accounts;
+    function resetPencarian() { document.getElementById('vault-search').value = ""; document.getElementById('searchDropdownContainer').style.display = 'none'; document.getElementById('clearSearchBtn').style.display = 'none'; filterKategoriAktif = null; filterVault(); }
+    function filterVault() { if(currentTab === 'catatan') { renderNotes(notes); return; } let bd = accounts;
         if(currentTab === 'medsos') bd = accounts.filter(function(a) { return (a.kategori || '').toLowerCase().startsWith("medsos"); });
         else if(currentTab === 'keuangan') bd = accounts.filter(function(a) { return (a.kategori || '').toLowerCase().startsWith("keuangan"); });
-        else if(currentTab === 'favorit') bd = accounts.filter(function(a) { return a.favorit; });
-        renderCards(bd);
-    }
-    
+        else if(currentTab === 'favorit') bd = accounts.filter(function(a) { return a.favorit; }); renderCards(bd); }
     function renderFavoritView() {
-        const fv = accounts.filter(function(a) { return a.favorit; });
-        const fn = notes.filter(function(n) { return n.favorit; });
-        const c = document.getElementById('account-list-container');
-        if(fv.length === 0 && fn.length === 0) {
-            c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada item favorit.</p>';
-            return;
-        }
-        let h = '';
-        if(fv.length > 0) {
-            h += '<h3 style="margin:16px 0 8px;color:var(--accent-color);"><i class="fa-solid fa-vault"></i> Akun Favorit</h3>';
-            fv.forEach(function(a) {
-                h += '<div class="app-item-row" onclick="toggleDetailKonten(\'' + a.id + '\')"><div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div style="display:flex;align-items:center;gap:12px;"><i class="' + dapatkanIkonAplikasi(a.kategori, a.nama_aplikasi) + '" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i><div style="display:flex;flex-direction:column;gap:1px;"><span class="app-title">' + a.nama_aplikasi + '</span><span style="font-size:13px;color:var(--slate-500);font-family:\'JetBrains Mono\',monospace;">@' + (a.username || '-') + '</span></div></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + a.id + '\',event,\'vault\')" style="color:#facc15;cursor:pointer;font-size:14px;padding:4px;"></i></div></div>';
-            });
-        }
-        if(fn.length > 0) {
-            h += '<h3 style="margin:24px 0 8px;color:var(--accent-color);"><i class="fa-solid fa-note-sticky"></i> Catatan Favorit</h3>';
-            fn.forEach(function(n) {
-                h += '<div class="note-card" onclick="toggleNoteDetail(\'' + n.id + '\')"><div class="note-header"><div><span class="note-title">' + n.judul + '</span></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + n.id + '\',event,\'notes\')" style="color:#facc15;cursor:pointer;font-size:14px;"></i></div><div class="note-meta">' + n.kategori + ' • ' + (n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short'}) : '') + '</div><div class="note-content">' + (n.isi || '').substring(0, 100) + ((n.isi || '').length > 100 ? '...' : '') + '</div></div>';
-            });
-        }
-        c.innerHTML = h;
-    }
-    
-    function updateActiveTabUI(el, txt) {
-        document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); });
-        if(el) el.classList.add('active');
-        document.getElementById('nama-menu-halaman').innerHTML = txt;
-        const nb = document.getElementById('floating-note-btn');
-        if(currentTab === 'catatan') {
-            nb.style.display = 'flex';
-            document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'none';
-        } else {
-            nb.style.display = 'none';
-            document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'flex';
-        }
-    }
-    
-    function gantiTabMenu(tab, el) {
-        currentTab = tab;
-        filterKategoriAktif = null;
-        lastViewContext = null;
-        let t = "Beranda";
-        if(tab === 'medsos') { t = "Media Sosial"; filterVault(); }
-        else if(tab === 'keuangan') { t = "Finansial"; filterVault(); }
-        else if(tab === 'favorit') { t = "Favorit Terbintang"; renderFavoritView(); }
-        else if(tab === 'catatan') { t = "Catatan"; renderNotes(notes); }
-        else { filterVault(); }
-        updateActiveTabUI(el, t);
-        resetPencarian();
-    }
-    
-    function toggleFloatingMenu(e) {
-        e.stopPropagation();
-        const m = document.getElementById('floating-menu');
-        m.style.display = m.style.display === 'block' ? 'none' : 'block';
-    }
-    
-    function bukaMenuTambah() {
-        document.getElementById('floating-menu').style.display = 'none';
-        openModal('vault');
-    }
-    
-    function bukaMenuTambahNote() {
-        document.getElementById('floating-menu').style.display = 'none';
-        openModal('notes');
-    }
-    
-    function openModal(t) {
-        t = t || 'vault';
-        if(t === 'notes') {
-            document.getElementById('noteModal').style.display = 'grid';
-            document.getElementById('note-form').reset();
-            document.getElementById('note-id').value = "";
-            document.getElementById('note-modal-title').innerText = "Catatan Baru";
-        } else {
-            document.getElementById('entryModal').style.display = 'grid';
-            document.getElementById('account-form').reset();
-            document.getElementById('entry-id').value = "";
-            document.getElementById('modal-title').innerText = "Kredensial Baru";
-        }
-    }
-    
-    function closeModal() {
-        document.getElementById('entryModal').style.display = 'none';
-        document.getElementById('account-form').reset();
-        document.getElementById('entry-id').value = "";
-    }
-    
-    function closeNoteModal() {
-        document.getElementById('noteModal').style.display = 'none';
-        document.getElementById('note-form').reset();
-        document.getElementById('note-id').value = "";
-    }
-
-    function bukaSettingsPin() {
-        toggleSidebar(false);
-        document.getElementById('pinSettingsModal').style.display = 'grid';
-        document.getElementById('pin-form').reset();
-        document.getElementById('pin-settings-error').style.display = 'none';
-    }
-    
-    function closePinSettings() {
-        document.getElementById('pinSettingsModal').style.display = 'none';
-        document.getElementById('pin-form').reset();
-        document.getElementById('pin-settings-error').style.display = 'none';
-    }
-    
-    const pinToggle = document.getElementById('pin-toggle');
-    if (pinToggle) {
-        pinToggle.addEventListener('change', function(e) {
-            const on = e.target.checked;
-            localStorage.setItem('vault_pin_enabled', on ? 'true' : 'false');
-            showToast(on ? "🔒 PIN Diaktifkan" : "🔓 PIN Dinonaktifkan", "fa-lock");
-            if(!on) {
-                document.getElementById('lockScreen').style.display = 'none';
-                sessionStorage.setItem('vault_unlocked', 'true');
-            } else {
-                sessionStorage.removeItem('vault_unlocked');
-                showToast("PIN akan aktif saat buka berikutnya", "fa-shield-halved");
-            }
-        });
-    }
-
+        const fv = accounts.filter(function(a) { return a.favorit; }); const fn = notes.filter(function(n) { return n.favorit; });
+        const c = document.getElementById('account-list-container'); if(fv.length === 0 && fn.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada item favorit.</p>'; return; }
+        let h = ''; if(fv.length > 0) { h += '<h3 style="margin:16px 0 8px;color:var(--accent-color);"><i class="fa-solid fa-vault"></i> Akun Favorit</h3>';
+            fv.forEach(function(a) { h += '<div class="app-item-row" onclick="toggleDetailKonten(\'' + a.id + '\')"><div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div style="display:flex;align-items:center;gap:12px;"><i class="' + dapatkanIkonAplikasi(a.kategori, a.nama_aplikasi) + '" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i><div style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:16px;font-weight:600;">@' + (a.username || '-') + '</span><span class="app-title" style="font-size:13px;color:var(--slate-500);">' + a.nama_aplikasi + '</span></div></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + a.id + '\',event,\'vault\')" style="color:#facc15;cursor:pointer;font-size:14px;padding:4px;"></i></div></div>'; }); }
+        if(fn.length > 0) { h += '<h3 style="margin:24px 0 8px;color:var(--accent-color);"><i class="fa-solid fa-note-sticky"></i> Catatan Favorit</h3>';
+            fn.forEach(function(n) { h += '<div class="note-card" onclick="toggleNoteDetail(\'' + n.id + '\')"><div class="note-header"><div><span class="note-title">' + n.judul + '</span></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + n.id + '\',event,\'notes\')" style="color:#facc15;cursor:pointer;font-size:14px;"></i></div><div class="note-meta">' + n.kategori + ' • ' + (n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short'}) : '') + '</div><div class="note-content">' + (n.isi || '').substring(0, 100) + ((n.isi || '').length > 100 ? '...' : '') + '</div></div>'; }); }
+        c.innerHTML = h; }
+    function updateActiveTabUI(el, txt) { document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); }); if(el) el.classList.add('active');
+        document.getElementById('nama-menu-halaman').innerHTML = txt; const nb = document.getElementById('floating-note-btn');
+        if(currentTab === 'catatan') { nb.style.display = 'flex'; document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'none'; }
+        else { nb.style.display = 'none'; document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'flex'; } }
+    function gantiTabMenu(tab, el) { currentTab = tab; filterKategoriAktif = null; lastViewContext = null; let t = "Beranda";
+        if(tab === 'medsos') { t = "Media Sosial"; filterVault(); } else if(tab === 'keuangan') { t = "Finansial"; filterVault(); }
+        else if(tab === 'favorit') { t = "Favorit Terbintang"; renderFavoritView(); } else if(tab === 'catatan') { t = "Catatan"; renderNotes(notes); }
+        else { filterVault(); } updateActiveTabUI(el, t); resetPencarian(); }
+    function toggleFloatingMenu(e) { e.stopPropagation(); const m = document.getElementById('floating-menu'); m.style.display = m.style.display === 'block' ? 'none' : 'block'; }
+    function bukaMenuTambah() { document.getElementById('floating-menu').style.display = 'none'; openModal('vault'); }
+    function bukaMenuTambahNote() { document.getElementById('floating-menu').style.display = 'none'; openModal('notes'); }
+    function openModal(t) { t = t || 'vault';
+        if(t === 'notes') { document.getElementById('noteModal').style.display = 'grid'; document.getElementById('note-form').reset(); document.getElementById('note-id').value = ""; document.getElementById('note-modal-title').innerText = "Catatan Baru"; }
+        else { document.getElementById('entryModal').style.display = 'grid'; document.getElementById('account-form').reset(); document.getElementById('entry-id').value = ""; document.getElementById('modal-title').innerText = "Kredensial Baru"; } }
+    function closeModal() { document.getElementById('entryModal').style.display = 'none'; document.getElementById('account-form').reset(); document.getElementById('entry-id').value = ""; }
+    function closeNoteModal() { document.getElementById('noteModal').style.display = 'none'; document.getElementById('note-form').reset(); document.getElementById('note-id').value = ""; }
+    function bukaSettingsPin() { toggleSidebar(false); document.getElementById('pinSettingsModal').style.display = 'grid'; document.getElementById('pin-form').reset(); document.getElementById('pin-settings-error').style.display = 'none'; }
+    function closePinSettings() { document.getElementById('pinSettingsModal').style.display = 'none'; document.getElementById('pin-form').reset(); document.getElementById('pin-settings-error').style.display = 'none'; }
+    const pinToggle = document.getElementById('pin-toggle'); if (pinToggle) { pinToggle.addEventListener('change', function(e) {
+        const on = e.target.checked; localStorage.setItem('vault_pin_enabled', on ? 'true' : 'false');
+        showToast(on ? "🔐 PIN Diaktifkan" : "🔓 PIN Dinonaktifkan", "fa-lock");
+        if(!on) { document.getElementById('lockScreen').style.display = 'none'; sessionStorage.setItem('vault_unlocked', 'true'); }
+        else { sessionStorage.removeItem('vault_unlocked'); showToast("PIN akan aktif saat buka berikutnya", "fa-shield-halved"); } }); }
     async function submitPinChange() {
-        const c = document.getElementById('pin-current').value;
-        const n = document.getElementById('pin-new').value;
-        const cf = document.getElementById('pin-confirm').value;
+        const c = document.getElementById('pin-current').value; const n = document.getElementById('pin-new').value; const cf = document.getElementById('pin-confirm').value;
         const er = document.getElementById('pin-settings-error');
-        if(!/^\d{4}$/.test(c) || !/^\d{4}$/.test(n) || !/^\d{4}$/.test(cf)) {
-            er.textContent = "PIN harus 4 digit angka!"; er.style.display = 'block'; return;
-        }
-        if(n !== cf) {
-            er.textContent = "PIN baru tidak cocok!"; er.style.display = 'block'; return;
-        }
-        const currentHash = await hashPin(c);
-        if(currentHash !== getPinHash()) {
-            er.textContent = "PIN saat ini salah!"; er.style.display = 'block';
-            document.getElementById('pin-current').value = ''; document.getElementById('pin-current').focus(); return;
-        }
-        const newHash = await hashPin(n);
-        localStorage.setItem('vault_pin_hash', newHash);
-        closePinSettings();
-        showToast("✅ PIN berhasil diubah!", "fa-key");
-        setTimeout(function() {
-            if(confirm("PIN telah diubah. Login ulang dengan PIN baru?")) {
-                sessionStorage.removeItem('vault_unlocked');
-                location.reload();
-            }
-        }, 1000);
-    }
-
-    function bukaCustomDropdownLayer(ft) {
-        ft = ft || 'vault';
-        document.getElementById('dropdownLayerModal').style.display = 'flex';
-        buildDropdownOptions(ft);
-    }
-    
+        if(!/^\d{4}$/.test(c) || !/^\d{4}$/.test(n) || !/^\d{4}$/.test(cf)) { er.textContent = "PIN harus 4 digit angka!"; er.style.display = 'block'; return; }
+        if(n !== cf) { er.textContent = "PIN baru tidak cocok!"; er.style.display = 'block'; return; }
+        const currentHash = await hashPin(c); if(currentHash !== getPinHash()) { er.textContent = "PIN saat ini salah!"; er.style.display = 'block'; document.getElementById('pin-current').value = ''; document.getElementById('pin-current').focus(); return; }
+        const newHash = await hashPin(n); localStorage.setItem('vault_pin_hash', newHash); closePinSettings();
+        showToast("✅ PIN berhasil diubah!", "fa-key"); setTimeout(function() { if(confirm("PIN telah diubah. Login ulang dengan PIN baru?")) { sessionStorage.removeItem('vault_unlocked'); location.reload(); } }, 1000); }
+    function bukaCustomDropdownLayer(ft) { ft = ft || 'vault'; document.getElementById('dropdownLayerModal').style.display = 'flex'; buildDropdownOptions(ft); }
     function tutupCustomDropdownLayer() { document.getElementById('dropdownLayerModal').style.display = 'none'; }
-    
-    function buildDropdownOptions(ft) {
-        ft = ft || 'vault';
-        const sa = ft === 'notes' ? notes : accounts;
+    function buildDropdownOptions(ft) { ft = ft || 'vault'; const sa = ft === 'notes' ? notes : accounts;
         const cats = [...new Set(sa.map(function(a) { return a.kategori; }).filter(function(k) { return k; }))];
-        if(!cats.includes("Medsos")) cats.push("Medsos");
-        if(!cats.includes("Keuangan")) cats.push("Keuangan");
-        if(!cats.includes("Umum")) cats.push("Umum");
-        document.getElementById('custom-options-container').innerHTML = cats.map(function(c) {
-            return '<div class="dropdown-option-row" onclick="pilihKat(\'' + c + '\')"><span><i class="fa-regular fa-folder" style="color:var(--accent-color);margin-right:8px;"></i>' + c + '</span><button type="button" class="delete-kat-btn" onclick="hapusKategoriMassal(\'' + c + '\',event)"><i class="fa-solid fa-trash-can"></i></button></div>';
-        }).join('');
-    }
-    
-    function pilihKat(c) {
-        nilaiKategoriTerpilled = c;
-        const skv = document.getElementById('selected-kategori-view');
-        const snk = document.getElementById('selected-note-kategori');
-        if(skv) skv.innerText = c;
-        if(snk) snk.innerText = c;
-        document.getElementById('entry-kategori-baru').style.display = 'none';
-        document.getElementById('note-kategori-baru').style.display = 'none';
-        tutupCustomDropdownLayer();
-    }
-    
-    function pilihKategoriBuatBaru() {
-        nilaiKategoriTerpilled = "__BUAT_BARU__";
-        const skv = document.getElementById('selected-kategori-view');
-        const snk = document.getElementById('selected-note-kategori');
-        if(skv) skv.innerText = "Buat Baru...";
-        if(snk) snk.innerText = "Buat Baru...";
-        document.getElementById('entry-kategori-baru').style.display = 'block';
-        document.getElementById('note-kategori-baru').style.display = 'block';
-        tutupCustomDropdownLayer();
-    }
-    
-    async function hapusKategoriMassal(k, e) {
-        e.stopPropagation();
-        const jd = accounts.filter(function(a) { return (a.kategori || '').toLowerCase() === k.toLowerCase(); }).length;
-        if(!confirm(jd > 0 ? 'Hapus "' + k + '" & semua data?' : 'Hapus kosong "' + k + '"?')) return;
-        tutupCustomDropdownLayer();
-        showToast("Menghapus...", "fa-spinner");
-        const lh = accounts.filter(function(a) { return (a.kategori || '').toLowerCase() === k.toLowerCase(); });
-        if(lh.length === 0) { showToast("Kategori dibersihkan"); return; }
-        try {
-            for(let i of lh) {
-                await fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({action: "delete", id: i.id}) });
-            }
-            showToast("Sukses Dihapus");
-            setTimeout(fetchData, 500);
-        } catch(e) { showToast("Gagal menghapus", "fa-circle-xmark"); fetchData(); }
-    }
-    
-    async function submitData() {
-        const id = document.getElementById('entry-id').value;
-        let k = nilaiKategoriTerpilled;
-        if(k === "__BUAT_BARU__") k = document.getElementById('entry-kategori-baru').value;
-        
-        const newData = {
-            id: id || 'TEMP-' + Date.now(), kategori: k,
-            nama_aplikasi: document.getElementById('entry-app').value, username: document.getElementById('entry-username').value,
-            email: document.getElementById('entry-email').value, password: document.getElementById('entry-password').value,
-            ket: document.getElementById('entry-ket').value, ket_dua: document.getElementById('entry-ket-dua').value, favorit: false
-        };
-        
-        closeModal();
-        if (id) { const idx = accounts.findIndex(a => String(a.id) === String(id)); if (idx !== -1) accounts[idx] = Object.assign({}, accounts[idx], newData); }
-        else { accounts.push(newData); }
-        if (currentTab === 'catatan') renderNotes(notes); else filterVault();
-        showToast("✅ Data tersimpan!", "fa-check-circle");
-        
-        const p = new URLSearchParams();
-        p.append("action", id ? "update" : "create"); p.append("data_type", "vault");
-        if(id) p.append("id", id); p.append("kategori", k);
-        p.append("nama_aplikasi", newData.nama_aplikasi); p.append("username", newData.username);
-        p.append("email", newData.email); p.append("password", newData.password);
+        if(!cats.includes("Medsos")) cats.push("Medsos"); if(!cats.includes("Keuangan")) cats.push("Keuangan"); if(!cats.includes("Umum")) cats.push("Umum");
+        document.getElementById('custom-options-container').innerHTML = cats.map(function(c) { return '<div class="dropdown-option-row" onclick="pilihKat(\'' + c + '\')"><span><i class="fa-regular fa-folder" style="color:var(--accent-color);margin-right:8px;"></i>' + c + '</span><button type="button" class="delete-kat-btn" onclick="hapusKategoriMassal(\'' + c + '\',event)"><i class="fa-solid fa-trash-can"></i></button></div>'; }).join(''); }
+    function pilihKat(c) { nilaiKategoriTerpilled = c; const skv = document.getElementById('selected-kategori-view'); const snk = document.getElementById('selected-note-kategori');
+        if(skv) skv.innerText = c; if(snk) snk.innerText = c; document.getElementById('entry-kategori-baru').style.display = 'none'; document.getElementById('note-kategori-baru').style.display = 'none'; tutupCustomDropdownLayer(); }
+    function pilihKategoriBuatBaru() { nilaiKategoriTerpilled = "__BUAT_BARU__"; const skv = document.getElementById('selected-kategori-view'); const snk = document.getElementById('selected-note-kategori');
+        if(skv) skv.innerText = "Buat Baru..."; if(snk) snk.innerText = "Buat Baru..."; document.getElementById('entry-kategori-baru').style.display = 'block'; document.getElementById('note-kategori-baru').style.display = 'block'; tutupCustomDropdownLayer(); }
+    async function hapusKategoriMassal(k, e) { e.stopPropagation(); const jd = accounts.filter(function(a) { return (a.kategori || '').toLowerCase() === k.toLowerCase(); }).length;
+        if(!confirm(jd > 0 ? 'Hapus "' + k + '" & semua data?' : 'Hapus kosong "' + k + '"?')) return; tutupCustomDropdownLayer(); showToast("Menghapus...", "fa-spinner");
+        const lh = accounts.filter(function(a) { return (a.kategori || '').toLowerCase() === k.toLowerCase(); }); if(lh.length === 0) { showToast("Kategori dibersihkan"); return; }
+        try { for(let i of lh) { await fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({action: "delete", id: i.id}) }); } showToast("Sukses Dihapus"); setTimeout(fetchData, 500); } catch(e) { showToast("Gagal menghapus", "fa-circle-xmark"); fetchData(); } }
+    async function submitData() { const id = document.getElementById('entry-id').value; let k = nilaiKategoriTerpilled; if(k === "__BUAT_BARU__") k = document.getElementById('entry-kategori-baru').value;
+        const newData = { id: id || 'TEMP-' + Date.now(), kategori: k, nama_aplikasi: document.getElementById('entry-app').value, username: document.getElementById('entry-username').value, email: document.getElementById('entry-email').value, password: document.getElementById('entry-password').value, ket: document.getElementById('entry-ket').value, ket_dua: document.getElementById('entry-ket-dua').value, favorit: false };
+        closeModal(); if (id) { const idx = accounts.findIndex(a => String(a.id) === String(id)); if (idx !== -1) accounts[idx] = Object.assign({}, accounts[idx], newData); } else { accounts.push(newData); }
+        if (currentTab === 'catatan') renderNotes(notes); else filterVault(); showToast("✅ Data tersimpan!", "fa-check-circle");
+        const p = new URLSearchParams(); p.append("action", id ? "update" : "create"); p.append("data_type", "vault"); if(id) p.append("id", id); p.append("kategori", k);
+        p.append("nama_aplikasi", newData.nama_aplikasi); p.append("username", newData.username); p.append("email", newData.email); p.append("password", newData.password);
         p.append("ket", newData.ket); p.append("ket_dua", newData.ket_dua);
-        fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: p }).catch(function(err) { console.error('Sync failed:', err); showToast("⚠️ Gagal sync ke cloud", "fa-cloud"); });
-    }
-    
-    async function submitNoteData() {
-        const id = document.getElementById('note-id').value;
-        let k = nilaiKategoriTerpilled;
-        if(k === "__BUAT_BARU__") k = document.getElementById('note-kategori-baru').value;
-        const judul = document.getElementById('note-judul').value.trim();
-        if (!judul) { showToast("Judul wajib diisi!", "fa-circle-exclamation"); return; }
+        fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: p }).catch(function(err) { console.error('Sync failed:', err); showToast("⚠️ Gagal sync ke cloud", "fa-cloud"); }); }
+    async function submitNoteData() { const id = document.getElementById('note-id').value; let k = nilaiKategoriTerpilled; if(k === "__BUAT_BARU__") k = document.getElementById('note-kategori-baru').value;
+        const judul = document.getElementById('note-judul').value.trim(); if (!judul) { showToast("Judul wajib diisi!", "fa-circle-exclamation"); return; }
         const newData = { id: id || 'TEMP-' + Date.now(), kategori: k || "Umum", judul: judul, isi: document.getElementById('note-isi').value, favorit: false, tanggal: new Date().toISOString() };
-        closeNoteModal();
-        if (id) { const idx = notes.findIndex(n => String(n.id) === String(id)); if (idx !== -1) notes[idx] = Object.assign({}, notes[idx], newData); } else { notes.push(newData); }
-        if (currentTab === 'catatan') renderNotes(notes);
-        showToast("✅ Catatan tersimpan!", "fa-check-circle");
-        const p = new URLSearchParams();
-        p.append("action", id ? "update" : "create"); p.append("data_type", "notes");
-        if(id) p.append("id", id); p.append("kategori", newData.kategori); p.append("judul", newData.judul); p.append("isi", newData.isi);
-        fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: p }).catch(function(err) { console.error('Sync failed:', err); showToast("⚠️ Gagal sync ke cloud", "fa-cloud"); });
-    }
-    
-    function editEntry(id, t) {
-        t = t || 'vault';
-        const s = t === 'notes' ? notes : accounts;
-        const a = s.find(function(x) { return String(x.id) === String(id); });
-        if(!a) return;
+        closeNoteModal(); if (id) { const idx = notes.findIndex(n => String(n.id) === String(id)); if (idx !== -1) notes[idx] = Object.assign({}, notes[idx], newData); } else { notes.push(newData); }
+        if (currentTab === 'catatan') renderNotes(notes); showToast("✅ Catatan tersimpan!", "fa-check-circle");
+        const p = new URLSearchParams(); p.append("action", id ? "update" : "create"); p.append("data_type", "notes"); if(id) p.append("id", id); p.append("kategori", newData.kategori); p.append("judul", newData.judul); p.append("isi", newData.isi);
+        fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: p }).catch(function(err) { console.error('Sync failed:', err); showToast("⚠️ Gagal sync ke cloud", "fa-cloud"); }); }
+    function editEntry(id, t) { t = t || 'vault'; const s = t === 'notes' ? notes : accounts; const a = s.find(function(x) { return String(x.id) === String(id); }); if(!a) return;
         lastViewContext = {tab: currentTab, filter: filterKategoriAktif, itemId: id};
-        if(t === 'notes') {
-            document.getElementById('noteModal').style.display = 'grid';
-            document.getElementById('note-form').reset();
-            document.getElementById('note-id').value = a.id;
-            nilaiKategoriTerpilled = a.kategori;
-            document.getElementById('selected-note-kategori').innerText = a.kategori;
-            document.getElementById('note-judul').value = a.judul;
-            document.getElementById('note-isi').value = a.isi || '';
-            document.getElementById('note-modal-title').innerText = "Edit Catatan";
-        } else {
-            document.getElementById('entryModal').style.display = 'grid';
-            document.getElementById('account-form').reset();
-            document.getElementById('entry-id').value = a.id;
-            nilaiKategoriTerpilled = a.kategori;
-            document.getElementById('selected-kategori-view').innerText = a.kategori;
-            document.getElementById('entry-app').value = a.nama_aplikasi;
-            document.getElementById('entry-username').value = a.username;
-            document.getElementById('entry-email').value = a.email;
-            document.getElementById('entry-password').value = a.password;
-            document.getElementById('entry-ket').value = a.ket || '';
-            document.getElementById('entry-ket-dua').value = a.ket_dua || '';
-            document.getElementById('modal-title').innerText = "Edit Kredensial";
-        }
-    }
-    
+        if(t === 'notes') { document.getElementById('noteModal').style.display = 'grid'; document.getElementById('note-form').reset(); document.getElementById('note-id').value = a.id; nilaiKategoriTerpilled = a.kategori; document.getElementById('selected-note-kategori').innerText = a.kategori; document.getElementById('note-judul').value = a.judul; document.getElementById('note-isi').value = a.isi || ''; document.getElementById('note-modal-title').innerText = "Edit Catatan"; }
+        else { document.getElementById('entryModal').style.display = 'grid'; document.getElementById('account-form').reset(); document.getElementById('entry-id').value = a.id; nilaiKategoriTerpilled = a.kategori; document.getElementById('selected-kategori-view').innerText = a.kategori; document.getElementById('entry-app').value = a.nama_aplikasi; document.getElementById('entry-username').value = a.username; document.getElementById('entry-email').value = a.email; document.getElementById('entry-password').value = a.password; document.getElementById('entry-ket').value = a.ket || ''; document.getElementById('entry-ket-dua').value = a.ket_dua || ''; document.getElementById('modal-title').innerText = "Edit Kredensial"; } }
     function editNote(id) { editEntry(id, 'notes'); }
-    
-    function deleteEntry(id, t) {
-        t = t || 'vault';
-        if(!confirm("Hapus permanen?")) return;
+    function deleteEntry(id, t) { t = t || 'vault'; if(!confirm("Hapus permanen?")) return;
         if (t === 'notes') { const idx = notes.findIndex(n => String(n.id) === String(id)); if (idx !== -1) notes.splice(idx, 1); if (currentTab === 'catatan') renderNotes(notes); }
         else { const idx = accounts.findIndex(a => String(a.id) === String(id)); if (idx !== -1) accounts.splice(idx, 1); if (currentTab === 'catatan') renderNotes(notes); else filterVault(); }
-        showToast("✅ Data dihapus", "fa-trash");
-        fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({action: "delete", id: id, data_type: t}) }).catch(function(err) { console.error('Delete sync failed:', err); showToast("⚠️ Gagal sync ke cloud", "fa-cloud"); fetchData(t, true); });
-    }
+        showToast("🗑️ Data dihapus", "fa-trash");
+        fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({action: "delete", id: id, data_type: t}) }).catch(function(err) { console.error('Delete sync failed:', err); showToast("⚠️ Gagal sync ke cloud", "fa-cloud"); fetchData(t, true); }); }
 
-    // Pull-to-refresh functionality
-    let startY = 0;
-    let isPulling = false;
-    const appContainer = document.querySelector('.app-container');
+    // Pull-to-refresh
+    let startY = 0; let isPulling = false; const appContainer = document.querySelector('.app-container');
+    if (appContainer) { appContainer.addEventListener('touchstart', function(e) { if (this.scrollTop === 0) { startY = e.touches[0].pageY; isPulling = true; } }, { passive: true });
+        appContainer.addEventListener('touchmove', function(e) { if (isPulling && this.scrollTop === 0) { const currentY = e.touches[0].pageY; const distance = currentY - startY; if (distance > 100) { showToast('🔄 Refreshing...', 'fa-sync'); fetchData(); isPulling = false; } } }, { passive: true });
+        appContainer.addEventListener('touchend', function() { isPulling = false; }); }
 
-    if (appContainer) {
-        appContainer.addEventListener('touchstart', function(e) {
-            if (this.scrollTop === 0) {
-                startY = e.touches[0].pageY;
-                isPulling = true;
-            }
-        }, { passive: true });
-
-        appContainer.addEventListener('touchmove', function(e) {
-            if (isPulling && this.scrollTop === 0) {
-                const currentY = e.touches[0].pageY;
-                const distance = currentY - startY;
-                
-                if (distance > 100) {
-                    showToast('🔄 Refreshing...', 'fa-sync');
-                    fetchData();
-                    isPulling = false;
-                }
-            }
-        }, { passive: true });
-
-        appContainer.addEventListener('touchend', function() {
-            isPulling = false;
-        });
-    }
-
-    // Export ke global scope
-    window.toggleThemeMode = toggleThemeMode;
-    window.showToast = showToast;
-    window.handlePinInput = handlePinInput;
-    window.handlePinKeydown = handlePinKeydown;
-    window.toggleSidebar = toggleSidebar;
-    window.kunciBrankasMendadak = kunciBrankasMendadak;
-    window.saveAPI = saveAPI;
-    window.fetchData = fetchData;
-    window.toggleFavoriteCloud = toggleFavoriteCloud;
-    window.togglePasswordEye = togglePasswordEye;
-    window.toggleDetailKonten = toggleDetailKonten;
-    window.toggleGrupFolder = toggleGrupFolder;
-    window.liveSearchDropdown = liveSearchDropdown;
-    window.pilihFolderSearch = pilihFolderSearch;
-    window.pilihHasilSearch = pilihHasilSearch;
-    window.resetPencarian = resetPencarian;
-    window.gantiTabMenu = gantiTabMenu;
-    window.toggleFloatingMenu = toggleFloatingMenu;
-    window.bukaMenuTambah = bukaMenuTambah;
-    window.bukaMenuTambahNote = bukaMenuTambahNote;
-    window.closeModal = closeModal;
-    window.closeNoteModal = closeNoteModal;
-    window.bukaSettingsPin = bukaSettingsPin;
-    window.closePinSettings = closePinSettings;
-    window.submitPinChange = submitPinChange;
-    window.bukaCustomDropdownLayer = bukaCustomDropdownLayer;
-    window.tutupCustomDropdownLayer = tutupCustomDropdownLayer;
-    window.pilihKat = pilihKat;
-    window.pilihKategoriBuatBaru = pilihKategoriBuatBaru;
-    window.hapusKategoriMassal = hapusKategoriMassal;
-    window.submitData = submitData;
-    window.submitNoteData = submitNoteData;
-    window.editEntry = editEntry;
-    window.editNote = editNote;
-    window.deleteEntry = deleteEntry;
-    window.simulateBiometric = simulateBiometric;
-    window.showRecoveryHint = showRecoveryHint;
-    window.restoreViewAfterLogin = restoreViewAfterLogin;
-    window.updateThemeToggleIcon = updateThemeToggleIcon;
-    window.cekPinModern = cekPinModern;
-    window.renderNotes = renderNotes;
-    window.renderCards = renderCards;
-    window.filterVault = filterVault;
-    window.renderFavoritView = renderFavoritView;
-    window.updateActiveTabUI = updateActiveTabUI;
-    window.openModal = openModal;
-    window.buildDropdownOptions = buildDropdownOptions;
-    window.renderStats = renderStats;
-    window.renderNotesStats = renderNotesStats;
-    window.toggleNoteDetail = toggleNoteDetail;
-    window.dapatkanIkonAplikasi = dapatkanIkonAplikasi;
-
+    // Export functions
+    window.toggleThemeMode = toggleThemeMode; window.showToast = showToast; window.handlePinInput = handlePinInput; window.handlePinKeydown = handlePinKeydown;
+    window.toggleSidebar = toggleSidebar; window.kunciBrankasMendadak = kunciBrankasMendadak; window.saveAPI = saveAPI; window.fetchData = fetchData;
+    window.toggleFavoriteCloud = toggleFavoriteCloud; window.togglePasswordEye = togglePasswordEye; window.toggleDetailKonten = toggleDetailKonten;
+    window.toggleGrupFolder = toggleGrupFolder; window.liveSearchDropdown = liveSearchDropdown; window.pilihFolderSearch = pilihFolderSearch;
+    window.pilihHasilSearch = pilihHasilSearch; window.resetPencarian = resetPencarian; window.gantiTabMenu = gantiTabMenu;
+    window.toggleFloatingMenu = toggleFloatingMenu; window.bukaMenuTambah = bukaMenuTambah; window.bukaMenuTambahNote = bukaMenuTambahNote;
+    window.closeModal = closeModal; window.closeNoteModal = closeNoteModal; window.bukaSettingsPin = bukaSettingsPin; window.closePinSettings = closePinSettings;
+    window.submitPinChange = submitPinChange; window.bukaCustomDropdownLayer = bukaCustomDropdownLayer; window.tutupCustomDropdownLayer = tutupCustomDropdownLayer;
+    window.pilihKat = pilihKat; window.pilihKategoriBuatBaru = pilihKategoriBuatBaru; window.hapusKategoriMassal = hapusKategoriMassal;
+    window.submitData = submitData; window.submitNoteData = submitNoteData; window.editEntry = editEntry; window.editNote = editNote;
+    window.deleteEntry = deleteEntry; window.simulateBiometric = simulateBiometric; window.showRecoveryHint = showRecoveryHint;
+    window.restoreViewAfterLogin = restoreViewAfterLogin; window.updateThemeToggleIcon = updateThemeToggleIcon; window.cekPinModern = cekPinModern;
+    window.renderNotes = renderNotes; window.renderCards = renderCards; window.filterVault = filterVault; window.renderFavoritView = renderFavoritView;
+    window.updateActiveTabUI = updateActiveTabUI; window.openModal = openModal; window.buildDropdownOptions = buildDropdownOptions;
+    window.renderStats = renderStats; window.renderNotesStats = renderNotesStats; window.dapatkanIkonAplikasi = dapatkanIkonAplikasi;
 })();
 </script>
 </body>
