@@ -611,8 +611,6 @@
         if (!inputUrl.startsWith("https://script.google.com/")) { showToast("URL tidak valid! Gunakan link Web App Google Script.", "fa-triangle-exclamation"); return; }
         apiUrl = inputUrl; localStorage.setItem('vault_api_url', apiUrl); showToast("✅ Berhasil terhubung! Mengambil data...", "fa-check-circle"); fetchData();
     }
-    
-    // ✅ FIXED: fetchData dengan render sesuai tab aktif
     async function fetchData(dataType, skipTabChange) {
         if (!apiUrl) { showToast("⚠️ URL Database belum diatur!", "fa-database"); return; }
         showToast("🔄 Sinkronisasi...", "fa-sync");
@@ -620,50 +618,13 @@
         const url = tp ? (apiUrl + '?type=' + tp) : apiUrl;
         try {
             const res = await fetch(url); const data = await res.json();
-            if (dataType === 'notes' || tp === 'notes') { 
-                notes = data; 
-                if(currentTab === 'catatan') {
-                    renderNotesStats();
-                    renderNotes(notes); 
-                }
-            } else { 
-                accounts = data.map(function(a) { 
-                    const kat = a.kategori || ''; 
-                    const formattedKat = kat.split('/').map(function(p) { 
-                        return p.trim().charAt(0).toUpperCase() + p.trim().slice(1).toLowerCase(); 
-                    }).join('/'); 
-                    return Object.assign({}, a, {kategori: formattedKat}); 
-                }); 
-                renderStats(); 
-                // ✅ FIX: Render ulang sesuai tab aktif setelah fetch
-                if (currentTab === 'catatan') {
-                    renderNotes(notes);
-                } else if (currentTab === 'favorit') {
-                    renderFavoritView();
-                } else {
-                    filterVault(); 
-                }
-            }
+            if (dataType === 'notes' || tp === 'notes') { notes = data; if(currentTab === 'catatan') renderNotes(notes); }
+            else { accounts = data.map(function(a) { const kat = a.kategori || ''; const formattedKat = kat.split('/').map(function(p) { return p.trim().charAt(0).toUpperCase() + p.trim().slice(1).toLowerCase(); }).join('/'); return Object.assign({}, a, {kategori: formattedKat}); }); renderStats(); if (!skipTabChange && currentTab !== 'catatan') { gantiTabMenu(currentTab, document.getElementById('tab-' + currentTab)); } else if (!skipTabChange) { renderNotes(notes); } }
             showToast("✅ Sinkronisasi berhasil!", "fa-check-circle");
-        } catch(e) { 
-            console.error('❌ Fetch error:', e); 
-            document.getElementById('account-list-container').innerHTML = '<p style="text-align:center; color:#ef4444;">Gagal sinkronisasi data cloud.<br><small>' + e.message + '</small></p>'; 
-            showToast("❌ Gagal sinkronisasi!", "fa-circle-xmark"); 
-        }
+        } catch(e) { console.error('❌ Fetch error:', e); document.getElementById('account-list-container').innerHTML = '<p style="text-align:center; color:#ef4444;">Gagal sinkronisasi data cloud.<br><small>' + e.message + '</small></p>'; showToast("❌ Gagal sinkronisasi!", "fa-circle-xmark"); }
     }
-    
-    function renderStats() { 
-        document.getElementById('dash-total').innerText = accounts.length; 
-        document.getElementById('dash-cats').innerText = [...new Set(accounts.map(function(a) { return a.kategori; }))].length; 
-        document.getElementById('kpi-label-1').innerText = 'Total Akun'; 
-        document.getElementById('kpi-label-2').innerText = 'Total Kategori'; 
-    }
-    function renderNotesStats() { 
-        document.getElementById('dash-total').innerText = notes.length; 
-        document.getElementById('dash-cats').innerText = [...new Set(notes.map(function(n) { return n.kategori; }))].length; 
-        document.getElementById('kpi-label-1').innerText = 'Total Catatan'; 
-        document.getElementById('kpi-label-2').innerText = 'Kategori'; 
-    }
+    function renderStats() { document.getElementById('dash-total').innerText = accounts.length; document.getElementById('dash-cats').innerText = [...new Set(accounts.map(function(a) { return a.kategori; }))].length; document.getElementById('kpi-label-1').innerText = 'Total Akun'; document.getElementById('kpi-label-2').innerText = 'Total Kategori'; }
+    function renderNotesStats() { document.getElementById('dash-total').innerText = notes.length; document.getElementById('dash-cats').innerText = [...new Set(notes.map(function(n) { return n.kategori; }))].length; document.getElementById('kpi-label-1').innerText = 'Total Catatan'; document.getElementById('kpi-label-2').innerText = 'Kategori'; }
     async function toggleFavoriteCloud(id, event, dataType) {
         dataType = dataType || 'vault'; event.stopPropagation(); const ic = event.currentTarget;
         const isFav = ic.style.color === 'rgb(250, 204, 21)'; ic.style.color = isFav ? 'var(--slate-500)' : '#facc15';
@@ -701,6 +662,7 @@
                 h += '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">';
                 h += '<div style="display:flex;align-items:center;gap:12px;">';
                 h += '<i class="' + dapatkanIkonAplikasi(fp, a.nama_aplikasi) + '" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i>';
+                // ✅ USERNAME DI ATAS (LEBIH BESAR), APP NAME DI BAWAH
                 h += '<div style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:16px;font-weight:600;">@' + (a.username || '-') + '</span><span class="app-title" style="font-size:13px;color:var(--slate-500);">' + a.nama_aplikasi + '</span></div>';
                 h += '</div>';
                 h += '<i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + a.id + '\',event,\'vault\')" style="color:' + (st ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:14px;padding:4px;"></i>';
@@ -715,6 +677,7 @@
                 h += '</div>'; }); h += '</div></div>'; }); return h; } c.innerHTML = genT(ft);
     }
 
+    // 📝 FUNGSI renderNotes() DENGAN SUB-FOLDER + COMPACT UI
     function renderNotes(data) {
         const c = document.getElementById('account-list-container');
         if (!data || data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada catatan. Tap + untuk menambah.</p>'; renderNotesStats(); return; }
@@ -726,25 +689,32 @@
                 const folderId = 'cat-' + fullPath.replace(/\s+/g, '-').replace(/\//g, '_');
                 function countItems(f) { let total = f._items.length; Object.keys(f._subfolders).forEach(function(k) { total += countItems(f._subfolders[k]); }); return total; }
                 const totalItems = countItems(folderData); const isExpanded = (filterKategoriAktif && filterKategoriAktif.toLowerCase() === fullPath.toLowerCase()) ? 'flex' : 'none';
+                // 📂 Header Folder (compact)
                 html += '<div style="margin-bottom:4px;">';
                 html += '<div onclick="toggleGrupFolder(\'' + folderId + '\')" style="padding:8px 12px;display:flex;justify-content:space-between;cursor:pointer;background:var(--bg-surface);border-radius:12px 12px 0 0;border-left:3px solid var(--accent-color);align-items:center;margin-bottom:1px;">';
                 html += '<div><span class="folder-title-text" style="font-size:16px;"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:6px;font-size:16px;"></i>' + folderName + '</span><span class="folder-badge" style="font-size:11px;padding:2px 7px;">' + totalItems + '</span></div>';
                 html += '<i class="fa-solid fa-chevron-down" style="color:var(--slate-500);font-size:11px;transition:transform 0.2s;" id="icon-' + folderId + '"></i></div>';
+                // 📦 Container Isi Folder
                 html += '<div id="' + folderId + '" style="display:' + isExpanded + ';padding:2px;flex-direction:column;gap:2px;background:var(--bg-surface);border-radius:0 0 12px 12px;margin-bottom:4px;">';
+                // 🔽 Render sub-folder (rekursif)
                 if (Object.keys(folderData._subfolders).length > 0) { html += '<div class="subfolder-wrapper">' + genNoteTree(folderData._subfolders, fullPath) + '</div>'; }
+                // 📝 Render item catatan
                 folderData._items.forEach(function(n) {
                     const isFav = n.favorit === true || String(n.favorit).toLowerCase() === 'true'; const noteId = n.id;
                     const dateStr = n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short'}) : '';
+                    // Row Catatan (compact)
                     html += '<div class="app-item-row" id="row-note-' + noteId + '" onclick="toggleDetailKonten(\'' + noteId + '\')" style="padding:8px 12px;margin-bottom:1px;border-radius:8px !important;">';
                     html += '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">';
                     html += '<div style="display:flex;align-items:center;gap:8px;">';
                     html += '<i class="fa-regular fa-note-sticky" style="color:var(--accent-color);font-size:14px;width:20px;text-align:center;"></i>';
+                    // ✅ JUDUL CATATAN DI ATAS (LEBIH BESAR), FOLDER DI BAWAH
                     html += '<div style="display:flex;flex-direction:column;gap:0px;"><span style="font-size:16px;font-weight:600;">' + n.judul + '</span><span style="font-size:11px;color:var(--slate-500);">' + fullPath + ' • ' + dateStr + '</span></div>';
                     html += '</div>';
                     html += '<div style="display:flex;align-items:center;gap:6px;">';
                     html += '<i class="fa-regular fa-copy" onclick="event.stopPropagation();navigator.clipboard.writeText(\'' + (n.judul + '\\n\\n' + (n.isi||'').replace(/'/g,"\\'").replace(/\n/g,"\\n")) + '\');showToast(\'Catatan disalin!\')" style="color:var(--slate-300);cursor:pointer;font-size:12px;"></i>';
                     html += '<i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + noteId + '\',event,\'notes\')" style="color:' + (isFav ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:12px;"></i>';
                     html += '</div></div></div>';
+                    // Detail Catatan
                     html += '<div id="det-' + noteId + '" class="app-detail-content" style="padding:10px;margin-bottom:2px;">';
                     html += '<div style="padding:4px 0 8px 0;font-size:13px;color:var(--slate-300);line-height:1.4;white-space:pre-wrap;">' + (n.isi || '') + '</div>';
                     html += '<div class="card-actions" style="margin-top:6px;padding-top:6px;">';
@@ -755,6 +725,7 @@
         c.innerHTML = genNoteTree(nc); renderNotesStats();
     }
 
+    // 🔧 Update toggleGrupFolder dengan animasi icon
     function toggleGrupFolder(id, f) {
         const el = document.getElementById(id); const icon = document.getElementById('icon-' + id);
         if(!el) return; let t = el.style.display === 'none' ? 'flex' : 'none';
@@ -763,6 +734,7 @@
     }
     function toggleDetailKonten(id, f) { const el = document.getElementById('det-' + id); if(!el) return; let t = el.style.display === 'none' ? 'flex' : 'none'; if(f !== null && f !== undefined) t = f; el.style.display = t; }
 
+    // 🔍 Update liveSearchDropdown untuk notes dengan sub-folder
     function liveSearchDropdown() {
         const q = document.getElementById('vault-search').value.toLowerCase().trim();
         const dc = document.getElementById('searchDropdownContainer'); const cb = document.getElementById('clearSearchBtn');
@@ -787,6 +759,7 @@
         document.getElementById('vault-search').value = 'Folder: ' + k;
     }
 
+    // 🎯 FIX: pilihHasilSearch - auto expand folder + detail content
     function pilihHasilSearch(id, kat, type) {
         document.getElementById('searchDropdownContainer').style.display = 'none'; filterKategoriAktif = null;
         lastViewContext = {tab: currentTab, filter: kat, itemId: id};
@@ -794,6 +767,7 @@
             currentTab = 'catatan'; updateActiveTabUI(document.getElementById('tab-catatan'), "Catatan");
             renderNotes(notes);
             requestAnimationFrame(function() { setTimeout(function() {
+                // Expand path sub-folder
                 if(kat && kat.includes('/')) {
                     const parts = kat.split('/'); let pathAcc = "";
                     parts.forEach(function(p) { pathAcc = pathAcc ? (pathAcc + '/' + p) : p;
@@ -804,11 +778,13 @@
                     const folderId = 'cat-' + kat.replace(/\s+/g, '-').replace(/\//g, '_');
                     const folderEl = document.getElementById(folderId); const iconEl = document.getElementById('icon-' + folderId);
                     if(folderEl) { folderEl.style.display = 'flex'; if(iconEl) iconEl.style.transform = 'rotate(180deg)'; } }
+                // ✅ Scroll + highlight + auto expand detail
                 const rowEl = document.getElementById('row-note-' + id); const detailEl = document.getElementById('det-' + id);
                 if(rowEl) { rowEl.scrollIntoView({behavior: 'smooth', block: 'center'}); rowEl.style.outline = "2px solid var(--accent-color)"; rowEl.style.borderRadius = "8px";
                     if(detailEl) { detailEl.style.display = 'flex'; } setTimeout(function() { rowEl.style.outline = 'none'; }, 2000); }
             }, 150); });
         } else {
+            // Vault entries handling
             if((kat || '').toLowerCase().startsWith("medsos") && currentTab !== 'beranda') { currentTab = 'medsos'; updateActiveTabUI(document.getElementById('tab-medsos'), "Media Sosial"); }
             else if((kat || '').toLowerCase().startsWith("keuangan") && currentTab !== 'beranda') { currentTab = 'keuangan'; updateActiveTabUI(document.getElementById('tab-keuangan'), "Finansial"); }
             else { const ta = accounts.find(function(a) { return String(a.id) === String(id); }); if(currentTab === 'favorit' && !(ta && ta.favorit)) { currentTab = 'beranda'; updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda"); } }
@@ -837,58 +813,14 @@
         if(fn.length > 0) { h += '<h3 style="margin:24px 0 8px;color:var(--accent-color);"><i class="fa-solid fa-note-sticky"></i> Catatan Favorit</h3>';
             fn.forEach(function(n) { h += '<div class="note-card" onclick="toggleNoteDetail(\'' + n.id + '\')"><div class="note-header"><div><span class="note-title">' + n.judul + '</span></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + n.id + '\',event,\'notes\')" style="color:#facc15;cursor:pointer;font-size:14px;"></i></div><div class="note-meta">' + n.kategori + ' • ' + (n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID', {day:'numeric', month:'short'}) : '') + '</div><div class="note-content">' + (n.isi || '').substring(0, 100) + ((n.isi || '').length > 100 ? '...' : '') + '</div></div>'; }); }
         c.innerHTML = h; }
-        
-    // ✅ FIXED: gantiTabMenu dengan setTimeout dan render yang tepat
-    function updateActiveTabUI(el, txt) { 
-        document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); }); 
-        if(el) el.classList.add('active');
-        document.getElementById('nama-menu-halaman').innerHTML = txt; 
-        const nb = document.getElementById('floating-note-btn');
-        if(currentTab === 'catatan') { 
-            nb.style.display = 'flex'; 
-            document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'none'; 
-        } else { 
-            nb.style.display = 'none'; 
-            document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'flex'; 
-        } 
-    }
-    
-    function gantiTabMenu(tab, el) { 
-        currentTab = tab; 
-        filterKategoriAktif = null; 
-        lastViewContext = null; 
-        let t = "Beranda";
-        
-        // ✅ Clear container dulu biar gak numpuk data lama
-        document.getElementById('account-list-container').innerHTML = '<p style="text-align: center; color: var(--slate-500); font-size: 15px; padding: 20px;">Memuat data...</p>';
-        
-        if(tab === 'medsos') { 
-            t = "Media Sosial"; 
-            setTimeout(() => filterVault(), 50); 
-        } else if(tab === 'keuangan') { 
-            t = "Finansial"; 
-            setTimeout(() => filterVault(), 50); 
-        } else if(tab === 'favorit') { 
-            t = "Favorit Terbintang"; 
-            setTimeout(() => renderFavoritView(), 50); 
-        } else if(tab === 'catatan') { 
-            t = "Catatan"; 
-            setTimeout(() => {
-                renderNotesStats();
-                renderNotes(notes);
-            }, 50); 
-        } else { 
-            // ✅ BERANDA - pastikan render akun dengan stats yang benar
-            setTimeout(() => {
-                renderStats();
-                filterVault();
-            }, 50); 
-        } 
-        
-        updateActiveTabUI(el, t); 
-        resetPencarian(); 
-    }
-    
+    function updateActiveTabUI(el, txt) { document.querySelectorAll('.nav-item').forEach(function(i) { i.classList.remove('active'); }); if(el) el.classList.add('active');
+        document.getElementById('nama-menu-halaman').innerHTML = txt; const nb = document.getElementById('floating-note-btn');
+        if(currentTab === 'catatan') { nb.style.display = 'flex'; document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'none'; }
+        else { nb.style.display = 'none'; document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'flex'; } }
+    function gantiTabMenu(tab, el) { currentTab = tab; filterKategoriAktif = null; lastViewContext = null; let t = "Beranda";
+        if(tab === 'medsos') { t = "Media Sosial"; filterVault(); } else if(tab === 'keuangan') { t = "Finansial"; filterVault(); }
+        else if(tab === 'favorit') { t = "Favorit Terbintang"; renderFavoritView(); } else if(tab === 'catatan') { t = "Catatan"; renderNotes(notes); }
+        else { filterVault(); } updateActiveTabUI(el, t); resetPencarian(); }
     function toggleFloatingMenu(e) { e.stopPropagation(); const m = document.getElementById('floating-menu'); m.style.display = m.style.display === 'block' ? 'none' : 'block'; }
     function bukaMenuTambah() { document.getElementById('floating-menu').style.display = 'none'; openModal('vault'); }
     function bukaMenuTambahNote() { document.getElementById('floating-menu').style.display = 'none'; openModal('notes'); }
