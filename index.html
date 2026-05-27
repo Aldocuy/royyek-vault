@@ -1,24 +1,14 @@
 <!DOCTYPE html>
 <html lang="id" data-theme="dark">
 <head>
-    <!-- ==========================================
-         📦 BAGIAN 1: META & SUMBER DAYA EKSTERNAL
-         ========================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Royyek Vault - Premium Cloud v6.5</title>
-    <!-- Memuat font Inter (UI utama) dan JetBrains Mono (teks teknis/monospace) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <!-- Memuat ikon Font Awesome untuk seluruh ikon di aplikasi -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- ==========================================
-         🎨 BAGIAN 2: CSS VARIABEL & SISTEM TEMA
-         ========================================== -->
     <style>
-        /* 🌙 VARIABEL WARNA MODE GELAP (Default) */
         :root {
             --bg-dark: #0f172a; --body-bg: #0f172a; --bg-surface: #1e293b; --text-main: #ffffff;
             --emerald: #10b981; --slate-300: #cbd5e1; --slate-500: #64748b; --nav-bg: rgba(17, 24, 39, 0.95);
@@ -36,7 +26,6 @@
             --drag-ghost-bg: rgba(16, 185, 129, 0.15); --drag-placeholder-bg: rgba(16, 185, 129, 0.08);
             --drag-handle-color: rgba(255,255,255,0.3);
         }
-        /* ☀️ TIMPAAN VARIABEL WARNA MODE TERANG */
         [data-theme="light"] {
             --bg-dark: #f8fafc; --body-bg: #f0fdf4; 
             --body-bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #eff6ff 50%, #fdf2f8 100%);
@@ -61,10 +50,7 @@
             --drag-ghost-bg: rgba(5, 150, 105, 0.1); --drag-placeholder-bg: rgba(5, 150, 105, 0.05);
             --drag-handle-color: rgba(5, 150, 105, 0.4);
         }
-
-        /* 🔧 RESET GLOBAL & GAYA DASAR */
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-user-select: none; user-select: none; }
-        /* Elemen yang boleh dipilih/disalin teksnya */
         .note-content, .note-title, #note-isi, .info-row, .pass-text.visible, .form-input, .search-box input, .app-title, .drag-handle {
             -webkit-user-select: text; user-select: text;
         }
@@ -73,12 +59,8 @@
             transition: background-color 0.3s, color 0.3s; overflow: hidden; position: fixed; width: 100%; height: 100%; margin: 0; padding: 0;
         }
         [data-theme="light"] body { background: var(--body-bg-gradient); }
-        
-        /* 📐 CONTAINER UTAMA APLIKASI */
         .app-container { max-width: 800px; margin: 0 auto; height: 100vh; height: 100dvh; overflow-y: auto; padding: 0 16px calc(110px + env(safe-area-inset-bottom)) 16px; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; }
         [data-theme="dark"] .app-container { background-color: var(--bg-dark); }
-        
-        /*  HEADER STICKY & PENCARIAN */
         .sticky-top-section { position: sticky; top: 0; z-index: 998; padding: 16px; margin: -16px -16px 0 -16px; background-color: rgba(15, 23, 42, 0.35); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom-left-radius: 28px; border-bottom-right-radius: 28px; border-bottom: 1px solid var(--card-border-custom); }
         [data-theme="light"] .sticky-top-section { background-color: transparent; border: none; }
         .sticky-header-wrapper { background-color: var(--header-bg); backdrop-filter: blur(25px); padding: 16px 20px; border: 1px solid var(--card-border-custom); border-bottom: 3px solid var(--accent-color); margin-bottom: 12px; border-radius: 20px; transition: all 0.3s; }
@@ -89,8 +71,6 @@
         h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; line-height: 1.2; }
         .subtitle { font-size: 11px; color: var(--accent-color); font-family: 'JetBrains Mono', monospace; margin-top: 2px; opacity: 0.9; }
         .theme-toggle-btn { background: transparent; border: none; color: var(--theme-toggle-color); font-size: 18px; cursor: pointer; padding: 8px; border-radius: 50%; }
-        
-        /*  KOTAK PENCARIAN & DROPDOWN HASIL */
         .controls { display: flex; justify-content: center; width: 100%; position: relative; }
         .search-box { position: relative; width: 100%; }
         .search-box i.fa-search { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--slate-500); font-size: 14px; }
@@ -103,8 +83,6 @@
         .search-drop-info { display: flex; align-items: center; gap: 10px; }
         .search-drop-folder { font-size: 11px; background: var(--badge-bg); color: var(--badge-text); padding: 2px 6px; border-radius: 6px; font-weight: 600; }
         .search-drop-row.folder-type { background: rgba(16, 185, 129, 0.06); border: 1px dashed rgba(16, 185, 129, 0.3); margin-bottom: 4px; }
-
-        /* 📊 KARTU STATISTIK (KPI) */
         .kpi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 0px; }
         .kpi-card { background: var(--bg-surface); padding: 14px; border-radius: 16px; border: 1px solid var(--card-border-custom); transition: all 0.2s; }
         [data-theme="light"] .kpi-card { box-shadow: var(--card-shadow); border: 1px solid rgba(255,255,255,0.8); }
@@ -115,11 +93,8 @@
         .kpi-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
         .kpi-card:first-child .kpi-label { color: #065f46; } .kpi-card:last-child .kpi-label { color: #1e40af; }
         [data-theme="dark"] .kpi-card:first-child .kpi-label, [data-theme="dark"] .kpi-card:last-child .kpi-label { color: rgba(255,255,255,0.6); }
-
         #account-list-container { padding-top: 24px; margin-top: 4px; }
         .app-item-row, .note-card, [id^="grup-"], [id^="head-grup-"], .app-detail-content, [id^="cat-"] { scroll-margin-top: 270px; }
-
-        /*  SIDEBAR & OVERLAY */
         .sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 2000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .sidebar-overlay.active { opacity: 1; pointer-events: auto; }
         .sidebar { position: fixed; top: 0; left: -280px; width: var(--sidebar-width); height: 100%; background: var(--bg-surface); z-index: 2001; transition: left 0.3s ease, background 0.3s; padding: 25px 20px; display: flex; flex-direction: column; border-right: 1px solid var(--card-border); }
@@ -136,8 +111,6 @@
         .sidebar-item:hover { background: rgba(16, 185, 129, 0.1); color: var(--accent-color); }
         .sidebar-item.danger:hover { background: rgba(239, 68, 68, 0.1); color: #ef4444; }
         [data-theme="dark"] .sidebar-item:hover { background: rgba(255,255,255,0.05); }
-
-        /* 🔘 TOMBOL & FORMULIR */
         .btn-pro { background: var(--accent-color); color: #ffffff; padding: 12px 18px; border-radius: 8px; border: none; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 15px; transition: all 0.2s; }
         .btn-pro:active { transform: scale(0.96); }
         [data-theme="dark"] .btn-pro { color: #0f172a; }
@@ -146,8 +119,6 @@
         .folder-title-text { font-weight: 700; font-size: 18px; color: var(--text-main); display: inline-flex; align-items: center; } 
         .folder-title-text i { font-size: 20px; } 
         .subfolder-wrapper { margin-left: 14px; padding-left: 10px; border-left: 2px dashed var(--card-border-custom); margin-bottom: 4px; margin-top: 4px; }
-        
-        /* 🎯 GAYA DRAG & DROP */
         .app-item-row.draggable, .note-card.draggable { cursor: grab; transition: transform 0.1s, box-shadow 0.1s; }
         .app-item-row.draggable:active, .note-card.draggable:active { cursor: grabbing; }
         .app-item-row.dragging, .note-card.dragging { opacity: 0.6; transform: scale(1.02); box-shadow: 0 8px 25px rgba(0,0,0,0.3); z-index: 100; }
@@ -157,8 +128,6 @@
         .drag-ghost { position: fixed; background: var(--drag-ghost-bg); border: 2px solid var(--accent-color); border-radius: 12px; padding: 12px 14px; pointer-events: none; z-index: 9999; opacity: 0.95; box-shadow: 0 10px 30px rgba(0,0,0,0.2); max-width: 300px; font-size: 14px; }
         .drag-ghost .app-title { font-size: 13px !important; color: var(--text-main) !important; }
         .drag-ghost .folder-badge { font-size: 10px !important; }
-        
-        /*  BARIS ITEM & KARTU DETAIL */
         .app-item-row { background: var(--app-row-bg); border-radius: 12px !important; padding: 12px 14px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; border: none; border-bottom: 1px solid var(--card-border-custom); margin-bottom: 3px; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); color: var(--app-row-text); }
         .app-item-row:hover { background: var(--app-row-hover); border-bottom-color: rgba(255,255,255,0.25); box-shadow: 0 4px 12px rgba(0,0,0,0.15); transform: translateY(-1px); }
         .app-item-row .app-title { font-weight: 700; font-size: 17px; transition: color 0.2s; }
@@ -180,8 +149,6 @@
         .pass-actions i:hover { color: var(--accent-color); }
         .card-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--card-border); }
         .action-btn { background: transparent; border: none; cursor: pointer; font-size: 14px; font-weight: 600; }
-
-        /*  KARTU CATATAN */
         .note-card { background: var(--note-card-bg); border: 1px solid var(--note-card-border); border-radius: 12px; padding: 14px; margin-bottom: 8px; cursor: pointer; transition: all 0.2s ease; border-left: 3px solid var(--accent-color); }
         .note-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); border-bottom-color: rgba(255,255,255,0.25); }
         .note-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
@@ -191,8 +158,6 @@
         .note-content.expanded { max-height: none; }
         .note-actions { display: flex; justify-content: flex-end; gap: 10px; padding-top: 8px; border-top: 1px dashed var(--card-border); }
         .note-badge { font-size: 10px; background: var(--badge-bg); color: var(--badge-text); padding: 2px 6px; border-radius: 6px; font-weight: 600; margin-left: 8px; }
-
-        /* 📲 NAVIGASI BAWAH & DOCK */
         .premium-dock-bottom { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 999; background-color: var(--nav-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-top: 1px solid var(--card-border-custom); border-top-left-radius: 24px; border-top-right-radius: 24px; display: flex; flex-direction: column; padding-bottom: calc(env(safe-area-inset-bottom) / 2); transition: background-color 0.3s, border-color 0.3s; box-shadow: 0 -4px 20px rgba(0,0,0,0.05); }
         .config-box { background: rgba(0, 0, 0, 0.4); border: 1px solid var(--card-border-custom); border-radius: 16px; padding: 10px 14px; margin: 14px 16px 4px 16px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2); display: flex; align-items: center; justify-content: space-between; gap: 12px; transition: all 0.3s; }
         [data-theme="light"] .config-box { background: #ffffff; border: 1px solid #e2e8f0; box-shadow: var(--card-shadow); }
@@ -212,8 +177,6 @@
         .floating-popup-menu { display: none; position: fixed; bottom: 175px; left: 50%; transform: translateX(-50%); background: var(--bg-surface); border: 1px solid var(--card-border); border-radius: 12px; z-index: 1000; min-width: 170px; transition: background 0.3s; }
         .floating-popup-item { padding: 14px 18px; color: var(--text-main); cursor: pointer; font-size: 14px; display: flex; align-items: center; gap: 12px; }
         [data-theme="light"] .floating-popup-menu { box-shadow: var(--card-shadow-hover); }
-
-        /*  MODAL & DROPDOWN */
         .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; place-items: center; z-index: 1001; padding: 15px; }
         .modal { background: var(--bg-surface); width: 100%; max-width: 450px; padding: 22px; border-radius: 16px; max-height: 90vh; overflow-y: auto; transition: background 0.3s; }
         [data-theme="light"] .modal { box-shadow: var(--card-shadow-hover); }
@@ -231,13 +194,9 @@
         [data-theme="dark"] .dropdown-option-row:hover { background: rgba(255, 255, 255, 0.03); }
         .delete-kat-btn { background: var(--delete-btn-bg); border: none; color: var(--delete-btn-text); padding: 10px; border-radius: 10px; cursor: pointer; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
         .delete-kat-btn:hover { background: rgba(244, 63, 94, 0.2); }
-
-        /* 🍞 NOTIFIKASI TOAST */
         .toast-container { position: fixed; top: 30px; left: 50%; transform: translateX(-50%); z-index: 10000; display: flex; flex-direction: column; gap: 10px; width: 90%; max-width: 320px; pointer-events: none; }
         .premium-toast { background: var(--bg-surface); border: 1px solid var(--card-border-custom); border-bottom: 3px solid var(--accent-color); padding: 14px 18px; border-radius: 14px; color: var(--text-main); font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 12px; animation: slideDownIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
         @keyframes slideDownIn { 0% { transform: translateY(-20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
-
-        /* 🔐 ANTARMUKA LOCKSCREEN */
         .lock-screen-modern { position: fixed; inset: 0; background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; overflow: hidden; }
         .lock-bg-gradient { position: absolute; inset: -50%; background: radial-gradient(ellipse at 30% 20%, rgba(16, 185, 129, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(59, 130, 246, 0.12) 0%, transparent 50%), radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246, 0.08) 0%, transparent 70%); animation: gradientPulse 8s ease-in-out infinite; pointer-events: none; }
         @keyframes gradientPulse { 0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; } 50% { transform: scale(1.1) rotate(2deg); opacity: 1; } }
@@ -293,8 +252,6 @@
         [data-theme="light"] .forgot-btn { color: #64748b; } [data-theme="light"] .forgot-btn:hover { color: #059669; }
         [data-theme="light"] .lock-feedback { background: rgba(255, 255, 255, 0.95); } [data-theme="light"] .feedback-text { color: #334155; }
         [data-theme="light"] .logo-icon { background: linear-gradient(135deg, #34d399, #10b981); box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.3); }
-
-        /*  PENGATURAN TOGGLE */
         .toggle-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--card-border); margin-bottom: 15px; }
         .toggle-label { font-size: 14px; color: var(--text-main); font-weight: 500; display: flex; align-items: center; gap: 8px; }
         .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
@@ -303,29 +260,40 @@
         .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--accent-color); }
         input:checked + .slider:before { transform: translateX(20px); }
-
-        /*  WARNA KHUSUS UNTUK TAMPILAN LIST & DETAIL (PERMINTAAN USER) */
-        .at-symbol { color: #facc15 !important; font-weight: 700; margin-right: 2px; } /* Tanda @ kuning emas */
-        .label-user { color: #60a5fa !important; font-weight: 600; margin-right: 4px; } /* Label User biru langit */
-        .label-email { color: #34d399 !important; font-weight: 600; margin-right: 4px; } /* Label Email hijau emerald */
-        [data-theme="light"] .label-user { color: #2563eb !important; } /* Penyesuaian mode terang */
+        .at-symbol { color: #facc15 !important; font-weight: 700; margin-right: 2px; }
+        .label-user { color: #60a5fa !important; font-weight: 600; margin-right: 4px; }
+        .label-email { color: #34d399 !important; font-weight: 600; margin-right: 4px; }
+        [data-theme="light"] .label-user { color: #2563eb !important; }
         [data-theme="light"] .label-email { color: #059669 !important; }
-
-        /*  PENYESUAIAN JARAK COMPACT */
         [id^="cat-"] { margin-bottom: 6px !important; } [id^="cat-"] > div:first-child { margin-bottom: 1px !important; }
         .subfolder-wrapper { margin-left: 12px !important; padding-left: 8px !important; margin: 2px 0 !important; }
         .app-item-row { margin-bottom: 2px !important; padding: 8px 12px !important; }
         .app-detail-content { margin-bottom: 4px !important; padding: 10px !important; }
         .folder-title-text { font-size: 18px !important; } .folder-title-text i { font-size: 20px !important; margin-right: 6px !important; }
         .folder-badge { font-size: 12px !important; padding: 2px 8px !important; }
+        
+        /* 🎯 UPDATE: Username di pencarian lebih besar & @ berwarna */
+        .search-drop-username {
+            font-size: 15px !important;
+            font-weight: 600 !important;
+            color: var(--slate-300) !important;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        .search-drop-at {
+            color: #facc15 !important;
+            font-weight: 700 !important;
+        }
+        [data-theme="light"] .search-drop-username {
+            color: #475569 !important;
+        }
     </style>
 </head>
 <body>
 
-<!-- 🍞 WADAH NOTIFIKASI TOAST -->
 <div id="toast-container" class="toast-container"></div>
 
-<!-- 🔐 HALAMAN LOCKSCREEN -->
 <div id="lockScreen" class="lock-screen-modern">
     <div class="lock-bg-gradient"></div>
     <div class="lock-bg-particles" id="lockParticles"></div>
@@ -351,11 +319,10 @@
     </div>
     <div class="lock-footer">
         <p><i class="fa-solid fa-lock"></i> Dilindungi dengan enkripsi end-to-end</p>
-        <p class="lock-version">v6.5 • Drag-Drop + Real-Time Tab</p>
+        <p class="lock-version">v6.5 • Drag-Drop + Real-Time Tab + Anti-Duplikat Canggih</p>
     </div>
 </div>
 
-<!-- 📂 SIDEBAR MENU & OVERLAY -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar(false)"></div>
 <div class="sidebar" id="sidebarMenu">
     <div class="sidebar-header">
@@ -378,7 +345,6 @@
     </div>
 </div>
 
-<!-- 📱 KONTAINER UTAMA APLIKASI -->
 <div class="app-container">
     <div class="sticky-top-section">
         <div class="sticky-header-wrapper">
@@ -401,26 +367,22 @@
                 </div>
             </div>
         </div>
-        <!--  KARTU STATISTIK (KPI) -->
         <div class="kpi-grid">
             <div class="kpi-card"><p class="kpi-label" id="kpi-label-1">Total Akun</p><div class="kpi-value" id="dash-total">0</div></div>
             <div class="kpi-card"><p class="kpi-label" id="kpi-label-2">Total Kategori</p><div class="kpi-value" id="dash-cats">0</div></div>
         </div>
         <h2 id="nama-menu-halaman" class="nama-menu-h2">Beranda</h2>
     </div>
-    <!-- WADAH DAFTAR DATA -->
     <div class="account-list" id="account-list-container">
         <p style="text-align: center; color: var(--slate-500); font-size: 15px; padding: 20px;">Memuat database aman...</p>
     </div>
 </div>
 
-<!-- 🎯 MENU FLOATING ACTION -->
 <div id="floating-menu" class="floating-popup-menu">
     <div class="floating-popup-item" onclick="bukaMenuTambah()"><i class="fa-solid fa-key" style="color: var(--accent-color);"></i> Tambah Akun</div>
     <div class="floating-popup-item" id="floating-note-btn" onclick="bukaMenuTambahNote()" style="display:none;"><i class="fa-solid fa-note-sticky" style="color: var(--accent-color);"></i> Tambah Catatan</div>
 </div>
 
-<!-- 📲 NAVIGASI BAWAH & CONFIG DB -->
 <div class="premium-dock-bottom">
     <div class="config-box">
         <p><i class="fa-solid fa-link" style="color: var(--accent-color); margin-right: 6px;"></i> DB:</p>
@@ -436,7 +398,6 @@
     </nav>
 </div>
 
-<!--  MODAL: TAMBAH/EDIT AKUN VAULT -->
 <div class="modal-overlay" id="entryModal">
     <div class="modal">
         <h3 id="modal-title" style="margin-bottom:15px; color:var(--accent-color);">Kredensial Baru</h3>
@@ -459,7 +420,6 @@
     </div>
 </div>
 
-<!-- 🪟 MODAL: TAMBAH/EDIT CATATAN -->
 <div class="modal-overlay" id="noteModal">
     <div class="modal">
         <h3 id="note-modal-title" style="margin-bottom:15px; color:var(--accent-color);">Catatan Baru</h3>
@@ -478,7 +438,6 @@
     </div>
 </div>
 
-<!--  MODAL: PENGATURAN PIN -->
 <div class="modal-overlay" id="pinSettingsModal">
     <div class="modal">
         <h3 style="margin-bottom:15px; color:var(--accent-color);"><i class="fa-solid fa-key"></i> Pengaturan PIN</h3>
@@ -505,7 +464,6 @@
     </div>
 </div>
 
-<!-- 📂 DROPDOWN PEMILIH KATEGORI -->
 <div id="dropdownLayerModal" class="dropdown-modal-layer" onclick="tutupCustomDropdownLayer()">
     <div class="dropdown-card" onclick="event.stopPropagation()">
         <div class="dropdown-options-list" id="custom-options-container"></div>
@@ -513,14 +471,9 @@
     </div>
 </div>
 
-<!-- ==========================================
-     🧠 BAGIAN 3: JAVASCRIPT ENGINE UTAMA
-     ========================================== -->
 <script>
 (function() {
     'use strict';
-
-    // 📦 INISIALISASI VARIABEL & STATE GLOBAL
     let apiUrl = localStorage.getItem('vault_api_url') || "";
     let accounts = [];
     let notes = [];
@@ -529,8 +482,6 @@
     let nilaiKategoriTerpilled = "";
     let filterKategoriAktif = null;
     let lastViewContext = null;
-    
-    // 🎯 MANAJEMEN STATE DRAG & DROP
     let dragState = {
         isDragging: false,
         draggedItem: null,
@@ -540,20 +491,15 @@
         startX: 0,
         startY: 0,
         longPressTimer: null,
-        longPressThreshold: 300 // Durasi tahan layar untuk memulai drag (ms)
+        longPressThreshold: 300
     };
-    
     const DEFAULT_PIN_HASH = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
-    
-    // 🔐 FUNGSI KRIPto & PIN
     function getPinHash() { return localStorage.getItem('vault_pin_hash') || DEFAULT_PIN_HASH; }
     async function hashPin(pin) {
         const buffer = new TextEncoder().encode(pin);
         const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
         return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
-
-    // 🚀 INISIALISASI SAAT HALAMAN DIMUAT
     window.onload = function() {
         document.getElementById('api-url-input').value = apiUrl;
         const savedTheme = localStorage.getItem('vault_theme') || 'dark';
@@ -570,21 +516,16 @@
         }
         if(apiUrl) fetchData();
     };
-
-    // ️ PENANGKAP KLIK GLOBAL (Menutup dropdown/menu saat klik di luar)
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.search-box')) { document.getElementById('searchDropdownContainer').style.display = 'none'; }
         document.getElementById('floating-menu').style.display = 'none';
     });
-
-    //  FUNGSI PENANGANAN DRAG & DROP (Touch Events)
     function initDragEvents() {
         document.addEventListener('touchstart', handleDragStart, { passive: false });
         document.addEventListener('touchmove', handleDragMove, { passive: false });
         document.addEventListener('touchend', handleDragEnd);
         document.addEventListener('touchcancel', handleDragEnd);
     }
-
     function handleDragStart(e) {
         const handle = e.target.closest('.drag-handle');
         if (!handle) return;
@@ -598,7 +539,6 @@
             startDrag(item, id, type, category, e.touches[0]);
         }, dragState.longPressThreshold);
     }
-
     function handleDragMove(e) {
         if (!dragState.isDragging) {
             if (dragState.longPressTimer) clearTimeout(dragState.longPressTimer);
@@ -609,7 +549,6 @@
         updateDragGhost(touch.clientX, touch.clientY);
         highlightDropTarget(touch.clientX, touch.clientY);
     }
-
     function handleDragEnd(e) {
         if (dragState.longPressTimer) clearTimeout(dragState.longPressTimer);
         if (dragState.isDragging) {
@@ -627,7 +566,6 @@
             cleanupDrag();
         }
     }
-
     function startDrag(item, id, type, category, touch) {
         dragState.isDragging = true;
         dragState.draggedItem = item;
@@ -639,7 +577,6 @@
         createDragGhost(item, touch.clientX, touch.clientY);
         if (navigator.vibrate) navigator.vibrate(10);
     }
-
     function createDragGhost(item, x, y) {
         const ghost = document.createElement('div');
         ghost.className = 'drag-ghost';
@@ -658,11 +595,9 @@
         dragState.ghost = ghost;
         updateDragGhost(x, y);
     }
-
     function updateDragGhost(x, y) {
         if (dragState.ghost) { dragState.ghost.style.left = (x + 10) + 'px'; dragState.ghost.style.top = (y - 30) + 'px'; }
     }
-
     function highlightDropTarget(x, y) {
         document.querySelectorAll('.app-item-row.draggable, .note-card.draggable').forEach(el => el.classList.remove('drag-over'));
         const target = document.elementFromPoint(x, y);
@@ -675,14 +610,12 @@
             }
         }
     }
-
     function cleanupDrag() {
         if (dragState.draggedItem) dragState.draggedItem.classList.remove('dragging');
         if (dragState.ghost) { dragState.ghost.remove(); dragState.ghost = null; }
         document.querySelectorAll('.drag-over').forEach(el => el.classList.remove('drag-over'));
         dragState.isDragging = false; dragState.draggedItem = null; dragState.draggedType = null; dragState.draggedCategory = null;
     }
-
     function reorderItems(draggedId, targetId, type) {
         const dataArray = type === 'vault' ? accounts : notes;
         const dragId = draggedId.replace('row-app-', '').replace('row-note-', '');
@@ -696,7 +629,6 @@
         showToast("📋 Urutan diperbarui", "fa-sort");
         syncItemOrder(dataArray, type);
     }
-
     async function syncItemOrder(dataArray, type) {
         if (!apiUrl) return;
         const orderData = dataArray.map((item, index) => ({ id: item.id, order: index }));
@@ -708,8 +640,6 @@
             await fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: params });
         } catch (e) { console.warn('Order sync failed:', e); }
     }
-
-    // 🎨 FUNGSI UTILITAS TEMA & UI
     function toggleThemeMode() {
         const current = document.documentElement.getAttribute('data-theme') || 'dark';
         const target = current === 'dark' ? 'light' : 'dark';
@@ -731,8 +661,6 @@
         c.appendChild(t);
         setTimeout(function() { t.remove(); }, 2000);
     }
-
-    // 🔐 LOGIKA INPUT & VERIFIKASI PIN
     function handlePinInput(input) {
         const val = input.value;
         const dots = document.querySelectorAll('#pinDots .dot');
@@ -787,8 +715,6 @@
         if (!inputUrl.startsWith("https://script.google.com/")) { showToast("URL tidak valid!", "fa-triangle-exclamation"); return; }
         apiUrl = inputUrl; localStorage.setItem('vault_api_url', apiUrl); showToast("✅ Berhasil terhubung!", "fa-check-circle"); fetchData();
     }
-
-    // ️ FUNGSI PENGAMBILAN & SINKRONISASI DATA
     async function fetchData(dataType, skipTabChange) {
         if (!apiUrl) { showToast("⚠️ URL Database belum diatur!", "fa-database"); return; }
         showToast("🔄 Sinkronisasi...", "fa-sync");
@@ -804,10 +730,8 @@
                 else if (!skipTabChange) { renderNotes(notes); } 
             }
             showToast("✅ Sinkronisasi berhasil!", "fa-check-circle");
-        } catch(e) { console.error('❌ Fetch error:', e); document.getElementById('account-list-container').innerHTML = '<p style="text-align:center; color:#ef4444;">Gagal sinkronisasi data cloud.<br><small>' + e.message + '</small></p>'; showToast(" Gagal sinkronisasi!", "fa-circle-xmark"); }
+        } catch(e) { console.error('❌ Fetch error:', e); document.getElementById('account-list-container').innerHTML = '<p style="text-align:center; color:#ef4444;">Gagal sinkronisasi data cloud.<br><small>' + e.message + '</small></p>'; showToast("❌ Gagal sinkronisasi!", "fa-circle-xmark"); }
     }
-
-    // 📊 FUNGSI PEMBARUAN STATISTIK REAL-TIME
     function renderStats() { 
         if (currentTab === 'catatan') { renderNotesStats(); return; } 
         else if (currentTab === 'favorit') {
@@ -823,16 +747,13 @@
         if (currentTab === 'medsos') filteredAccounts = accounts.filter(a => (a.kategori || '').toLowerCase().startsWith('medsos'));
         else if (currentTab === 'keuangan') filteredAccounts = accounts.filter(a => (a.kategori || '').toLowerCase().startsWith('keuangan'));
         else if (currentTab === 'beranda') filteredAccounts = accounts;
-        
         document.getElementById('dash-total').innerText = filteredAccounts.length;
         document.getElementById('dash-cats').innerText = [...new Set(filteredAccounts.map(a => a.kategori))].length;
-        
         if (currentTab === 'medsos') { document.getElementById('kpi-label-1').innerText = 'Akun Medsos'; document.getElementById('kpi-label-2').innerText = 'Kategori'; } 
         else if (currentTab === 'keuangan') { document.getElementById('kpi-label-1').innerText = 'Akun Keuangan'; document.getElementById('kpi-label-2').innerText = 'Kategori'; } 
         else { document.getElementById('kpi-label-1').innerText = 'Total Akun'; document.getElementById('kpi-label-2').innerText = 'Total Kategori'; }
     }
     function renderNotesStats() { document.getElementById('dash-total').innerText = notes.length; document.getElementById('dash-cats').innerText = [...new Set(notes.map(n => n.kategori))].length; document.getElementById('kpi-label-1').innerText = 'Total Catatan'; document.getElementById('kpi-label-2').innerText = 'Kategori'; }
-    
     async function toggleFavoriteCloud(id, event, dataType) {
         dataType = dataType || 'vault'; event.stopPropagation(); const ic = event.currentTarget;
         const isFav = ic.style.color === 'rgb(250, 204, 21)'; ic.style.color = isFav ? 'var(--slate-500)' : '#facc15';
@@ -856,37 +777,42 @@
         if(a.includes('dana') || a.includes('gopay') || a.includes('ovo')) return 'fa-solid fa-wallet'; if(k.includes('medsos')) return 'fa-solid fa-users';
         if(k.includes('keuangan')) return 'fa-solid fa-money-bill-wave'; return 'fa-solid fa-key';
     }
-    
-    // ️ MESIN PENCEGAHAN DATA GANDA
+    function normalizeForComparison(text) {
+        if (!text) return '';
+        return String(text).toLowerCase().trim()
+            .replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+            .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/[\u0000-\u001F\u007F-\u009F]/g, '').replace(/\s+/g, ' ')
+            .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
     function cekDuplikatVault(newData, excludeId) {
-        const app = (newData.nama_aplikasi || '').toLowerCase().trim();
-        const username = (newData.username || '').toLowerCase().trim();
-        const email = (newData.email || '').toLowerCase().trim();
-        const kategori = (newData.kategori || '').toLowerCase().trim();
+        const app = normalizeForComparison(newData.nama_aplikasi);
+        const username = normalizeForComparison(newData.username);
+        const email = normalizeForComparison(newData.email);
+        const kategori = normalizeForComparison(newData.kategori);
         return accounts.filter(a => {
             if (excludeId && String(a.id) === String(excludeId)) return false;
-            const aApp = (a.nama_aplikasi || '').toLowerCase().trim();
-            const aUser = (a.username || '').toLowerCase().trim();
-            const aEmail = (a.email || '').toLowerCase().trim();
-            const aKat = (a.kategori || '').toLowerCase().trim();
+            const aApp = normalizeForComparison(a.nama_aplikasi);
+            const aUser = normalizeForComparison(a.username);
+            const aEmail = normalizeForComparison(a.email);
+            const aKat = normalizeForComparison(a.kategori);
             if (aApp === app && aKat === kategori) {
-                if ((username && aUser && username === aUser) || (email && aEmail && email === aEmail)) return true;
+                if ((username && aUser && username === aUser) || (email && aEmail && email === aEmail)) {
+                    return true;
+                }
             }
             return false;
         });
     }
-
     function cekDuplikatNote(newData, excludeId) {
-        const judul = (newData.judul || '').toLowerCase().trim();
-        const kategori = (newData.kategori || '').toLowerCase().trim();
+        const judul = normalizeForComparison(newData.judul);
+        const kategori = normalizeForComparison(newData.kategori);
         return notes.filter(n => {
             if (excludeId && String(n.id) === String(excludeId)) return false;
-            const nJudul = (n.judul || '').toLowerCase().trim();
-            const nKat = (n.kategori || '').toLowerCase().trim();
+            const nJudul = normalizeForComparison(n.judul);
+            const nKat = normalizeForComparison(n.kategori);
             return nJudul === judul && nKat === kategori;
         });
     }
-
     function tampilkanKonfirmasiDuplikat(duplikat, tipe, onConfirm) {
         const overlay = document.createElement('div');
         overlay.className = 'modal-overlay';
@@ -896,7 +822,7 @@
         const moreText = count > 3 ? `<br><small style="color:var(--slate-500)">+${count-3} lainnya...</small>` : '';
         overlay.innerHTML = `
             <div class="modal" style="max-width:400px;text-align:center;">
-                <div style="font-size:48px;margin-bottom:12px;">️</div>
+                <div style="font-size:48px;margin-bottom:12px;">⚠️</div>
                 <h3 style="color:var(--accent-color);margin-bottom:8px;">Data Kembar Terdeteksi!</h3>
                 <p style="color:var(--slate-300);font-size:14px;margin-bottom:16px;">Ditemukan <strong>${count}</strong> data serupa:<br><br>
                     <span style="background:rgba(0,0,0,0.1);padding:8px;border-radius:8px;display:block;">${preview}${moreText}</span></p>
@@ -912,8 +838,6 @@
         document.getElementById('btn-duplikat-lanjut').onclick = () => { document.body.removeChild(overlay); if (typeof onConfirm === 'function') onConfirm(); };
         overlay.onclick = (e) => { if (e.target === overlay) document.body.removeChild(overlay); };
     }
-
-    // 📦 FUNGSI RENDER KARTU VAULT
     function renderCards(data) {
         const c = document.getElementById('account-list-container');
         if(data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Tidak menemukan data.</p>'; return; }
@@ -926,7 +850,6 @@
             h += '<div id="' + fid + '" style="display:' + fo + ';padding:4px;flex-direction:column;gap:3px;width:100%;">';
             if(Object.keys(cf._subfolders).length > 0) { h += '<div class="subfolder-wrapper">' + genT(cf._subfolders, fp) + '</div>'; }
             cf._items.forEach(function(a) { const st = a.favorit === true || String(a.favorit).toLowerCase() === 'true';
-                // ✅ Perubahan warna @, User:, Email: diterapkan di sini
                 h += '<div class="app-item-row draggable" id="row-app-' + a.id + '" data-category="' + (fp||'Umum') + '" onclick="toggleDetailKonten(\'' + a.id + '\')">';
                 h += '<div style="display:flex;align-items:center;justify-content:space-between;width:100%;">';
                 h += '<div style="display:flex;align-items:center;gap:8px;">';
@@ -945,8 +868,6 @@
                 h += '<div class="card-actions"><button class="action-btn" style="color:var(--slate-500);" onclick="editEntry(\'' + a.id + '\', \'vault\')">Edit</button><button class="action-btn" style="color:#ef4444;" onclick="deleteEntry(\'' + a.id + '\',\'vault\')">Hapus</button></div>';
                 h += '</div>'; }); h += '</div></div>'; }); return h; } c.innerHTML = genT(ft);
     }
-
-    //  FUNGSI RENDER CATATAN
     function renderNotes(data) {
         const c = document.getElementById('account-list-container');
         if (!data || data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada catatan.</p>'; renderNotesStats(); return; }
@@ -983,11 +904,8 @@
                 html += '</div></div>'; }); html += '</div></div>'; }); return html; }
         c.innerHTML = genNoteTree(nc); renderNotesStats();
     }
-
     function toggleGrupFolder(id, f) { const el = document.getElementById(id); const icon = document.getElementById('icon-'+id); if(!el) return; let t = el.style.display==='none'?'flex':'none'; if(f!==null && f!==undefined) t = f; el.style.display = t; if(icon) { icon.style.transform = t==='flex'?'rotate(180deg)':'rotate(0deg)'; icon.style.transition = 'transform 0.15s ease'; } }
     function toggleDetailKonten(id, f) { const el = document.getElementById('det-'+id); if(!el) return; let t = el.style.display==='none'?'flex':'none'; if(f!==null && f!==undefined) t = f; el.style.display = t; }
-
-    // 🔍 MESIN PENCARIAN LANJUTAN (Normalisasi & Fuzzy)
     function normalizeText(text) {
         if (!text) return '';
         return String(text).toLowerCase().trim()
@@ -1003,7 +921,8 @@
         const words = normalizedQuery.split(' ').filter(w => w.length > 0);
         return words.every(word => normalizedText.includes(word));
     }
-
+    
+    // 🔍 UPDATE: Fungsi pencarian dengan username lebih besar & @ berwarna
     function liveSearchDropdown() {
         const rawQuery = document.getElementById('vault-search').value;
         const dc = document.getElementById('searchDropdownContainer'); const cb = document.getElementById('clearSearchBtn');
@@ -1021,15 +940,15 @@
             });
             matchedCats.forEach(function(c) { hr += '<div class="search-drop-row folder-type" onclick="pilihFolderSearch(\''+c.replace(/'/g,"\\'")+'\')"><div class="search-drop-info"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);font-size:16px;"></i><div style="display:flex;flex-direction:column;"><strong>[Folder] '+c+'</strong><span style="font-size:10px;color:var(--slate-500);">Buka isi folder ini</span></div></div><span class="search-drop-folder" style="background:rgba(16,185,129,0.25);">FOLDER</span></div>'; });
             
-            // ✅ SYNTAX FIX: Escaping quotes yang benar untuk parameter 'vault'
             matchedAccounts.forEach(function(a) { 
-                hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\''+a.id+'\',\''+(a.kategori||'').replace(/'/g,"\\'")+'\',\'vault\')"><div class="search-drop-info"><i class="'+dapatkanIkonAplikasi(a.kategori,a.nama_aplikasi)+'" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>'+(a.nama_aplikasi||'Tanpa Nama')+'</strong><span style="font-size:10px;color:var(--slate-500);">@'+(a.username||a.email||'-')+'</span></div></div><span class="search-drop-folder">'+(a.kategori||'Umum')+'</span></div>'; 
+                // ✅ UPDATE: Username lebih besar dengan @ berwarna kuning
+                const usernameDisplay = a.username || a.email || '-';
+                hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\''+a.id+'\',\''+(a.kategori||'').replace(/'/g,"\\'")+'\',\'vault\')"><div class="search-drop-info"><i class="'+dapatkanIkonAplikasi(a.kategori,a.nama_aplikasi)+'" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>'+(a.nama_aplikasi||'Tanpa Nama')+'</strong><span class="search-drop-username"><span class="search-drop-at">@</span>' + usernameDisplay + '</span></div></div><span class="search-drop-folder">'+(a.kategori||'Umum')+'</span></div>'; 
             });
         }
         
         const matchedNotes = notes.filter(n => isSearchMatch(n.judul, query) || isSearchMatch(n.isi, query) || isSearchMatch(n.kategori, query));
         matchedNotes.forEach(function(n) { const fp = n.kategori ? '<span class="search-drop-folder">'+n.kategori+'</span>' : '';
-            // ✅ SYNTAX FIX: Escaping quotes yang benar untuk parameter 'notes'
             hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\''+n.id+'\',\''+(n.kategori||'Umum').replace(/'/g,"\\'")+'\',\'notes\')"><div class="search-drop-info"><i class="fa-solid fa-note-sticky" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>'+(n.judul||'Tanpa Judul')+'</strong><span style="font-size:10px;color:var(--slate-500);">'+(n.isi ? normalizeText(n.isi).substring(0,50)+'...' : '')+'</span></div></div>'+fp+'</div>'; 
         });
         dc.innerHTML = hr || '<div style="padding:12px;text-align:center;color:var(--slate-500);font-size:13px;">Tidak ditemukan</div>'; dc.style.display = 'block';
@@ -1041,7 +960,6 @@
         else { currentTab = 'beranda'; updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda"); }
         renderCards(accounts.filter(a => (a.kategori||'').toLowerCase().startsWith(k.toLowerCase()))); document.getElementById('vault-search').value = 'Folder: ' + k;
     }
-
     function pilihHasilSearch(id, kat, type) {
         document.getElementById('searchDropdownContainer').style.display = 'none'; filterKategoriAktif = null;
         lastViewContext = {tab: currentTab, filter: kat, itemId: id};
@@ -1067,10 +985,7 @@
             }, 100));
         }
     }
-
     function resetPencarian() { document.getElementById('vault-search').value = ""; document.getElementById('searchDropdownContainer').style.display = 'none'; document.getElementById('clearSearchBtn').style.display = 'none'; filterKategoriAktif = null; filterVault(); }
-
-    // 🔄 FILTER & PENGALIHAN TAB REAL-TIME
     function filterVault() { 
         if(currentTab === 'catatan') { renderNotes(notes); return; } 
         let bd = accounts;
@@ -1078,29 +993,25 @@
         else if(currentTab === 'keuangan') bd = accounts.filter(a => (a.kategori||'').toLowerCase().startsWith("keuangan"));
         else if(currentTab === 'favorit') bd = accounts.filter(a => a.favorit);
         renderCards(bd); 
-        renderStats(); // ✅ Auto-update KPI saat filter berubah
+        renderStats();
     }
-
     function renderFavoritView() {
         const fv = accounts.filter(a => a.favorit); const fn = notes.filter(n => n.favorit);
         const c = document.getElementById('account-list-container'); if(fv.length===0 && fn.length===0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada item favorit.</p>'; return; }
         let h = ''; 
         if(fv.length > 0) { h += '<h3 style="margin:16px 0 8px;color:var(--accent-color);"><i class="fa-solid fa-vault"></i> Akun Favorit</h3>';
-            // ✅ Perubahan warna @ diterapkan di sini
             fv.forEach(a => { h += '<div class="app-item-row draggable" id="row-app-'+a.id+'" data-category="'+(a.kategori||'Umum')+'" onclick="toggleDetailKonten(\''+a.id+'\')"><div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div style="display:flex;align-items:center;gap:12px;"><i class="'+dapatkanIkonAplikasi(a.kategori,a.nama_aplikasi)+'" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i><div style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:16px;font-weight:600;"><span class="at-symbol">@</span>'+(a.username||'-')+'</span><span class="app-title" style="font-size:13px;color:var(--slate-500);">'+a.nama_aplikasi+'</span></div></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\''+a.id+'\',event,\'vault\')" style="color:#facc15;cursor:pointer;font-size:14px;padding:4px;"></i></div></div>'; }); }
         if(fn.length > 0) { h += '<h3 style="margin:24px 0 8px;color:var(--accent-color);"><i class="fa-solid fa-note-sticky"></i> Catatan Favorit</h3>';
             fn.forEach(n => { h += '<div class="note-card draggable" id="row-note-'+n.id+'" data-category="'+(n.kategori||'Umum')+'" onclick="toggleNoteDetail(\''+n.id+'\')"><div class="note-header"><div><span class="note-title">'+n.judul+'</span></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\''+n.id+'\',event,\'notes\')" style="color:#facc15;cursor:pointer;font-size:14px;"></i></div><div class="note-meta">'+n.kategori+' • '+(n.tanggal?new Date(n.tanggal).toLocaleDateString('id-ID',{day:'numeric',month:'short'}):'')+'</div><div class="note-content">'+(n.isi||'').substring(0,100)+((n.isi||'').length>100?'...':'')+'</div></div>'; }); }
         c.innerHTML = h; 
         renderStats();
     }
-
     function updateActiveTabUI(el, txt) { document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active')); if(el) el.classList.add('active');
         document.getElementById('nama-menu-halaman').innerHTML = txt; const nb = document.getElementById('floating-note-btn');
         if(currentTab === 'catatan') { nb.style.display = 'flex'; document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'none'; }
         else { nb.style.display = 'none'; document.querySelector('.floating-popup-item[onclick="bukaMenuTambah()"]').style.display = 'flex'; } 
-        renderStats(); // ✅ Update KPI setiap tab berubah
+        renderStats();
     }
-
     function gantiTabMenu(tab, el) { 
         currentTab = tab; filterKategoriAktif = null; lastViewContext = null; 
         let t = "Beranda";
@@ -1111,7 +1022,6 @@
         else { filterVault(); } 
         updateActiveTabUI(el, t); resetPencarian(); 
     }
-
     function toggleFloatingMenu(e) { e.stopPropagation(); const m = document.getElementById('floating-menu'); m.style.display = m.style.display === 'block' ? 'none' : 'block'; }
     function bukaMenuTambah() { document.getElementById('floating-menu').style.display = 'none'; openModal('vault'); }
     function bukaMenuTambahNote() { document.getElementById('floating-menu').style.display = 'none'; openModal('notes'); }
@@ -1122,13 +1032,11 @@
     function closeNoteModal() { document.getElementById('noteModal').style.display = 'none'; document.getElementById('note-form').reset(); document.getElementById('note-id').value = ""; }
     function bukaSettingsPin() { toggleSidebar(false); document.getElementById('pinSettingsModal').style.display = 'grid'; document.getElementById('pin-form').reset(); document.getElementById('pin-settings-error').style.display = 'none'; }
     function closePinSettings() { document.getElementById('pinSettingsModal').style.display = 'none'; document.getElementById('pin-form').reset(); document.getElementById('pin-settings-error').style.display = 'none'; }
-    
     const pinToggle = document.getElementById('pin-toggle'); if (pinToggle) { pinToggle.addEventListener('change', function(e) {
         const on = e.target.checked; localStorage.setItem('vault_pin_enabled', on ? 'true' : 'false');
-        showToast(on ? " PIN Diaktifkan" : "🔓 PIN Dinonaktifkan", "fa-lock");
+        showToast(on ? "🔐 PIN Diaktifkan" : "🔓 PIN Dinonaktifkan", "fa-lock");
         if(!on) { document.getElementById('lockScreen').style.display = 'none'; sessionStorage.setItem('vault_unlocked', 'true'); }
         else { sessionStorage.removeItem('vault_unlocked'); showToast("PIN akan aktif saat buka berikutnya", "fa-shield-halved"); } }); }
-        
     async function submitPinChange() {
         const c = document.getElementById('pin-current').value; const n = document.getElementById('pin-new').value; const cf = document.getElementById('pin-confirm').value;
         const er = document.getElementById('pin-settings-error');
@@ -1137,7 +1045,6 @@
         const currentHash = await hashPin(c); if(currentHash !== getPinHash()) { er.textContent = "PIN saat ini salah!"; er.style.display = 'block'; document.getElementById('pin-current').value = ''; document.getElementById('pin-current').focus(); return; }
         const newHash = await hashPin(n); localStorage.setItem('vault_pin_hash', newHash); closePinSettings();
         showToast("✅ PIN berhasil diubah!", "fa-key"); setTimeout(() => { if(confirm("PIN telah diubah. Login ulang dengan PIN baru?")) { sessionStorage.removeItem('vault_unlocked'); location.reload(); } }, 1000); }
-        
     function bukaCustomDropdownLayer(ft) { ft = ft || 'vault'; document.getElementById('dropdownLayerModal').style.display = 'flex'; buildDropdownOptions(ft); }
     function tutupCustomDropdownLayer() { document.getElementById('dropdownLayerModal').style.display = 'none'; }
     function buildDropdownOptions(ft) { ft = ft || 'vault'; const sa = ft === 'notes' ? notes : accounts;
@@ -1152,8 +1059,6 @@
         if(!confirm(jd > 0 ? 'Hapus "'+k+'" & semua data?' : 'Hapus kosong "'+k+'"?')) return; tutupCustomDropdownLayer(); showToast("Menghapus...", "fa-spinner");
         const lh = accounts.filter(a => (a.kategori||'').toLowerCase()===k.toLowerCase()); if(lh.length === 0) { showToast("Kategori dibersihkan"); return; }
         try { for(let i of lh) { await fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({action: "delete", id: i.id}) }); } showToast("Sukses Dihapus"); setTimeout(fetchData, 500); } catch(e) { showToast("Gagal menghapus", "fa-circle-xmark"); fetchData(); } }
-    
-    // 💾 FUNGSI PENYIMPANAN DATA (Dengan Validasi Duplikat)
     async function submitData() { 
         const id = document.getElementById('entry-id').value; let k = nilaiKategoriTerpilled; if(k === "__BUAT_BARU__") k = document.getElementById('entry-kategori-baru').value;
         const newData = { id: id || 'TEMP-'+Date.now(), kategori: k, nama_aplikasi: document.getElementById('entry-app').value, username: document.getElementById('entry-username').value, email: document.getElementById('entry-email').value, password: document.getElementById('entry-password').value, ket: document.getElementById('entry-ket').value, ket_dua: document.getElementById('entry-ket-dua').value, favorit: false };
@@ -1166,7 +1071,6 @@
         if (currentTab === 'catatan') renderNotes(notes); else filterVault(); showToast("✅ Data tersimpan!", "fa-check-circle");
         const p = new URLSearchParams(); p.append("action", id ? "update" : "create"); p.append("data_type", "vault"); if(id) p.append("id", id); p.append("kategori", newData.kategori); p.append("nama_aplikasi", newData.nama_aplikasi); p.append("username", newData.username); p.append("email", newData.email); p.append("password", newData.password); p.append("ket", newData.ket); p.append("ket_dua", newData.ket_dua);
         fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: p }).catch(err => console.error('Sync failed:', err)); }
-
     async function submitNoteData() { 
         const id = document.getElementById('note-id').value; let k = nilaiKategoriTerpilled; if(k === "__BUAT_BARU__") k = document.getElementById('note-kategori-baru').value;
         const judul = document.getElementById('note-judul').value.trim(); if (!judul) { showToast("Judul wajib diisi!", "fa-circle-exclamation"); return; }
@@ -1180,7 +1084,6 @@
         if (currentTab === 'catatan') renderNotes(notes); showToast("✅ Catatan tersimpan!", "fa-check-circle");
         const p = new URLSearchParams(); p.append("action", id ? "update" : "create"); p.append("data_type", "notes"); if(id) p.append("id", id); p.append("kategori", newData.kategori); p.append("judul", newData.judul); p.append("isi", newData.isi);
         fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: p }).catch(err => console.error('Sync failed:', err)); }
-
     function editEntry(id, t) { t = t || 'vault'; const s = t === 'notes' ? notes : accounts; const a = s.find(x => String(x.id) === String(id)); if(!a) return;
         lastViewContext = {tab: currentTab, filter: filterKategoriAktif, itemId: id};
         if(t === 'notes') { document.getElementById('noteModal').style.display = 'grid'; document.getElementById('note-form').reset(); document.getElementById('note-id').value = a.id; nilaiKategoriTerpilled = a.kategori; document.getElementById('selected-note-kategori').innerText = a.kategori; document.getElementById('note-judul').value = a.judul; document.getElementById('note-isi').value = a.isi || ''; document.getElementById('note-modal-title').innerText = "Edit Catatan"; }
@@ -1189,19 +1092,13 @@
     function deleteEntry(id, t) { t = t || 'vault'; if(!confirm("Hapus permanen?")) return;
         if (t === 'notes') { const idx = notes.findIndex(n => String(n.id) === String(id)); if (idx !== -1) notes.splice(idx, 1); if (currentTab === 'catatan') renderNotes(notes); }
         else { const idx = accounts.findIndex(a => String(a.id) === String(id)); if (idx !== -1) accounts.splice(idx, 1); if (currentTab === 'catatan') renderNotes(notes); else filterVault(); }
-        showToast("️ Data dihapus", "fa-trash");
+        showToast("🗑️ Data dihapus", "fa-trash");
         fetch(apiUrl, { method: 'POST', headers: {'Content-Type': 'application/x-www-form-urlencoded'}, body: new URLSearchParams({action: "delete", id: id, data_type: t}) }).catch(err => { console.error('Delete sync failed:', err); showToast("⚠️ Gagal sync ke cloud", "fa-cloud"); fetchData(t, true); }); }
-
-    // 🔄 FITUR TARIK-KE-BAWAH UNTUK REFRESH
     let startY = 0; let isPulling = false; const appContainer = document.querySelector('.app-container');
     if (appContainer) { appContainer.addEventListener('touchstart', e => { if (this.scrollTop === 0) { startY = e.touches[0].pageY; isPulling = true; } }, { passive: true });
         appContainer.addEventListener('touchmove', e => { if (isPulling && this.scrollTop === 0) { const cy = e.touches[0].pageY; if (cy - startY > 100) { showToast('🔄 Refreshing...', 'fa-sync'); fetchData(); isPulling = false; } } }, { passive: true });
         appContainer.addEventListener('touchend', () => isPulling = false); }
-
-    // 🚀 INISIALISASI EVENT DRAG SAAT DOM SIAP
     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initDragEvents); } else { initDragEvents(); }
-
-    //  EKSPOR FUNGSI KE GLOBAL WINDOW (Agar bisa dipanggil dari atribut HTML onclick)
     window.toggleThemeMode = toggleThemeMode; window.showToast = showToast; window.handlePinInput = handlePinInput; window.handlePinKeydown = handlePinKeydown;
     window.toggleSidebar = toggleSidebar; window.kunciBrankasMendadak = kunciBrankasMendadak; window.saveAPI = saveAPI; window.fetchData = fetchData;
     window.toggleFavoriteCloud = toggleFavoriteCloud; window.togglePasswordEye = togglePasswordEye; window.toggleDetailKonten = toggleDetailKonten;
@@ -1218,6 +1115,7 @@
     window.updateActiveTabUI = updateActiveTabUI; window.openModal = openModal; window.buildDropdownOptions = buildDropdownOptions;
     window.renderStats = renderStats; window.renderNotesStats = renderNotesStats; window.dapatkanIkonAplikasi = dapatkanIkonAplikasi;
     window.normalizeText = normalizeText; window.isSearchMatch = isSearchMatch;
+    window.normalizeForComparison = normalizeForComparison;
     window.cekDuplikatVault = cekDuplikatVault; window.cekDuplikatNote = cekDuplikatNote;
     window.tampilkanKonfirmasiDuplikat = tampilkanKonfirmasiDuplikat; window.prosesSimpanVault = prosesSimpanVault;
     window.prosesSimpanNote = prosesSimpanNote;
