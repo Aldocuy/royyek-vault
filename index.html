@@ -169,7 +169,7 @@
         .app-container { max-width: 800px; margin: 0 auto; height: 100vh; height: 100dvh; overflow-y: auto; padding: 0 16px calc(110px + env(safe-area-inset-bottom)) 16px; overscroll-behavior-y: contain; -webkit-overflow-scrolling: touch; }
         [data-theme="dark"] .app-container { background-color: var(--bg-dark); }
         
-        /* Sticky Top Section - UPDATED */
+        /* Sticky Top Section */
         .sticky-top-section { 
             position: sticky; 
             top: 0; 
@@ -185,7 +185,7 @@
         }
         [data-theme="light"] .sticky-top-section { background-color: transparent; border: none; }
         
-        /* Header - UPDATED */
+        /* Header */
         .sticky-header-wrapper { 
             background-color: var(--header-bg); 
             backdrop-filter: blur(25px); 
@@ -234,7 +234,7 @@
         .search-box input:focus { border-color: var(--cyan-light); outline: none; box-shadow: 0 0 0 3px var(--border-glow); }
         .clear-search-btn { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: transparent; border: none; color: var(--slate-500); cursor: pointer; display: none; font-size: 14px; z-index: 2; }
         
-        /* Search Dropdown - FIXED: Use fixed position and very high z-index */
+        /* Search Dropdown */
         .search-dropdown-results { 
             position: fixed !important;
             top: auto !important;
@@ -259,7 +259,31 @@
         .search-drop-folder { font-size: 11px; background: var(--badge-bg); color: var(--badge-text); padding: 2px 6px; border-radius: 6px; font-weight: 600; }
         .search-drop-row.folder-type { background: rgba(6, 182, 212, 0.08); border: 1px dashed rgba(6, 182, 212, 0.3); margin-bottom: 4px; }
         
-        /* KPI Grid - UPDATED */
+        /* ════════════════════════════════════════════════════════ */
+        /* 🔍 SEARCH DROPDOWN FOLDER ICON COLORS [FIXED] */
+        /* ════════════════════════════════════════════════════════ */
+        
+        /* Parent Folder in Search - Cyan */
+        .search-drop-row.folder-type[data-level="0"] i.fa-folder-open,
+        .search-drop-row.folder-type:not([data-level]) i.fa-folder-open {
+            color: var(--cyan) !important;
+            text-shadow: 0 0 6px rgba(6, 182, 212, 0.4);
+        }
+        
+        /* Sub-folder Level 1 in Search - Purple */
+        .search-drop-row.folder-type[data-level="1"] i.fa-folder-open {
+            color: var(--purple) !important;
+            text-shadow: 0 0 6px rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Sub-folder Level 2+ in Search - Blue */
+        .search-drop-row.folder-type[data-level="2"] i.fa-folder-open,
+        .search-drop-row.folder-type[data-level="3"] i.fa-folder-open {
+            color: var(--blue) !important;
+            text-shadow: 0 0 6px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* KPI Grid */
         .kpi-grid { 
             display: grid; 
             grid-template-columns: repeat(2, 1fr); 
@@ -347,7 +371,7 @@
         /* Account List */
         .account-list { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; margin-bottom: 24px; } 
         
-        /* NEW FOLDER CARD STYLE - Matching Screenshot */
+        /* FOLDER CARD STYLE */
         .folder-card {
             background: rgba(21, 30, 50, 0.8);
             border: 1px solid rgba(6, 182, 212, 0.15);
@@ -446,6 +470,85 @@
         .folder-title-text { font-weight: 700; font-size: 18px; color: var(--text-main); display: inline-flex; align-items: center; } 
         .folder-title-text i { font-size: 20px; color: var(--cyan); }
         .subfolder-wrapper { margin-left: 14px; padding-left: 10px; border-left: 2px dashed var(--card-border-custom); margin-bottom: 4px; margin-top: 4px; }
+        
+        /* ════════════════════════════════════════════════════════ */
+        /* 🎨 FOLDER ICON COLORS - Parent vs Subfolder */
+        /* ════════════════════════════════════════════════════════ */
+        
+        /* Parent Folder Icon - Cyan/Turquoise */
+        .folder-header[data-level="0"] .folder-title-text i,
+        .folder-header:not([data-level]) .folder-title-text i {
+            color: var(--cyan) !important;
+            text-shadow: 0 0 8px rgba(6, 182, 212, 0.4);
+        }
+        
+        /* Sub-folder Level 1 - Purple */
+        .folder-header[data-level="1"] .folder-title-text i {
+            color: var(--purple) !important;
+            text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Sub-folder Level 2+ - Blue */
+        .folder-header[data-level="2"] .folder-title-text i,
+        .folder-header[data-level="3"] .folder-title-text i {
+            color: var(--blue) !important;
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Folder Icon Wrapper - Adjust Size */
+        .folder-title-text i {
+            font-size: 18px !important;
+            margin-right: 4px !important;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        
+        .folder-header:hover .folder-title-text i {
+            transform: scale(1.1);
+        }
+        
+        /* ════════════════════════════════════════════════════════ */
+        /* ⬅️ SHIFT ICON & TEXT TO LEFT */
+        /* ════════════════════════════════════════════════════════ */
+        
+        /* Parent Folder - Reduced Left Padding */
+        .folder-header {
+            padding-left: 32px !important;
+            padding-right: 12px !important;
+        }
+        
+        /* Subfolder Wrapper - Tighter Indent */
+        .subfolder-wrapper {
+            margin-left: 6px !important;
+            padding-left: 4px !important;
+            border-left-width: 1.5px !important;
+        }
+        
+        /* Folder Left Section - Tighter Gap */
+        .folder-header > div:first-child {
+            gap: 8px !important;
+        }
+        
+        /* Folder Name - Slight Left Nudge */
+        .folder-title-text {
+            margin-left: -1px;
+            letter-spacing: -0.2px;
+        }
+        
+        /* Drag Handle - Reposition */
+        .folder-header.draggable-folder::before {
+            left: 38px !important;
+            font-size: 14px !important;
+        }
+        
+        /* App Item Row Inside Folders - Also Shift Left */
+        .folder-content .app-item-row {
+            padding-left: 36px !important;
+        }
+        
+        /* Note Card Inside Folders - Also Shift Left */
+        .folder-content .note-card {
+            padding-left: 36px !important;
+        }
         
         /* Drag & Drop */
         .app-item-row.draggable, .note-card.draggable { cursor: grab; transition: transform 0.1s, box-shadow 0.1s; }
@@ -734,27 +837,26 @@
         .sync-status-dot.pending { color: var(--sync-pending); background: rgba(250, 204, 21, 0.15); }
         .sync-status-dot i { font-size: 10px; }
         
-        /* Nama Menu H2 - UPDATED */
-        /* Nama Menu H2 - UPDATED */
-.nama-menu-h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 11px 0 4px 0;  /* Ubah dari 16px jadi 8px */
-    padding-left: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--title-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.3px;
-}
+        /* Nama Menu H2 */
+        .nama-menu-h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 11px 0 4px 0;
+            padding-left: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--title-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.3px;
+        }
 
-#account-list-container { 
-    padding-top: 20px;  /* Ubah dari 24px jadi 8px */
-    margin-top: 4px; 
-}
+        #account-list-container { 
+            padding-top: 20px;
+            margin-top: 4px; 
+        }
         .nama-menu-h2 i {
             font-size: 22px;
             background: var(--title-gradient);
@@ -1240,14 +1342,49 @@
     
     function tampilkanKonfirmasiDuplikat(duplikat, tipe, onConfirm) { const overlay = document.createElement('div'); overlay.className = 'modal-overlay'; overlay.style.display = 'grid'; overlay.style.zIndex = '1002'; const count = duplikat.length; const preview = duplikat.slice(0, 3).map(d => tipe === 'notes' ? d.judul : d.nama_aplikasi + ' (@' + (d.username||d.email) + ')').join('<br>'); const moreText = count > 3 ? `<br><small style="color:var(--slate-500)">+${count-3} lainnya...</small>` : ''; overlay.innerHTML = `<div class="modal" style="max-width:400px;text-align:center;"><div style="font-size:48px;margin-bottom:12px;">⚠️</div><h3 style="color:var(--accent-color);margin-bottom:8px;">Data Kembar Terdeteksi!</h3><p style="color:var(--slate-300);font-size:14px;margin-bottom:16px;">Ditemukan <strong>${count}</strong> data serupa:<br><br><span style="background:rgba(0,0,0,0.1);padding:8px;border-radius:8px;display:block;">${preview}${moreText}</span></p><p style="font-size:12px;color:var(--slate-500);margin-bottom:20px;">Lanjutkan jika ini memang data berbeda.</p><div style="display:flex;gap:12px;justify-content:center;"><button class="btn-pro" id="btn-duplikat-batal" style="flex-grow:1;justify-content:center;background:var(--slate-500);">Batal</button><button class="btn-pro" id="btn-duplikat-lanjut" style="flex-grow:1;justify-content:center;">Tetap Simpan</button></div></div>`; document.body.appendChild(overlay); document.getElementById('btn-duplikat-batal').onclick = () => document.body.removeChild(overlay); document.getElementById('btn-duplikat-lanjut').onclick = () => { document.body.removeChild(overlay); if (typeof onConfirm === 'function') onConfirm(); }; overlay.onclick = (e) => { if (e.target === overlay) document.body.removeChild(overlay); }; }
     
-    function renderCards(data) { const c = document.getElementById('account-list-container'); if(data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Tidak menemukan data.</p>'; return; } const ft = {}; data.forEach(function(i) { const ps = (i.kategori || 'Umum').split('/'); let cl = ft; ps.forEach(function(p, idx) { if(!cl[p]) cl[p] = {_items:[], _subfolders:{}}; if(idx === ps.length - 1) cl[p]._items.push(i); else cl = cl[p]._subfolders; }); }); function genT(t, pp) { pp = pp || ""; let h = ""; Object.keys(t).forEach(function(fn) { const cf = t[fn]; const fp = pp ? (pp + '/' + fn) : fn; const fid = 'grup-' + fp.replace(/\s+/g, '-').replace(/\//g, '_'); function count(f) { let s = f._items.length; Object.keys(f._subfolders).forEach(function(k) { s += count(f._subfolders[k]); }); return s; } const tot = count(cf); const fo = (filterKategoriAktif && filterKategoriAktif.toLowerCase() === fp.toLowerCase()) ? 'flex' : 'none'; h += '<div style="margin-bottom:6px;background:var(--bg-surface);border-radius:16px;border:1px solid var(--card-border-custom);border-bottom:3px solid var(--folder-border-bottom);width:100%;overflow:visible;">'; h += '<div class="folder-header draggable-folder" id="head-' + fid + '" data-category="' + fp + '" draggable="true" ondragstart="handleFolderDragStart(event, \'' + fp + '\')" ondragover="handleFolderDragOver(event)" ondrop="handleFolderDrop(event, \'' + fp + '\')" onclick="toggleGrupFolder(\'' + fid + '\')" style="padding:12px 14px 12px 45px;display:flex;justify-content:space-between;cursor:pointer;background:var(--folder-bg-accent);border-radius:14px 14px 0 0;border-left:4px solid var(--accent-color);align-items:center;margin-bottom:4px;position:relative;">'; h += '<div><span class="folder-title-text"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:8px;"></i>' + fn + '</span><span class="folder-badge">' + tot + '</span></div>'; h += '<i class="fa-solid fa-chevron-down" style="color:var(--slate-500);font-size:12px;transition:transform 0.2s;" id="icon-' + fid + '"></i></div>'; h += '<div id="' + fid + '" style="display:' + fo + ';padding:4px;flex-direction:column;gap:3px;width:100%;">'; if(Object.keys(cf._subfolders).length > 0) h += '<div class="subfolder-wrapper">' + genT(cf._subfolders, fp) + '</div>'; cf._items.forEach(function(a) { const st = a.favorit === true || String(a.favorit).toLowerCase() === 'true'; h += '<div class="app-item-row draggable" id="row-app-' + a.id + '" data-category="' + (fp||'Umum') + '" onclick="toggleDetailKonten(\'' + a.id + '\')"><div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div style="display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-grip-vertical drag-handle" title="Tahan untuk mengurutkan/pindah folder"></i><i class="' + dapatkanIkonAplikasi(fp, a.nama_aplikasi) + '" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i><div style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:16px;font-weight:600;"><span class="at-symbol">@</span>' + (a.username || '-') + '</span><span class="app-title" style="font-size:13px;color:var(--slate-500);">' + a.nama_aplikasi + '</span></div></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + a.id + '\',event,\'vault\')" style="color:' + (st ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:14px;padding:4px;"></i></div></div>'; h += '<div id="det-' + a.id + '" class="app-detail-content"><div class="info-row"><span><span class="label-user">User:</span> ' + (a.username || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.username||'') + '\');showToast(\'Username disalin\')"></i></div><div class="info-row"><span><span class="label-email">Email:</span> ' + (a.email || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.email||'') + '\');showToast(\'Email disalin\')"></i></div><div class="pass-container"><div class="pass-text" id="pass-text-' + a.id + '">' + (a.password||'') + '</div><div class="pass-actions"><i class="fa-solid fa-eye" onclick="togglePasswordEye(\'' + a.id + '\',event)"></i><i class="fa-solid fa-copy" onclick="navigator.clipboard.writeText(\'' + (a.password||'') + '\');showToast(\'Password disalin\')"></i></div></div>'; if(a.ket && a.ket.trim() !== "") h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:6px;"><span>Ket 1: ' + a.ket + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket + '\');showToast(\'Keterangan 1 disalin\')"></i></div>'; if(a.ket_dua && a.ket_dua.trim() !== "") h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:2px;"><span>Ket 2: ' + a.ket_dua + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket_dua + '\');showToast(\'Keterangan 2 disalin\')"></i></div>'; h += '<div class="card-actions"><button class="action-btn" style="color:var(--slate-500);" onclick="editEntry(\'' + a.id + '\', \'vault\')">Edit</button><button class="action-btn" style="color:#ef4444;" onclick="deleteEntry(\'' + a.id + '\',\'vault\')">Hapus</button></div></div>'; }); h += '</div></div>'; }); return h; } c.innerHTML = genT(ft); }
+    function renderCards(data) { const c = document.getElementById('account-list-container'); if(data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Tidak menemukan data.</p>'; return; } const ft = {}; data.forEach(function(i) { const ps = (i.kategori || 'Umum').split('/'); let cl = ft; ps.forEach(function(p, idx) { if(!cl[p]) cl[p] = {_items:[], _subfolders:{}}; if(idx === ps.length - 1) cl[p]._items.push(i); else cl = cl[p]._subfolders; }); }); function genT(t, pp) { pp = pp || ""; let h = ""; Object.keys(t).forEach(function(fn) { const cf = t[fn]; const fp = pp ? (pp + '/' + fn) : fn; const fid = 'grup-' + fp.replace(/\s+/g, '-').replace(/\//g, '_'); const folderLevel = (fp.match(/\//g) || []).length; function count(f) { let s = f._items.length; Object.keys(f._subfolders).forEach(function(k) { s += count(f._subfolders[k]); }); return s; } const tot = count(cf); const fo = (filterKategoriAktif && filterKategoriAktif.toLowerCase() === fp.toLowerCase()) ? 'flex' : 'none'; h += '<div style="margin-bottom:6px;background:var(--bg-surface);border-radius:16px;border:1px solid var(--card-border-custom);border-bottom:3px solid var(--folder-border-bottom);width:100%;overflow:visible;">'; h += '<div class="folder-header draggable-folder" id="head-' + fid + '" data-category="' + fp + '" data-level="' + folderLevel + '" draggable="true" ondragstart="handleFolderDragStart(event, \'' + fp + '\')" ondragover="handleFolderDragOver(event)" ondrop="handleFolderDrop(event, \'' + fp + '\')" onclick="toggleGrupFolder(\'' + fid + '\')" style="padding:12px 14px 12px 32px;display:flex;justify-content:space-between;cursor:pointer;background:var(--folder-bg-accent);border-radius:14px 14px 0 0;border-left:4px solid var(--accent-color);align-items:center;margin-bottom:4px;position:relative;">'; h += '<div><span class="folder-title-text"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:4px;"></i>' + fn + '</span><span class="folder-badge">' + tot + '</span></div>'; h += '<i class="fa-solid fa-chevron-down" style="color:var(--slate-500);font-size:12px;transition:transform 0.2s;" id="icon-' + fid + '"></i></div>'; h += '<div id="' + fid + '" style="display:' + fo + ';padding:4px;flex-direction:column;gap:3px;width:100%;">'; if(Object.keys(cf._subfolders).length > 0) h += '<div class="subfolder-wrapper" style="margin-left:6px!important;padding-left:4px!important;border-left:1.5px dashed var(--card-border-custom);margin-bottom:2px;margin-top:2px;">' + genT(cf._subfolders, fp) + '</div>'; cf._items.forEach(function(a) { const st = a.favorit === true || String(a.favorit).toLowerCase() === 'true'; h += '<div class="app-item-row draggable" id="row-app-' + a.id + '" data-category="' + (fp||'Umum') + '" onclick="toggleDetailKonten(\'' + a.id + '\')"><div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div style="display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-grip-vertical drag-handle" title="Tahan untuk mengurutkan/pindah folder"></i><i class="' + dapatkanIkonAplikasi(fp, a.nama_aplikasi) + '" style="color:var(--accent-color);font-size:20px;width:24px;text-align:center;"></i><div style="display:flex;flex-direction:column;gap:1px;"><span style="font-size:16px;font-weight:600;"><span class="at-symbol">@</span>' + (a.username || '-') + '</span><span class="app-title" style="font-size:13px;color:var(--slate-500);">' + a.nama_aplikasi + '</span></div></div><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\'' + a.id + '\',event,\'vault\')" style="color:' + (st ? '#facc15' : 'var(--slate-500)') + ';cursor:pointer;font-size:14px;padding:4px;"></i></div></div>'; h += '<div id="det-' + a.id + '" class="app-detail-content"><div class="info-row"><span><span class="label-user">User:</span> ' + (a.username || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.username||'') + '\');showToast(\'Username disalin\')"></i></div><div class="info-row"><span><span class="label-email">Email:</span> ' + (a.email || '-') + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + (a.email||'') + '\');showToast(\'Email disalin\')"></i></div><div class="pass-container"><div class="pass-text" id="pass-text-' + a.id + '">' + (a.password||'') + '</div><div class="pass-actions"><i class="fa-solid fa-eye" onclick="togglePasswordEye(\'' + a.id + '\',event)"></i><i class="fa-solid fa-copy" onclick="navigator.clipboard.writeText(\'' + (a.password||'') + '\');showToast(\'Password disalin\')"></i></div></div>'; if(a.ket && a.ket.trim() !== "") h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:6px;"><span>Ket 1: ' + a.ket + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket + '\');showToast(\'Keterangan 1 disalin\')"></i></div>'; if(a.ket_dua && a.ket_dua.trim() !== "") h += '<div class="info-row" style="opacity: 0.85; font-size:13px; margin-top:2px;"><span>Ket 2: ' + a.ket_dua + '</span><i class="fa-solid fa-copy copy-small" onclick="navigator.clipboard.writeText(\'' + a.ket_dua + '\');showToast(\'Keterangan 2 disalin\')"></i></div>'; h += '<div class="card-actions"><button class="action-btn" style="color:var(--slate-500);" onclick="editEntry(\'' + a.id + '\', \'vault\')">Edit</button><button class="action-btn" style="color:#ef4444;" onclick="deleteEntry(\'' + a.id + '\',\'vault\')">Hapus</button></div></div>'; }); h += '</div></div>'; }); return h; } c.innerHTML = genT(ft); }
     
-    function renderNotes(data) { const c = document.getElementById('account-list-container'); if (!data || data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada catatan.</p>'; renderNotesStats(); return; } const nc = {}; data.forEach(n => { const parts = (n.kategori||'Umum').split('/').map(p=>p.trim()); let cur = nc; parts.forEach((p,i) => { if(!cur[p]) cur[p]={_items:[],_subfolders:{}}; if(i===parts.length-1) cur[p]._items.push(n); else cur=cur[p]._subfolders; }); }); function genNoteTree(t, pp) { pp=pp||""; let html=""; Object.keys(t).forEach(fn => { const fd = t[fn]; const fp = pp ? (pp+'/'+fn) : fn; const fid = 'cat-'+fp.replace(/\s+/g,'-').replace(/\//g,'_'); function ci(f) { let s=f._items.length; Object.keys(f._subfolders).forEach(k => s+=ci(f._subfolders[k])); return s; } const ti = ci(fd); const ie = (filterKategoriAktif && filterKategoriAktif.toLowerCase()===fp.toLowerCase()) ? 'flex' : 'none'; html += '<div style="margin-bottom:4px;">'; html += '<div class="folder-header draggable-folder" data-category="'+fp+'" draggable="true" ondragstart="handleFolderDragStart(event, \''+fp+'\')" ondragover="handleFolderDragOver(event)" ondrop="handleFolderDrop(event, \''+fp+'\')" onclick="toggleGrupFolder(\''+fid+'\')" style="padding:8px 12px 8px 45px;display:flex;justify-content:space-between;cursor:pointer;background:var(--bg-surface);border-radius:12px 12px 0 0;border-left:3px solid var(--accent-color);align-items:center;margin-bottom:1px;position:relative;">'; html += '<div><span class="folder-title-text" style="font-size:16px;"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:6px;font-size:16px;"></i>'+fn+'</span><span class="folder-badge">'+ti+'</span></div>'; html += '<i class="fa-solid fa-chevron-down" style="color:var(--slate-500);font-size:11px;transition:transform 0.2s;" id="icon-'+fid+'"></i></div>'; html += '<div id="'+fid+'" style="display:'+ie+';padding:2px;flex-direction:column;gap:2px;background:var(--bg-surface);border-radius:0 0 12px 12px;margin-bottom:4px;">'; if(Object.keys(fd._subfolders).length>0) html += '<div class="subfolder-wrapper">'+genNoteTree(fd._subfolders, fp)+'</div>'; fd._items.forEach(n => { const fav = n.favorit===true || String(n.favorit).toLowerCase()==='true'; const nid = n.id; const ds = n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID',{day:'numeric',month:'short'}) : ''; html += '<div class="app-item-row draggable note-card" id="row-note-'+nid+'" data-category="'+(fp||'Umum')+'" onclick="toggleDetailKonten(\''+nid+'\')" style="padding:8px 12px;margin-bottom:1px;border-radius:8px !important;"><div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div style="display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-grip-vertical drag-handle" title="Tahan untuk mengurutkan/pindah folder"></i><i class="fa-regular fa-note-sticky" style="color:var(--accent-color);font-size:14px;width:20px;text-align:center;"></i><div style="display:flex;flex-direction:column;gap:0px;"><span style="font-size:16px;font-weight:600;">'+n.judul+'</span><span style="font-size:11px;color:var(--slate-500);">'+fp+' • '+ds+'</span></div></div><div style="display:flex;align-items:center;gap:6px;"><i class="fa-regular fa-copy" onclick="event.stopPropagation();navigator.clipboard.writeText(\''+(n.judul+'\\n\\n'+(n.isi||'').replace(/'/g,"\\'").replace(/\n/g,"\\n"))+'\');showToast(\'Catatan disalin!\')" style="color:var(--slate-300);cursor:pointer;font-size:12px;"></i><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\''+nid+'\',event,\'notes\')" style="color:'+(fav?'#facc15':'var(--slate-500)')+';cursor:pointer;font-size:12px;"></i></div></div></div>'; html += '<div id="det-'+nid+'" class="app-detail-content" style="padding:10px;margin-bottom:2px;"><div style="padding:4px 0 8px 0;font-size:13px;color:var(--slate-300);line-height:1.4;white-space:pre-wrap;">'+(n.isi||'')+'</div><div class="card-actions" style="margin-top:6px;padding-top:6px;"><button class="action-btn" style="color:var(--accent-color);font-size:12px;" onclick="editNote(\''+nid+'\')"><i class="fa-solid fa-pen"></i> Edit</button><button class="action-btn" style="color:#ef4444;font-size:12px;" onclick="deleteEntry(\''+nid+'\',\'notes\')"><i class="fa-solid fa-trash"></i> Hapus</button></div></div>'; }); html += '</div></div>'; }); return html; } c.innerHTML = genNoteTree(nc); renderNotesStats(); }
+    function renderNotes(data) { const c = document.getElementById('account-list-container'); if (!data || data.length === 0) { c.innerHTML = '<p style="text-align:center;color:var(--slate-500);padding:20px;">Belum ada catatan.</p>'; renderNotesStats(); return; } const nc = {}; data.forEach(n => { const parts = (n.kategori||'Umum').split('/').map(p=>p.trim()); let cur = nc; parts.forEach((p,i) => { if(!cur[p]) cur[p]={_items:[],_subfolders:{}}; if(i===parts.length-1) cur[p]._items.push(n); else cur=cur[p]._subfolders; }); }); function genNoteTree(t, pp) { pp=pp||""; let html=""; Object.keys(t).forEach(fn => { const fd = t[fn]; const fp = pp ? (pp+'/'+fn) : fn; const fid = 'cat-'+fp.replace(/\s+/g,'-').replace(/\//g,'_'); const noteFolderLevel = (fp.match(/\//g) || []).length; function ci(f) { let s=f._items.length; Object.keys(f._subfolders).forEach(k => s+=ci(f._subfolders[k])); return s; } const ti = ci(fd); const ie = (filterKategoriAktif && filterKategoriAktif.toLowerCase()===fp.toLowerCase()) ? 'flex' : 'none'; html += '<div style="margin-bottom:4px;">'; html += '<div class="folder-header draggable-folder" data-category="'+fp+'" data-level="'+noteFolderLevel+'" draggable="true" ondragstart="handleFolderDragStart(event, \''+fp+'\')" ondragover="handleFolderDragOver(event)" ondrop="handleFolderDrop(event, \''+fp+'\')" onclick="toggleGrupFolder(\''+fid+'\')" style="padding:8px 12px 8px 32px;display:flex;justify-content:space-between;cursor:pointer;background:var(--bg-surface);border-radius:12px 12px 0 0;border-left:3px solid var(--accent-color);align-items:center;margin-bottom:1px;position:relative;">'; html += '<div><span class="folder-title-text" style="font-size:16px;"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);margin-right:4px;font-size:18px;"></i>'+fn+'</span><span class="folder-badge">'+ti+'</span></div>'; html += '<i class="fa-solid fa-chevron-down" style="color:var(--slate-500);font-size:11px;transition:transform 0.2s;" id="icon-'+fid+'"></i></div>'; html += '<div id="'+fid+'" style="display:'+ie+';padding:2px;flex-direction:column;gap:2px;background:var(--bg-surface);border-radius:0 0 12px 12px;margin-bottom:4px;">'; if(Object.keys(fd._subfolders).length>0) html += '<div class="subfolder-wrapper" style="margin-left:6px!important;padding-left:4px!important;border-left:1.5px dashed var(--card-border-custom);margin-bottom:2px;margin-top:2px;">'+genNoteTree(fd._subfolders, fp)+'</div>'; fd._items.forEach(n => { const fav = n.favorit===true || String(n.favorit).toLowerCase()==='true'; const nid = n.id; const ds = n.tanggal ? new Date(n.tanggal).toLocaleDateString('id-ID',{day:'numeric',month:'short'}) : ''; html += '<div class="app-item-row draggable note-card" id="row-note-'+nid+'" data-category="'+(fp||'Umum')+'" onclick="toggleDetailKonten(\''+nid+'\')" style="padding:8px 12px;margin-bottom:1px;border-radius:8px !important;"><div style="display:flex;align-items:center;justify-content:space-between;width:100%;"><div style="display:flex;align-items:center;gap:8px;"><i class="fa-solid fa-grip-vertical drag-handle" title="Tahan untuk mengurutkan/pindah folder"></i><i class="fa-regular fa-note-sticky" style="color:var(--accent-color);font-size:14px;width:20px;text-align:center;"></i><div style="display:flex;flex-direction:column;gap:0px;"><span style="font-size:16px;font-weight:600;">'+n.judul+'</span><span style="font-size:11px;color:var(--slate-500);">'+fp+' • '+ds+'</span></div></div><div style="display:flex;align-items:center;gap:6px;"><i class="fa-regular fa-copy" onclick="event.stopPropagation();navigator.clipboard.writeText(\''+(n.judul+'\\n\\n'+(n.isi||'').replace(/'/g,"\\'").replace(/\n/g,"\\n"))+'\');showToast(\'Catatan disalin!\')" style="color:var(--slate-300);cursor:pointer;font-size:12px;"></i><i class="fa-solid fa-star" onclick="toggleFavoriteCloud(\''+nid+'\',event,\'notes\')" style="color:'+(fav?'#facc15':'var(--slate-500)')+';cursor:pointer;font-size:12px;"></i></div></div></div>'; html += '<div id="det-'+nid+'" class="app-detail-content" style="padding:10px;margin-bottom:2px;"><div style="padding:4px 0 8px 0;font-size:13px;color:var(--slate-300);line-height:1.4;white-space:pre-wrap;">'+(n.isi||'')+'</div><div class="card-actions" style="margin-top:6px;padding-top:6px;"><button class="action-btn" style="color:var(--accent-color);font-size:12px;" onclick="editNote(\''+nid+'\')"><i class="fa-solid fa-pen"></i> Edit</button><button class="action-btn" style="color:#ef4444;font-size:12px;" onclick="deleteEntry(\''+nid+'\',\'notes\')"><i class="fa-solid fa-trash"></i> Hapus</button></div></div>'; }); html += '</div></div>'; }); return html; } c.innerHTML = genNoteTree(nc); renderNotesStats(); }
     
     function toggleGrupFolder(id, f) { const el = document.getElementById(id); const icon = document.getElementById('icon-'+id); if(!el) return; let t = el.style.display==='none'?'flex':'none'; if(f!==null && f!==undefined) t = f; el.style.display = t; if(icon) { icon.style.transform = t==='flex'?'rotate(180deg)':'rotate(0deg)'; icon.style.transition = 'transform 0.15s ease'; } }
     function toggleDetailKonten(id, f) { const el = document.getElementById('det-'+id); if(!el) return; let t = el.style.display==='none'?'flex':'none'; if(f!==null && f!==undefined) t = f; el.style.display = t; }
     
-    function liveSearchDropdown() { const rawQuery = document.getElementById('vault-search').value; const dc = document.getElementById('searchDropdownContainer'); const cb = document.getElementById('clearSearchBtn'); if (!rawQuery || normalizeText(rawQuery) === '') { dc.style.display = 'none'; cb.style.display = 'none'; return; } cb.style.display = 'block'; const query = normalizeText(rawQuery); let hr = ""; if(currentTab !== 'catatan') { const uniqueCats = [...new Set(accounts.map(a => a.kategori).filter(Boolean))]; const matchedCats = uniqueCats.filter(c => isSearchMatch(c, query)); const matchedAccounts = accounts.filter(a => isSearchMatch(a.nama_aplikasi, query) || isSearchMatch(a.kategori, query) || isSearchMatch(a.username, query) || isSearchMatch(a.email, query) || isSearchMatch(a.ket, query) || isSearchMatch(a.ket_dua, query) || isSearchMatch(a.password, query)); matchedCats.forEach(function(c) { hr += '<div class="search-drop-row folder-type" onclick="pilihFolderSearch(\''+c.replace(/'/g,"\\'")+'\')"><div class="search-drop-info"><i class="fa-regular fa-folder-open" style="color:var(--accent-color);font-size:16px;"></i><div style="display:flex;flex-direction:column;"><strong>[Folder] '+c+'</strong><span style="font-size:10px;color:var(--slate-500);">Buka isi folder ini</span></div></div><span class="search-drop-folder" style="background:rgba(16,185,129,0.25);">FOLDER</span></div>'; }); matchedAccounts.forEach(function(a) { const usernameDisplay = a.username || a.email || '-'; hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\''+a.id+'\',\''+(a.kategori||'').replace(/'/g,"\\'")+'\',\'vault\')"><div class="search-drop-info"><i class="'+dapatkanIkonAplikasi(a.kategori,a.nama_aplikasi)+'" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>'+(a.nama_aplikasi||'Tanpa Nama')+'</strong><span class="search-drop-username"><span class="search-drop-at">@</span>' + usernameDisplay + '</span></div></div><span class="search-drop-folder">'+(a.kategori||'Umum')+'</span></div>'; }); } const matchedNotes = notes.filter(n => isSearchMatch(n.judul, query) || isSearchMatch(n.isi, query) || isSearchMatch(n.kategori, query)); matchedNotes.forEach(function(n) { const fp = n.kategori ? '<span class="search-drop-folder">'+n.kategori+'</span>' : ''; hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\''+n.id+'\',\''+(n.kategori||'Umum').replace(/'/g,"\\'")+'\',\'notes\')"><div class="search-drop-info"><i class="fa-solid fa-note-sticky" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>'+(n.judul||'Tanpa Judul')+'</strong><span style="font-size:10px;color:var(--slate-500);">'+(n.isi ? normalizeText(n.isi).substring(0,50)+'...' : '')+'</span></div></div>'+fp+'</div>'; }); dc.innerHTML = hr || '<div style="padding:12px;text-align:center;color:var(--slate-500);font-size:13px;">Tidak ditemukan</div>'; dc.style.display = 'block'; }
+    function liveSearchDropdown() { 
+        const rawQuery = document.getElementById('vault-search').value; 
+        const dc = document.getElementById('searchDropdownContainer'); 
+        const cb = document.getElementById('clearSearchBtn'); 
+        if (!rawQuery || normalizeText(rawQuery) === '') { 
+            dc.style.display = 'none'; 
+            cb.style.display = 'none'; 
+            return; 
+        } 
+        cb.style.display = 'block'; 
+        const query = normalizeText(rawQuery); 
+        let hr = ""; 
+        if(currentTab !== 'catatan') { 
+            const uniqueCats = [...new Set(accounts.map(a => a.kategori).filter(Boolean))]; 
+            const matchedCats = uniqueCats.filter(c => isSearchMatch(c, query)); 
+            const matchedAccounts = accounts.filter(a => isSearchMatch(a.nama_aplikasi, query) || isSearchMatch(a.kategori, query) || isSearchMatch(a.username, query) || isSearchMatch(a.email, query) || isSearchMatch(a.ket, query) || isSearchMatch(a.ket_dua, query) || isSearchMatch(a.password, query)); 
+            matchedCats.forEach(function(c) { 
+                // 🔍 FIX: Hitung level folder untuk warna icon di search
+                const folderLevel = (c.match(/\//g) || []).length;
+                const iconColor = folderLevel === 0 ? 'var(--cyan)' : (folderLevel === 1 ? 'var(--purple)' : 'var(--blue)');
+                hr += '<div class="search-drop-row folder-type" data-level="'+folderLevel+'" onclick="pilihFolderSearch(\''+c.replace(/'/g,"\\'")+'\')"><div class="search-drop-info"><i class="fa-regular fa-folder-open" style="color:'+iconColor+';font-size:16px;"></i><div style="display:flex;flex-direction:column;"><strong>[Folder] '+c+'</strong><span style="font-size:10px;color:var(--slate-500);">Buka isi folder ini</span></div></div><span class="search-drop-folder" style="background:rgba(16,185,129,0.25);">FOLDER</span></div>'; 
+            }); 
+            matchedAccounts.forEach(function(a) { 
+                const usernameDisplay = a.username || a.email || '-'; 
+                hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\''+a.id+'\',\''+(a.kategori||'').replace(/'/g,"\\'")+'\',\'vault\')"><div class="search-drop-info"><i class="'+dapatkanIkonAplikasi(a.kategori,a.nama_aplikasi)+'" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>'+(a.nama_aplikasi||'Tanpa Nama')+'</strong><span class="search-drop-username"><span class="search-drop-at">@</span>' + usernameDisplay + '</span></div></div><span class="search-drop-folder">'+(a.kategori||'Umum')+'</span></div>'; 
+            }); 
+        } 
+        const matchedNotes = notes.filter(n => isSearchMatch(n.judul, query) || isSearchMatch(n.isi, query) || isSearchMatch(n.kategori, query)); 
+        matchedNotes.forEach(function(n) { 
+            const fp = n.kategori ? '<span class="search-drop-folder">'+n.kategori+'</span>' : ''; 
+            hr += '<div class="search-drop-row" onclick="pilihHasilSearch(\''+n.id+'\',\''+(n.kategori||'Umum').replace(/'/g,"\\'")+'\',\'notes\')"><div class="search-drop-info"><i class="fa-solid fa-note-sticky" style="color:var(--accent-color);width:16px;text-align:center;"></i><div style="display:flex;flex-direction:column;"><strong>'+(n.judul||'Tanpa Judul')+'</strong><span style="font-size:10px;color:var(--slate-500);">'+(n.isi ? normalizeText(n.isi).substring(0,50)+'...' : '')+'</span></div></div>'+fp+'</div>'; 
+        }); 
+        dc.innerHTML = hr || '<div style="padding:12px;text-align:center;color:var(--slate-500);font-size:13px;">Tidak ditemukan</div>'; 
+        dc.style.display = 'block'; 
+    }
+    
     function pilihFolderSearch(k) { document.getElementById('searchDropdownContainer').style.display = 'none'; filterKategoriAktif = k; if(k.toLowerCase().startsWith("kerja")) { currentTab = 'kerja'; updateActiveTabUI(document.getElementById('tab-kerja'), "Akun Kerja"); } else if(k.toLowerCase().startsWith("keuangan")) { currentTab = 'keuangan'; updateActiveTabUI(document.getElementById('tab-keuangan'), "Finansial"); } else { currentTab = 'beranda'; updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda"); } renderCards(accounts.filter(a => (a.kategori||'').toLowerCase().startsWith(k.toLowerCase()))); document.getElementById('vault-search').value = 'Folder: ' + k; }
     function pilihHasilSearch(id, kat, type) { document.getElementById('searchDropdownContainer').style.display = 'none'; filterKategoriAktif = null; lastViewContext = {tab: currentTab, filter: kat, itemId: id}; if(type === 'notes') { currentTab = 'catatan'; updateActiveTabUI(document.getElementById('tab-catatan'), "Catatan"); renderNotes(notes); requestAnimationFrame(() => setTimeout(() => { if(kat && kat.includes('/')) { const parts = kat.split('/'); let pa = ""; parts.forEach(p => { pa = pa ? (pa+'/'+p) : p; const fid = 'cat-'+pa.replace(/\s+/g,'-').replace(/\//g,'_'); const fel = document.getElementById(fid); const ic = document.getElementById('icon-'+fid); if(fel) { fel.style.display = 'flex'; if(ic) ic.style.transform = 'rotate(180deg)'; } }); } else if(kat) { const fid = 'cat-'+kat.replace(/\s+/g,'-').replace(/\//g,'_'); const fel = document.getElementById(fid); const ic = document.getElementById('icon-'+fid); if(fel) { fel.style.display = 'flex'; if(ic) ic.style.transform = 'rotate(180deg)'; } } const re = document.getElementById('row-note-'+id); const de = document.getElementById('det-'+id); if(re) { re.scrollIntoView({behavior:'smooth',block:'center'}); re.style.outline = "2px solid var(--accent-color)"; if(de) de.style.display = 'flex'; setTimeout(() => re.style.outline = 'none', 2000); } }, 150)); } else { if((kat||'').toLowerCase().startsWith("kerja")) { currentTab = 'kerja'; updateActiveTabUI(document.getElementById('tab-kerja'), "Akun Kerja"); } else if((kat||'').toLowerCase().startsWith("keuangan")) { currentTab = 'keuangan'; updateActiveTabUI(document.getElementById('tab-keuangan'), "Finansial"); } else { const ta = accounts.find(a => String(a.id)===String(id)); if(currentTab==='favorit' && !(ta && ta.favorit)) { currentTab = 'beranda'; updateActiveTabUI(document.getElementById('tab-beranda'), "Beranda"); } } let bd = accounts; if(currentTab==='kerja') bd = accounts.filter(a => (a.kategori||'').toLowerCase().startsWith("kerja")); else if(currentTab==='keuangan') bd = accounts.filter(a => (a.kategori||'').toLowerCase().startsWith("keuangan")); else if(currentTab==='favorit') bd = accounts.filter(a => a.favorit); renderCards(bd); requestAnimationFrame(() => setTimeout(() => { const pp = (kat||'').split('/'); let cb = ""; pp.forEach(p => { cb = cb ? (cb+'/'+p) : p; const fid = 'grup-'+cb.replace(/\s+/g,'-').replace(/\//g,'_'); const fel = document.getElementById(fid); const ic = document.getElementById('icon-'+fid); if(fel) { fel.style.display = 'flex'; if(ic) ic.style.transform = 'rotate(180deg)'; } }); toggleDetailKonten(id, 'flex'); setTimeout(() => { const r = document.getElementById('row-app-'+id); if(r) { r.scrollIntoView({behavior:'smooth',block:'center'}); r.style.outline = "2px solid var(--accent-color)"; setTimeout(() => r.style.outline = 'none', 2000); } }, 100); }, 100)); } }
     function resetPencarian() { document.getElementById('vault-search').value = ""; document.getElementById('searchDropdownContainer').style.display = 'none'; document.getElementById('clearSearchBtn').style.display = 'none'; filterKategoriAktif = null; filterVault(); }
